@@ -38,7 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --white:#fff;--gray-50:#f9f8f6;--gray-100:#f3f1ec;--gray-200:#e5e1d8;
   --gray-300:#d1cbbf;--gray-400:#9c937f;--gray-500:#6b6357;
   --gray-600:#4b4540;--gray-700:#37322c;--gray-800:#1f1c17;--gray-900:#111009;
-  --accent:#1B4F72;--accent-dark:#154060;--accent-light:#ddeaf5;
+  --accent:#8B6914;--accent-dark:#6e5310;--accent-light:#f5ecd8;
   --gold:#c9a84c;--gold-light:#fef8e8;
   --red:#dc2626;--red-light:#fef2f2;
   --nav-h:72px;--radius:8px;--radius-lg:14px;--radius-xl:20px;
@@ -110,9 +110,9 @@ img{max-width:100%;display:block}
 }
 .hero-content{
   position:relative;z-index:2;
-  width:100%;max-width:1200px;
+  width:100%;max-width:1280px;
   padding:calc(var(--nav-h) + 40px) 36px 60px;
-  display:grid;grid-template-columns:1fr 440px;
+  display:grid;grid-template-columns:1fr 500px;
   gap:52px;align-items:center;
 }
 .hero-left-text{color:#fff}
@@ -140,39 +140,39 @@ img{max-width:100%;display:block}
   overflow:visible;
 }
 .checkout-panel-header{
-  background:linear-gradient(135deg,var(--accent-dark),var(--accent));padding:20px 26px;
+  background:linear-gradient(135deg,var(--accent-dark),var(--accent));padding:14px 26px;
   display:flex;align-items:center;justify-content:space-between;
   border-radius:var(--radius-xl) var(--radius-xl) 0 0;
 }
 .checkout-panel-title{font-size:13px;font-weight:600;color:#fff;letter-spacing:.5px;text-transform:uppercase}
 .checkout-panel-price{font-size:22px;font-weight:700;color:#fff;font-family:'Cormorant Garamond',serif}
-.checkout-panel-body{padding:24px}
+.checkout-panel-body{padding:18px 24px}
 
-.step-progress{display:flex;gap:6px;margin-bottom:24px}
+.step-progress{display:flex;gap:6px;margin-bottom:14px}
 .step-dot{height:3px;border-radius:99px;flex:1;background:var(--gray-200);transition:background .35s}
 .step-dot.active{background:var(--accent)}
 .step-dot.done{background:var(--accent)}
 
 .checkout-step{display:none}
 .checkout-step.active{display:block}
-.step-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:7px}
+.step-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:7px}
 .step-num{width:20px;height:20px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
 
-.field-group{margin-bottom:14px}
-.field-group label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--gray-500);margin-bottom:5px}
+.field-group{margin-bottom:10px}
+.field-group label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--gray-500);margin-bottom:4px}
 .field-group input,.field-group select{
   width:100%;border:1.5px solid var(--gray-200);border-radius:var(--radius);
-  padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:14px;
+  padding:8px 12px;font-family:'DM Sans',sans-serif;font-size:14px;
   color:var(--gray-800);background:#fff;outline:none;
   transition:border-color .15s,box-shadow .15s;appearance:none;
 }
-.field-group input:focus,.field-group select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(27,79,114,.1)}
+.field-group input:focus,.field-group select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(139,105,20,.12)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-.timeslots{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;max-height:160px;overflow-y:auto}
+.timeslots{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;max-height:110px;overflow-y:auto}
 .timeslot{
   border:1.5px solid var(--gray-200);border-radius:var(--radius);
-  padding:7px 11px;font-size:12px;font-weight:500;cursor:pointer;
+  padding:5px 10px;font-size:12px;font-weight:500;cursor:pointer;
   transition:all .15s;background:#fff;text-align:center;white-space:nowrap;position:relative;
 }
 .timeslot:hover{border-color:var(--accent);color:var(--accent)}
@@ -186,8 +186,8 @@ img{max-width:100%;display:block}
 .time-legend-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--gray-500)}
 .time-legend-dot{width:8px;height:8px;border-radius:2px}
 
-.qty-list{border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:14px}
-.qty-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--gray-100)}
+.qty-list{border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:10px}
+.qty-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--gray-100)}
 .qty-row:last-child{border-bottom:none}
 .qty-info{flex:1}
 .qty-label{font-size:13px;font-weight:500;color:var(--gray-800)}
@@ -201,7 +201,7 @@ img{max-width:100%;display:block}
 .qty-ctrl button:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
 .qty-ctrl button:disabled{opacity:.3;cursor:not-allowed}
 .qty-ctrl span{font-size:14px;font-weight:600;width:20px;text-align:center}
-.qty-limit{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:var(--gray-100);color:var(--gray-600);padding:2px 8px;border-radius:99px;margin-bottom:8px}
+.qty-limit{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:var(--gray-100);color:var(--gray-600);padding:2px 8px;border-radius:99px;margin-bottom:6px}
 .qty-total-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0 2px;border-top:1.5px solid var(--gray-200);margin-top:4px}
 .qty-total-label{font-size:14px;font-weight:600;color:var(--gray-700)}
 .qty-total-price{font-size:22px;font-weight:700;color:var(--gray-900);font-family:'Cormorant Garamond',serif}
@@ -264,6 +264,34 @@ img{max-width:100%;display:block}
 .section-sub{font-size:15px;color:var(--gray-500);max-width:520px;line-height:1.75}
 .section-divider{border:none;border-top:1px solid var(--gray-200);max-width:1100px;margin:0 auto}
 
+/* ══ TICKET FEATURE CARD (Choisissez votre billet style) ══ */
+.ticket-feature-section{background:var(--white);padding:64px 36px 16px}
+.ticket-feature-inner{max-width:1100px;margin:0 auto}
+.ticket-feature-card{display:grid;grid-template-columns:1fr 1fr;max-width:1100px;margin:0 auto;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg)}
+.ticket-feature-img{position:relative;min-height:420px}
+.ticket-feature-img img{width:100%;height:100%;object-fit:cover;display:block}
+.ticket-feature-img-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.6));padding:40px 24px 20px}
+.ticket-price-badge{display:flex;flex-direction:column}
+.ticket-price-from{font-size:11px;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:2px}
+.ticket-price-num{font-size:38px;font-weight:700;color:#fff;line-height:1;font-family:'Cormorant Garamond',serif}
+.ticket-feature-content{background:var(--white);padding:44px 40px;display:flex;flex-direction:column;gap:16px;justify-content:center}
+.ticket-feature-eyebrow{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--accent)}
+.ticket-feature-title{font-size:clamp(24px,3vw,34px);font-weight:600;color:var(--gray-900);margin:0;font-family:'Cormorant Garamond',serif;line-height:1.15}
+.ticket-feature-desc{font-size:14px;color:var(--gray-500);line-height:1.7;margin:0}
+.ticket-feature-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.ticket-feature-list li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:var(--gray-700);line-height:1.5}
+.ticket-feature-list li svg{flex-shrink:0;margin-top:2px}
+.ticket-feature-meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:4px}
+.ticket-feature-meta span{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--gray-500)}
+.ticket-feature-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-weight:600;font-size:14px;padding:13px 28px;border-radius:var(--radius);text-decoration:none;text-align:center;cursor:pointer;border:none;transition:background .2s,transform .1s;align-self:flex-start;margin-top:4px}
+.ticket-feature-btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
+@media(max-width:780px){
+  .ticket-feature-card{grid-template-columns:1fr}
+  .ticket-feature-img{min-height:240px}
+  .ticket-feature-content{padding:28px 24px}
+  .ticket-feature-btn{width:100%;justify-content:center}
+}
+
 /* ══ GALLERY GRID ══ */
 .gallery-grid{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:280px 280px;gap:12px;border-radius:var(--radius-xl);overflow:hidden}
 .gallery-main{grid-row:1/3;position:relative;overflow:hidden}
@@ -314,9 +342,10 @@ img{max-width:100%;display:block}
 .info-card:hover{box-shadow:var(--shadow-md)}
 .info-card-icon{
   width:42px;height:42px;background:var(--accent-light);border-radius:var(--radius);
-  display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-.info-card h3{font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:8px;letter-spacing:.1px}
+.info-card-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.info-card h3{font-size:17px;font-weight:600;color:var(--gray-900);margin:0;letter-spacing:.1px;font-family:'Cormorant Garamond',serif}
 .info-card p{font-size:13.5px;color:var(--gray-600);line-height:1.75;margin-bottom:6px}
 .info-card p:last-child{margin-bottom:0}
 .info-card .info-badge{
@@ -361,8 +390,9 @@ img{max-width:100%;display:block}
 /* ══ DIRECTIONS ══ */
 .dir-options{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:24px}
 .dir-card{background:var(--gray-50);border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);padding:20px}
-.dir-card-icon{width:40px;height:40px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
-.dir-card h4{font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:6px}
+.dir-card-icon{width:40px;height:40px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dir-card-head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.dir-card h4{font-size:16px;font-weight:600;color:var(--gray-900);margin:0;font-family:'Cormorant Garamond',serif}
 .dir-card p{font-size:13px;color:var(--gray-600);line-height:1.6}
 
 /* ══ LEGAL PAGES ══ */
@@ -553,13 +583,13 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
           <div class="hero-trust-icon">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          Accesso Rapido
+          Accesso Prioritario
         </div>
         <div class="hero-trust-item">
           <div class="hero-trust-icon">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          Pagamento sicuro con Stripe
+          Confermazione Immediata
         </div>
         <div class="hero-trust-item">
           <div class="hero-trust-icon">
@@ -587,7 +617,7 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
         <!-- STEP 1 -->
         <div class="checkout-step active" id="step-1">
           <!-- Payment methods notice -->
-          <div id="payment-methods-notice" style="display:flex;justify-content:center;padding:8px 12px;margin-bottom:16px">
+          <div id="payment-methods-notice" style="display:flex;justify-content:center;padding:4px 12px;margin-bottom:10px">
             <img src="wallets.jpeg" alt="Visa Mastercard Amex Apple Pay Google Pay" style="height:28px;width:auto;object-fit:contain">
           </div>
           <div class="step-label"><span class="step-num">1</span>Data, orario e biglietti</div>
@@ -760,28 +790,42 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
   </div>
 </section>
 
-<!-- ══ TRUST STRIP ══ -->
-<div class="trust-strip">
-  <div class="trust-inner">
-    <div class="trust-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      Accesso Rapido
+<!-- ══ TICKET FEATURE SECTION (Scegli il tuo biglietto) ══ -->
+<div class="ticket-feature-section" id="ticket-feature-section">
+  <div class="ticket-feature-inner">
+    <div class="fade-up" style="text-align:center;margin-bottom:36px">
+      <div class="section-eyebrow" id="tf-eyebrow">Biglietto Standard</div>
+      <h2 class="section-title" id="tf-title">Scegli il tuo biglietto</h2>
     </div>
-    <div class="trust-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      Pagamento sicuro Stripe
-    </div>
-    <div class="trust-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      Conferma immediata
-    </div>
-    <div class="trust-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 6 6z"/></svg>
-      Supporto 24/7
-    </div>
-    <div class="trust-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Biglietto nominativo
+    <div class="ticket-feature-card fade-up">
+      <div class="ticket-feature-img">
+        <img src="https://images.unsplash.com/photo-1552832230-c0198040d8a4?w=900&q=80" alt="Cupola e oculo del Pantheon" loading="lazy">
+        <div class="ticket-feature-img-overlay">
+          <div class="ticket-price-badge">
+            <span class="ticket-price-from" id="tf-price-from">A partire da</span>
+            <span class="ticket-price-num" id="tf-price-num">€11</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticket-feature-content">
+        <div class="ticket-feature-eyebrow" id="tf-card-eyebrow">Ingresso con Orario Prenotato</div>
+        <h3 class="ticket-feature-title" id="tf-card-title">Biglietto Pantheon</h3>
+        <p class="ticket-feature-desc" id="tf-card-desc">Accesso garantito al Pantheon con fascia oraria riservata. Salta le code in biglietteria ed entra in uno dei monumenti meglio conservati dell'antica Roma, con la sua straordinaria cupola e il celebre oculo.</p>
+        <ul class="ticket-feature-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span id="tf-feat-1">Ingresso con orario prenotato, salta la fila</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span id="tf-feat-2">Accesso autonomo, senza visita guidata</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span id="tf-feat-3">Valido 1 ora dalla fascia oraria selezionata</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span id="tf-feat-4">Conferma immediata via email</span></li>
+        </ul>
+        <div class="ticket-feature-meta">
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span id="tf-meta-hours">Tutti i giorni · 09:00-19:00</span></span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <span id="tf-meta-free">Gratuito per minori di 18 anni</span></span>
+        </div>
+        <a class="ticket-feature-btn" onclick="navScrollTo('entradas-section')" id="tf-btn">
+          Prenota ora
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -860,10 +904,9 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
     <div class="carousel-feature fade-up">
       <div class="carousel-feature-img-wrap">
         <div class="carousel-feature-track" id="carousel-track">
-          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1552832230-c0198040d8a4?w=1000&q=85" alt="Cupola e oculo del Pantheon" loading="lazy"></div>
-          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1000&q=85" alt="Portico con colonne del Pantheon" loading="lazy"></div>
-          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1000&q=85" alt="Facciata del Pantheon su Piazza della Rotonda" loading="lazy"></div>
-          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?w=1000&q=85" alt="Interno del Pantheon, pavimento e nicchie" loading="lazy"></div>
+          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1752886355849-38cb2118cf1f?w=1000&q=85" alt="Luce che entra dall'oculo nella cupola del Pantheon" loading="lazy"></div>
+          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?w=1000&q=85" alt="Interno del Pantheon, pavimento in marmo e nicchie con le tombe" loading="lazy"></div>
+          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1761558507028-cf236b4c3ee7?w=1000&q=85" alt="Facciata e portico con colonne del Pantheon" loading="lazy"></div>
         </div>
         <button class="carousel-btn" style="left:12px" onclick="carouselMove(-1)" aria-label="Precedente">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
@@ -878,28 +921,22 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
       </div>
       <div class="carousel-feature-info" id="carousel-info">
         <div class="carousel-info-slide active" id="carousel-slide-0">
-          <div class="carousel-info-num">01 / 04</div>
-          <h3 class="carousel-info-title" id="c-title-0">La Cupola e l'Oculo</h3>
-          <p class="carousel-info-desc" id="c-desc-0">La piu grande cupola in calcestruzzo non armato del mondo, con un diametro di 43,3 metri. Al centro, l'oculo di 8,7 metri e l'unica fonte di luce naturale, creando un raggio che si muove lungo le pareti durante il giorno.</p>
-          <div class="carousel-info-tag" id="c-tag-0">43.3 m di diametro</div>
+          <div class="carousel-info-num">01 / 03</div>
+          <h3 class="carousel-info-title" id="c-title-0">L'Oculo</h3>
+          <p class="carousel-info-desc" id="c-desc-0">Un'apertura circolare di 9 metri nella cupola, unica fonte di luce naturale dell'edificio e collegamento simbolico tra il tempio e il cielo. La cupola stessa, con i suoi 43,3 metri di diametro, e la piu grande cupola in calcestruzzo non armato del mondo.</p>
+          <div class="carousel-info-tag" id="c-tag-0">Oculo · 9 m di diametro</div>
         </div>
         <div class="carousel-info-slide" id="carousel-slide-1">
-          <div class="carousel-info-num">02 / 04</div>
-          <h3 class="carousel-info-title" id="c-title-1">Il Portico Monumentale</h3>
-          <p class="carousel-info-desc" id="c-desc-1">Sedici colonne monolitiche in granito egizio, alte quasi 12 metri, sostengono il frontone con l'iscrizione originale di Marco Agrippa, costruttore del primo Pantheon nel 27 a.C.</p>
-          <div class="carousel-info-tag" id="c-tag-1">Granito egizio · 27 a.C.</div>
+          <div class="carousel-info-num">02 / 03</div>
+          <h3 class="carousel-info-title" id="c-title-1">Tombe Illustri e Pavimento Originale</h3>
+          <p class="carousel-info-desc" id="c-desc-1">Il Pantheon custodisce le spoglie del pittore rinascimentale Raffaello e le tombe dei primi re d'Italia, tra cui Vittorio Emanuele II. Il pavimento in marmo conserva ancora oggi il suo disegno geometrico originale, posato quasi duemila anni fa.</p>
+          <div class="carousel-info-tag" id="c-tag-1">Tombe di Raffaello e dei Re d'Italia</div>
         </div>
         <div class="carousel-info-slide" id="carousel-slide-2">
-          <div class="carousel-info-num">03 / 04</div>
-          <h3 class="carousel-info-title" id="c-title-2">Piazza della Rotonda</h3>
-          <p class="carousel-info-desc" id="c-desc-2">Nel cuore del centro storico di Roma, la piazza che ospita il Pantheon e una delle piu belle della citta, con una fontana barocca e un obelisco egizio al centro.</p>
-          <div class="carousel-info-tag" id="c-tag-2">Centro storico di Roma</div>
-        </div>
-        <div class="carousel-info-slide" id="carousel-slide-3">
-          <div class="carousel-info-num">04 / 04</div>
-          <h3 class="carousel-info-title" id="c-title-3">Da Tempio a Basilica</h3>
-          <p class="carousel-info-desc" id="c-desc-3">Costruito come tempio dedicato a tutti gli dei nel 113-125 d.C. sotto l'imperatore Adriano, dal 609 d.C. e una chiesa cattolica, fattore che ha contribuito alla sua straordinaria conservazione.</p>
-          <div class="carousel-info-tag" id="c-tag-3">113-125 d.C.</div>
+          <div class="carousel-info-num">03 / 03</div>
+          <h3 class="carousel-info-title" id="c-title-2">Il Portico Monumentale</h3>
+          <p class="carousel-info-desc" id="c-desc-2">La facciata si apre su uno spettacolare atrio sostenuto da sedici imponenti colonne di granito, alte quasi 12 metri, che reggono il frontone con l'iscrizione originale di Marco Agrippa, costruttore del primo Pantheon nel 27 a.C.</p>
+          <div class="carousel-info-tag" id="c-tag-2">16 colonne di granito · 27 a.C.</div>
         </div>
       </div>
     </div>
@@ -917,40 +954,48 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
 
       <!-- Card 1: Orari -->
       <div class="info-card">
-        <div class="info-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="info-card-head">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 id="info-h-hours">Orari di apertura</h3>
         </div>
-        <h3 id="info-h-hours">Orari di apertura</h3>
         <p id="info-p-hours">Tutti i giorni: <strong>09:00 - 19:00</strong><br>Ultimo ingresso: <strong>18:00</strong></p>
         <p id="info-p-closed">Aperto tutti i giorni, incluse domeniche e festivi.</p>
       </div>
 
       <!-- Card 2: Prezzi -->
       <div class="info-card">
-        <div class="info-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <div class="info-card-head">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <h3 id="info-h-prices">Prezzi biglietti</h3>
         </div>
-        <h3 id="info-h-prices">Prezzi biglietti</h3>
         <p id="info-p-prices"><strong>Intero:</strong> €11<br><strong>Ridotto (UE 18-25):</strong> €8</p>
         <p id="info-p-prices-note" style="font-size:12px;color:var(--gray-400)">Gratuito per minori di 18 anni, residenti a Roma, persone con disabilita e accompagnatore.</p>
       </div>
 
       <!-- Card 3: Come prepararsi -->
       <div class="info-card">
-        <div class="info-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <div class="info-card-head">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3 id="info-h-prepare">Come prepararsi</h3>
         </div>
-        <h3 id="info-h-prepare">Come prepararsi</h3>
         <p id="info-p-prepare">Il Pantheon e tra i monumenti piu visitati di Roma. Si consiglia di pianificare circa <strong>30-45 minuti</strong> per la visita.</p>
         <p id="info-p-ticket">Il biglietto con orario prenotato garantisce l'accesso. Presentarsi <strong>10 minuti prima</strong> dell'orario selezionato.</p>
       </div>
 
       <!-- Card 4: Regole -->
       <div class="info-card">
-        <div class="info-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="info-card-head">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 id="info-h-rules">Regole della visita</h3>
         </div>
-        <h3 id="info-h-rules">Regole della visita</h3>
         <div class="info-rules-list" id="info-p-rules">
           <div class="info-rules-item"><div class="info-rules-item-icon">📷</div><span>Fotografie permesse senza flash</span></div>
           <div class="info-rules-item"><div class="info-rules-item-icon">🪪</div><span>Biglietto nominativo, documento richiesto</span></div>
@@ -988,24 +1033,30 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
     </div>
     <div class="dir-options">
       <div class="dir-card">
-        <div class="dir-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <div class="dir-card-head">
+          <div class="dir-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h4 id="dir-h-bus">Autobus</h4>
         </div>
-        <h4 id="dir-h-bus">Autobus</h4>
-        <p id="dir-p-bus">Le linee <strong>C1, C2, D</strong> fermano vicino alla Galleria. Fermata: Piazza della Signoria o Lungarno degli Archibusieri.</p>
+        <p id="dir-p-bus">Le linee <strong>30, 40, 46, 62, 64, 70, 81, 87, 116, 492</strong> fermano vicino a Piazza della Rotonda o Largo di Torre Argentina.</p>
       </div>
       <div class="dir-card">
-        <div class="dir-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="dir-card-head">
+          <div class="dir-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4 id="dir-h-walk">A piedi dal centro</h4>
         </div>
-        <h4 id="dir-h-walk">A piedi dal centro</h4>
-        <p id="dir-p-walk">Dal Duomo: <strong>15 minuti</strong> a piedi attraverso il centro storico. Da Ponte Vecchio: <strong>5 minuti</strong>. Da Santa Croce: <strong>10 minuti</strong>.</p>
+        <p id="dir-p-walk">Da Piazza Navona: <strong>5 minuti</strong>. Da Fontana di Trevi: <strong>10 minuti</strong>. Da Piazza Venezia: <strong>8 minuti</strong>.</p>
       </div>
       <div class="dir-card">
-        <div class="dir-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="dir-card-head">
+          <div class="dir-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4 id="dir-h-addr">Indirizzo</h4>
         </div>
-        <h4 id="dir-h-addr">Indirizzo</h4>
         <p id="dir-p-addr"><strong>Piazza della Rotonda</strong><br>00186 Roma RM, Italia</p>
       </div>
     </div>
@@ -1330,6 +1381,7 @@ async function loadPrices(){
     document.getElementById('price-free').textContent='€'+f.toFixed(2);
     document.getElementById('qty-total').textContent='€'+totalPaid().toFixed(2);
     document.getElementById('header-price').textContent='€'+totalPaid().toFixed(2);
+    const tfPriceNum=document.getElementById('tf-price-num'); if(tfPriceNum) tfPriceNum.textContent='€'+a.toFixed(0);
   }catch(e){console.warn('Could not load prices:',e);}
 }
 
@@ -1569,8 +1621,7 @@ const faqData = {
     {q:"Quali sono gli orari di apertura?",a:"Il Pantheon e aperto tutti i giorni dalle 09:00 alle 19:00, incluse domeniche e festivi. Ultimo ingresso alle 18:00."},
     {q:"Quali sono le fasce orarie disponibili?",a:"Le fasce orarie di visita sono: 09:00-10:00, 10:00-11:00, 11:00-12:00, 12:00-13:00, 13:00-14:00, 14:00-15:00, 15:00-16:00, 16:00-17:00 e 17:00-18:00."},
     {q:"Chi ha diritto all'ingresso gratuito?",a:"L'ingresso gratuito e riservato a: minori di 18 anni, residenti nel Comune di Roma, persone con disabilita e un accompagnatore, insegnanti italiani con modulo MIM e altri soggetti secondo il Decreto Ministeriale 507/1997. La nostra tariffa per i biglietti gratuiti copre esclusivamente il servizio di prenotazione."},
-    {q:"Scop Tickets e l'operatore ufficiale?",a:"No. Siamo un servizio di intermediazione indipendente. Non siamo affiliati con la Direzione Musei Statali di Roma o con il Ministero della Cultura italiano."},
-  ],
+    ],
   en:[
     {q:"Why book Pantheon tickets online?",a:"To guarantee access at your preferred date and time. Online booking with a time slot avoids ticket office queues and secures your place."},
     {q:"How long does the visit take?",a:"Generally 30-45 minutes are enough to visit the Pantheon at a relaxed pace. The selected time slot is valid for 1 hour from the indicated time."},
@@ -1582,8 +1633,7 @@ const faqData = {
     {q:"What are the opening hours?",a:"The Pantheon is open every day from 09:00 to 19:00, including Sundays and holidays. Last admission at 18:00."},
     {q:"What time slots are available?",a:"Visiting slots are: 09:00-10:00, 10:00-11:00, 11:00-12:00, 12:00-13:00, 13:00-14:00, 14:00-15:00, 15:00-16:00, 16:00-17:00 and 17:00-18:00."},
     {q:"Who is entitled to free admission?",a:"Free admission is reserved for: minors under 18, residents of the Municipality of Rome, people with disabilities and a companion, Italian teachers with a special MIM form, and other categories under Ministerial Decree 507/1997. Our fee for free tickets covers only the booking service."},
-    {q:"Is Scop Tickets the official operator?",a:"No. We are an independent intermediary service. We are not affiliated with the Direzione Musei Statali di Roma or the Italian Ministry of Culture."},
-  ],
+    ],
   es:[
     {q:"¿Por que reservar las entradas del Panteon online?",a:"Para garantizar el acceso en la fecha y horario deseados. La reserva online con franja horaria evita las colas en taquilla y asegura tu lugar."},
     {q:"¿Cuanto dura la visita?",a:"En general, 30-45 minutos son suficientes para visitar el Panteon con calma. La franja horaria seleccionada es valida durante 1 hora desde el horario indicado."},
@@ -1595,8 +1645,7 @@ const faqData = {
     {q:"¿Cual es el horario de apertura?",a:"El Panteon esta abierto todos los dias de 09:00 a 19:00, incluidos domingos y festivos. Ultimo ingreso a las 18:00."},
     {q:"¿Que franjas horarias hay disponibles?",a:"Las franjas de visita son: 09:00-10:00, 10:00-11:00, 11:00-12:00, 12:00-13:00, 13:00-14:00, 14:00-15:00, 15:00-16:00, 16:00-17:00 y 17:00-18:00."},
     {q:"¿Quien tiene derecho a entrada gratuita?",a:"La entrada gratuita esta reservada para: menores de 18 anos, residentes del Municipio de Roma, personas con discapacidad y un acompanante, profesores italianos con formulario MIM y otras categorias segun el Decreto Ministerial 507/1997. Nuestra tarifa para entradas gratuitas cubre unicamente el servicio de reserva."},
-    {q:"¿Scop Tickets es el operador oficial?",a:"No. Somos un servicio de intermediacion independiente. No estamos afiliados con la Direzione Musei Statali di Roma ni con el Ministerio de Cultura italiano."},
-  ],
+    ],
   fr:[
     {q:"Pourquoi reserver les billets du Pantheon en ligne ?",a:"Pour garantir l'acces a la date et a l'heure souhaitees. La reservation en ligne avec creneau horaire evite les files d'attente et garantit votre place."},
     {q:"Combien de temps dure la visite ?",a:"En general, 30-45 minutes suffisent pour visiter le Pantheon a un rythme tranquille. Le creneau horaire selectionne est valable 1 heure a partir de l'heure indiquee."},
@@ -1608,8 +1657,7 @@ const faqData = {
     {q:"Quels sont les horaires d'ouverture ?",a:"Le Pantheon est ouvert tous les jours de 09h00 a 19h00, y compris dimanches et jours feries. Derniere admission a 18h00."},
     {q:"Quels creneaux horaires sont disponibles ?",a:"Les creneaux de visite sont : 09h00-10h00, 10h00-11h00, 11h00-12h00, 12h00-13h00, 13h00-14h00, 14h00-15h00, 15h00-16h00, 16h00-17h00 et 17h00-18h00."},
     {q:"Qui a droit a l'entree gratuite ?",a:"L'entree gratuite est reservee aux : mineurs de moins de 18 ans, residents de la Municipalite de Rome, personnes handicapees et un accompagnateur, enseignants italiens munis du formulaire MIM special, et autres categories selon le Decret Ministeriel 507/1997. Notre tarif pour les billets gratuits couvre uniquement le service de reservation."},
-    {q:"Scop Tickets est-il l'operateur officiel ?",a:"Non. Nous sommes un service d'intermediation independant. Nous ne sommes pas affilies a la Direzione Musei Statali di Roma ni au Ministere de la Culture italien."},
-  ],
+    ],
   de:[
     {q:"Warum Pantheon-Tickets online buchen?",a:"Um sich den Zugang zum gewuenschten Datum und zur gewuenschten Zeit zu sichern. Die Online-Buchung mit Zeitfenster vermeidet Warteschlangen an der Kasse und sichert Ihren Platz."},
     {q:"Wie lange dauert der Besuch?",a:"In der Regel reichen 30-45 Minuten fuer einen entspannten Besuch des Pantheons. Das gewaehlte Zeitfenster ist 1 Stunde ab der angegebenen Uhrzeit gueltig."},
@@ -1621,8 +1669,7 @@ const faqData = {
     {q:"Was sind die Oeffnungszeiten?",a:"Das Pantheon ist taeglich von 09:00 bis 19:00 Uhr geoeffnet, einschliesslich Sonn- und Feiertage. Letzter Einlass um 18:00 Uhr."},
     {q:"Welche Zeitfenster sind verfuegbar?",a:"Die Besuchszeitfenster sind: 09:00-10:00, 10:00-11:00, 11:00-12:00, 12:00-13:00, 13:00-14:00, 14:00-15:00, 15:00-16:00, 16:00-17:00 und 17:00-18:00 Uhr."},
     {q:"Wer hat Anspruch auf freien Eintritt?",a:"Freier Eintritt ist vorbehalten fuer: Minderjaehrige unter 18 Jahren, Einwohner der Gemeinde Rom, Menschen mit Behinderung und eine Begleitperson, italienische Lehrer mit speziellem MIM-Formular sowie weitere Kategorien gemaess Ministerialerlass 507/1997. Unsere Gebuehr fuer kostenlose Tickets deckt ausschliesslich den Buchungsservice."},
-    {q:"Ist Scop Tickets der offizielle Betreiber?",a:"Nein. Wir sind ein unabhaengiger Vermittlungsdienst. Wir sind nicht mit der Direzione Musei Statali di Roma oder dem italienischen Kulturministerium verbunden."},
-  ],
+    ],
   pt:[
     {q:"Por que reservar os bilhetes do Pantheon online?",a:"Para garantir o acesso na data e horario desejados. A reserva online com horario evita filas na bilheteira e garante o seu lugar."},
     {q:"Quanto tempo dura a visita?",a:"Em geral, 30-45 minutos sao suficientes para visitar o Pantheon com calma. O horario selecionado e valido por 1 hora a partir do horario indicado."},
@@ -1634,8 +1681,7 @@ const faqData = {
     {q:"Quais sao os horarios de funcionamento?",a:"O Pantheon esta aberto todos os dias das 09:00 as 19:00, incluindo domingos e feriados. Ultima entrada as 18:00."},
     {q:"Quais horarios estao disponiveis?",a:"Os horarios de visita sao: 09:00-10:00, 10:00-11:00, 11:00-12:00, 12:00-13:00, 13:00-14:00, 14:00-15:00, 15:00-16:00, 16:00-17:00 e 17:00-18:00."},
     {q:"Quem tem direito a entrada gratuita?",a:"A entrada gratuita e reservada para: menores de 18 anos, residentes do Municipio de Roma, pessoas com deficiencia e um acompanhante, professores italianos com formulario MIM especial, e outras categorias segundo o Decreto Ministerial 507/1997. A nossa taxa para bilhetes gratuitos cobre apenas o servico de reserva."},
-    {q:"A Scop Tickets e o operador oficial?",a:"Nao. Somos um servico de intermediacao independente. Nao somos afiliados a Direzione Musei Statali di Roma nem ao Ministerio da Cultura italiano."},
-  ],
+    ],
 };
 
 // ── LANGUAGE SYSTEM ──
@@ -1723,40 +1769,34 @@ function loadTrackingScripts(analytics, ads){
 // ── CAROUSEL DATA for translations ──
 const CAROUSEL_DATA = {
   it:[
-    {title:"La Cupola e l'Oculo",desc:"La piu grande cupola in calcestruzzo non armato del mondo, con un diametro di 43,3 metri. Al centro, l'oculo di 8,7 metri e l'unica fonte di luce naturale, creando un raggio che si muove lungo le pareti durante il giorno.",tag:'43.3 m di diametro'},
-    {title:'Il Portico Monumentale',desc:"Sedici colonne monolitiche in granito egizio, alte quasi 12 metri, sostengono il frontone con l'iscrizione originale di Marco Agrippa, costruttore del primo Pantheon nel 27 a.C.",tag:'Granito egizio · 27 a.C.'},
-    {title:'Piazza della Rotonda',desc:"Nel cuore del centro storico di Roma, la piazza che ospita il Pantheon e una delle piu belle della citta, con una fontana barocca e un obelisco egizio al centro.",tag:'Centro storico di Roma'},
-    {title:'Da Tempio a Basilica',desc:"Costruito come tempio dedicato a tutti gli dei nel 113-125 d.C. sotto l'imperatore Adriano, dal 609 d.C. e una chiesa cattolica, fattore che ha contribuito alla sua straordinaria conservazione.",tag:'113-125 d.C.'},
+    {title:"L'Oculo",desc:"Un'apertura circolare di 9 metri nella cupola, unica fonte di luce naturale dell'edificio e collegamento simbolico tra il tempio e il cielo. La cupola stessa, con i suoi 43,3 metri di diametro, e la piu grande cupola in calcestruzzo non armato del mondo.",tag:'Oculo · 9 m di diametro'},
+    {title:"Tombe Illustri e Pavimento Originale",desc:"Il Pantheon custodisce le spoglie del pittore rinascimentale Raffaello e le tombe dei primi re d'Italia, tra cui Vittorio Emanuele II. Il pavimento in marmo conserva ancora oggi il suo disegno geometrico originale, posato quasi duemila anni fa.",tag:"Tombe di Raffaello e dei Re d'Italia"},
+    {title:'Il Portico Monumentale',desc:"La facciata si apre su uno spettacolare atrio sostenuto da sedici imponenti colonne di granito, alte quasi 12 metri, che reggono il frontone con l'iscrizione originale di Marco Agrippa, costruttore del primo Pantheon nel 27 a.C.",tag:'16 colonne di granito · 27 a.C.'},
   ],
   en:[
-    {title:'The Dome and the Oculus',desc:'The largest unreinforced concrete dome in the world, with a diameter of 43.3 metres. At its centre, the 8.7-metre oculus is the only source of natural light, casting a beam that moves across the walls throughout the day.',tag:'43.3 m diameter'},
-    {title:'The Monumental Portico',desc:'Sixteen monolithic Egyptian granite columns, almost 12 metres tall, support the pediment bearing the original inscription of Marcus Agrippa, who built the first Pantheon in 27 BC.',tag:'Egyptian granite · 27 BC'},
-    {title:'Piazza della Rotonda',desc:'In the heart of Rome\'s historic centre, the square in front of the Pantheon is one of the most beautiful in the city, with a Baroque fountain and an Egyptian obelisk at its centre.',tag:"Rome's historic centre"},
-    {title:'From Temple to Basilica',desc:'Built as a temple dedicated to all the gods in 113-125 AD under Emperor Hadrian, it has been a Catholic church since 609 AD, a factor that contributed to its extraordinary preservation.',tag:'113-125 AD'},
+    {title:'The Oculus',desc:'A 9-metre circular opening in the dome, the only source of natural light in the building and a symbolic link between the temple and the sky. The dome itself, with a diameter of 43.3 metres, is the largest unreinforced concrete dome in the world.',tag:'Oculus · 9 m diameter'},
+    {title:'Illustrious Tombs and Original Floor',desc:'The Pantheon holds the remains of the Renaissance painter Raphael and the tombs of the first kings of Italy, including Victor Emmanuel II. The marble floor still preserves its original geometric pattern, laid almost two thousand years ago.',tag:"Tombs of Raphael and Italy's Kings"},
+    {title:'The Monumental Portico',desc:'The facade opens onto a spectacular portico supported by sixteen imposing granite columns, almost 12 metres tall, holding up the pediment with the original inscription of Marcus Agrippa, who built the first Pantheon in 27 BC.',tag:'16 granite columns · 27 BC'},
   ],
   es:[
-    {title:'La Cupula y el Oculo',desc:'La cupula de hormigon no armado mas grande del mundo, con un diametro de 43,3 metros. En su centro, el oculo de 8,7 metros es la unica fuente de luz natural, proyectando un haz que se desplaza por las paredes durante el dia.',tag:'43.3 m de diametro'},
-    {title:'El Portico Monumental',desc:'Dieciseis columnas monoliticas de granito egipcio, de casi 12 metros de altura, sostienen el fronton con la inscripcion original de Marco Agripa, constructor del primer Panteon en el 27 a.C.',tag:'Granito egipcio · 27 a.C.'},
-    {title:'Piazza della Rotonda',desc:'En el corazon del centro historico de Roma, la plaza frente al Panteon es una de las mas bellas de la ciudad, con una fuente barroca y un obelisco egipcio en el centro.',tag:'Centro historico de Roma'},
-    {title:'De Templo a Basilica',desc:'Construido como templo dedicado a todos los dioses entre el 113 y el 125 d.C. bajo el emperador Adriano, desde el 609 d.C. es una iglesia catolica, factor que contribuyo a su extraordinaria conservacion.',tag:'113-125 d.C.'},
+    {title:'El Oculo',desc:'Una abertura circular de 9 metros en la cupula, unica fuente de luz natural del edificio y vinculo simbolico entre el templo y el cielo. La propia cupula, con sus 43,3 metros de diametro, es la cupula de hormigon no armado mas grande del mundo.',tag:'Oculo · 9 m de diametro'},
+    {title:'Tumbas Ilustres y Suelo Original',desc:'El Panteon alberga los restos del pintor renacentista Rafael y las tumbas de los primeros reyes de Italia, como Victor Manuel II. El suelo de marmol conserva todavia su diseno geometrico original, colocado hace casi dos mil anos.',tag:'Tumbas de Rafael y los Reyes de Italia'},
+    {title:'El Portico Monumental',desc:'La fachada se abre a un espectacular atrio sostenido por dieciseis imponentes columnas de granito, de casi 12 metros de altura, que sostienen el fronton con la inscripcion original de Marco Agripa, constructor del primer Panteon en el 27 a.C.',tag:'16 columnas de granito · 27 a.C.'},
   ],
   fr:[
-    {title:"Le Dome et l'Oculus",desc:"Le plus grand dome en beton non arme au monde, avec un diametre de 43,3 metres. En son centre, l'oculus de 8,7 metres est la seule source de lumiere naturelle, projetant un rayon qui se deplace le long des murs au fil de la journee.",tag:'43.3 m de diametre'},
-    {title:'Le Portique Monumental',desc:"Seize colonnes monolithiques en granit egyptien, hautes de presque 12 metres, soutiennent le fronton portant l'inscription originale de Marcus Agrippa, constructeur du premier Pantheon en 27 av. J.-C.",tag:'Granit egyptien · 27 av. J.-C.'},
-    {title:'Piazza della Rotonda',desc:"Au coeur du centre historique de Rome, la place devant le Pantheon est l'une des plus belles de la ville, avec une fontaine baroque et un obelisque egyptien en son centre.",tag:'Centre historique de Rome'},
-    {title:'De Temple a Basilique',desc:"Construit comme un temple dedie a tous les dieux entre 113 et 125 apr. J.-C. sous l'empereur Hadrien, il est une eglise catholique depuis 609 apr. J.-C., facteur qui a contribue a son extraordinaire conservation.",tag:'113-125 apr. J.-C.'},
+    {title:"L'Oculus",desc:"Une ouverture circulaire de 9 metres dans la coupole, unique source de lumiere naturelle du batiment et lien symbolique entre le temple et le ciel. La coupole elle-meme, avec ses 43,3 metres de diametre, est le plus grand dome en beton non arme du monde.",tag:'Oculus · 9 m de diametre'},
+    {title:'Tombes Illustres et Sol Original',desc:"Le Pantheon abrite les restes du peintre de la Renaissance Raphael et les tombes des premiers rois d'Italie, dont Victor-Emmanuel II. Le sol en marbre conserve encore son motif geometrique original, pose il y a presque deux mille ans.",tag:"Tombes de Raphael et des Rois d'Italie"},
+    {title:'Le Portique Monumental',desc:"La facade s'ouvre sur un spectaculaire portique soutenu par seize imposantes colonnes de granit, hautes de presque 12 metres, supportant le fronton portant l'inscription originale de Marcus Agrippa, constructeur du premier Pantheon en 27 av. J.-C.",tag:'16 colonnes de granit · 27 av. J.-C.'},
   ],
   de:[
-    {title:'Die Kuppel und das Oculus',desc:'Die grosste unbewehrte Betonkuppel der Welt mit einem Durchmesser von 43,3 Metern. In ihrer Mitte ist das 8,7 Meter grosse Oculus die einzige Quelle natuerlichen Lichts und wirft im Laufe des Tages einen Lichtstrahl an die Waende.',tag:'43.3 m Durchmesser'},
-    {title:'Der Monumentale Portikus',desc:'Sechzehn monolithische Saulen aus agyptischem Granit, fast 12 Meter hoch, tragen den Giebel mit der Originalinschrift von Marcus Agrippa, der den ersten Pantheon im Jahr 27 v. Chr. errichtete.',tag:'Agyptischer Granit · 27 v. Chr.'},
-    {title:'Piazza della Rotonda',desc:'Im Herzen der historischen Altstadt von Rom ist der Platz vor dem Pantheon einer der schoensten der Stadt, mit einem barocken Brunnen und einem agyptischen Obelisken in der Mitte.',tag:'Altstadt von Rom'},
-    {title:'Vom Tempel zur Basilika',desc:'Errichtet als Tempel fuer alle Goetter in den Jahren 113-125 n. Chr. unter Kaiser Hadrian, ist er seit 609 n. Chr. eine katholische Kirche - ein Faktor, der zu seiner aussergewoehnlichen Erhaltung beitrug.',tag:'113-125 n. Chr.'},
+    {title:'Das Oculus',desc:'Eine 9 Meter grosse kreisrunde Offnung in der Kuppel, die einzige Quelle natuerlichen Lichts im Gebaude und ein symbolisches Bindeglied zwischen dem Tempel und dem Himmel. Die Kuppel selbst, mit einem Durchmesser von 43,3 Metern, ist die grosste unbewehrte Betonkuppel der Welt.',tag:'Oculus · 9 m Durchmesser'},
+    {title:'Beruehmte Graeber und Originalboden',desc:'Das Pantheon beherbergt die Ueberreste des Renaissancemalers Raffael sowie die Graeber der ersten Koenige Italiens, darunter Viktor Emanuel II. Der Marmorboden bewahrt bis heute sein urspruengliches geometrisches Muster, das vor fast zweitausend Jahren verlegt wurde.',tag:'Graeber von Raffael und den Koenigen Italiens'},
+    {title:'Der Monumentale Portikus',desc:'Die Fassade oeffnet sich zu einem spektakulaeren Portikus, getragen von sechzehn imposanten Granitsaeulen, fast 12 Meter hoch, die den Giebel mit der Originalinschrift von Marcus Agrippa tragen, der den ersten Pantheon im Jahr 27 v. Chr. errichtete.',tag:'16 Granitsaeulen · 27 v. Chr.'},
   ],
   pt:[
-    {title:'A Cupula e o Oculo',desc:'A maior cupula de betao nao armado do mundo, com um diametro de 43,3 metros. No centro, o oculo de 8,7 metros e a unica fonte de luz natural, projetando um feixe que se move pelas paredes ao longo do dia.',tag:'43.3 m de diametro'},
-    {title:'O Portico Monumental',desc:'Dezesseis colunas monoliticas em granito egipcio, com quase 12 metros de altura, sustentam o fronton com a inscricao original de Marco Agripa, construtor do primeiro Pantheon em 27 a.C.',tag:'Granito egipcio · 27 a.C.'},
-    {title:'Piazza della Rotonda',desc:'No coracao do centro historico de Roma, a praca em frente ao Pantheon e uma das mais bonitas da cidade, com uma fonte barroca e um obelisco egipcio no centro.',tag:'Centro historico de Roma'},
-    {title:'De Templo a Basilica',desc:'Construido como templo dedicado a todos os deuses entre 113-125 d.C. sob o imperador Adriano, e uma igreja catolica desde 609 d.C., fator que contribuiu para a sua extraordinaria conservacao.',tag:'113-125 d.C.'},
+    {title:'O Oculo',desc:'Uma abertura circular de 9 metros na cupula, unica fonte de luz natural do edificio e ligacao simbolica entre o templo e o ceu. A propria cupula, com 43,3 metros de diametro, e a maior cupula de betao nao armado do mundo.',tag:'Oculo · 9 m de diametro'},
+    {title:'Tumulos Ilustres e Pavimento Original',desc:'O Pantheon guarda os restos mortais do pintor renascentista Rafael e os tumulos dos primeiros reis da Italia, incluindo Vitor Emanuel II. O pavimento em marmore conserva ainda hoje o seu desenho geometrico original, colocado ha quase dois mil anos.',tag:'Tumulos de Rafael e dos Reis da Italia'},
+    {title:'O Portico Monumental',desc:'A fachada abre-se para um espetacular atrio sustentado por dezesseis imponentes colunas de granito, com quase 12 metros de altura, que sustentam o fronton com a inscricao original de Marco Agripa, construtor do primeiro Pantheon em 27 a.C.',tag:'16 colunas de granito · 27 a.C.'},
   ],
 };
 
@@ -1813,8 +1853,8 @@ const UI_STRINGS = {
   heroTag:       {it:'Monumento · Roma',en:'Monument · Rome',es:'Monumento · Roma',fr:'Monument · Rome',de:'Denkmal · Rom',pt:'Monumento · Roma'},
   heroEyebrow:   {it:'Tempio Romano Antico · Eretto nel 113-125 d.C.',en:'Ancient Roman Temple · Built 113-125 AD',es:'Templo Romano Antiguo · Erigido en 113-125 d.C.',fr:'Temple Romain Antique · Erige en 113-125 apr. J.-C.',de:'Antiker Roemischer Tempel · Erbaut 113-125 n. Chr.',pt:'Templo Romano Antigo · Erguido em 113-125 d.C.'},
   heroSub:       {it:'Accesso garantito con orario prenotato. Conferma immediata via email. Salta la fila all\'ingresso.',en:'Guaranteed access with reserved time slot. Instant email confirmation. Skip the entrance queue.',es:'Acceso garantizado con horario reservado. Confirmacion inmediata por email. Salta la cola.',fr:'Acces garanti avec creneau horaire reserve. Confirmation immediate par email.',de:'Garantierter Zugang mit reserviertem Zeitfenster. Sofortige E-Mail-Bestaetigung.',pt:'Acesso garantido com horario reservado. Confirmacao imediata por email.'},
-  trust1:        {it:'Accesso Rapido',en:'Fast Access',es:'Acceso Rápido',fr:'Accès Rapide',de:'Schneller Zugang',pt:'Acesso Rápido'},
-  trust2:        {it:'Pagamento sicuro con Stripe',en:'Secure payment via Stripe',es:'Pago seguro con Stripe',fr:'Paiement sécurisé Stripe',de:'Sichere Zahlung via Stripe',pt:'Pagamento seguro via Stripe'},
+  trust1:        {it:'Accesso Prioritario',en:'Priority Access',es:'Acceso Prioritario',fr:'Accès Prioritaire',de:'Bevorzugter Zugang',pt:'Acesso Prioritário'},
+  trust2:        {it:'Confermazione Immediata',en:'Instant Confirmation',es:'Confirmación Inmediata',fr:'Confirmation Immédiate',de:'Sofortige Bestätigung',pt:'Confirmação Imediata'},
   trust3:        {it:'Supporto 24/7',en:'24/7 Support',es:'Soporte 24/7',fr:'Support 24h/24',de:'24/7 Support',pt:'Suporte 24/7'},
   trust4:        {it:'Pagamento sicuro Stripe',en:'Secure Stripe payment',es:'Pago seguro Stripe',fr:'Paiement Stripe sécurisé',de:'Sichere Stripe-Zahlung',pt:'Pagamento seguro Stripe'},
   trust5:        {it:'Biglietto nominativo',en:'Named ticket',es:'Entrada nominativa',fr:'Billet nominatif',de:'Personalisiertes Ticket',pt:'Bilhete nominativo'},
@@ -1883,6 +1923,19 @@ const UI_STRINGS = {
   minorsOnlyError:{it:'I biglietti Minori (6-17) devono essere accompagnati da almeno un adulto o un Ridotto.',en:'Children tickets (6-17) must be accompanied by at least one adult or reduced ticket.',es:'Las entradas de Menores (6-17) deben ir acompañadas de al menos un adulto o reducido.',fr:"Les billets Mineurs (6-17) doivent être accompagnés d'au moins un adulte ou réduit.",de:'Kinder-Tickets (6-17) müssen von mindestens einem Erwachsenen- oder Ermäßigungsticket begleitet werden.',pt:'Os bilhetes de Menores (6-17) devem ser acompanhados de pelo menos um adulto ou reduzido.'},
   buyMoreBtn:    {it:'Acquista altri biglietti',en:'Buy more tickets',es:'Comprar mas entradas',fr:"Acheter d'autres billets",de:'Weitere Tickets kaufen',pt:'Comprar mais bilhetes'},
   prbOrText:     {it:'oppure paga con carta',en:'or pay with card',es:'o pagar con tarjeta',fr:'ou payer par carte',de:'oder mit Karte zahlen',pt:'ou pagar com cartão'},
+  tfEyebrow:     {it:'Biglietto Standard',en:'Standard Ticket',es:'Entrada Estándar',fr:'Billet Standard',de:'Standardticket',pt:'Bilhete Padrão'},
+  tfTitle:       {it:'Scegli il tuo biglietto',en:'Choose your ticket',es:'Elige tu entrada',fr:'Choisissez votre billet',de:'Wählen Sie Ihr Ticket',pt:'Escolha o seu bilhete'},
+  tfPriceFrom:   {it:'A partire da',en:'From',es:'Desde',fr:'À partir de',de:'Ab',pt:'A partir de'},
+  tfCardEyebrow: {it:'Ingresso con Orario Prenotato',en:'Timed Entry Ticket',es:'Entrada con Horario Reservado',fr:'Billet avec Horaire Réservé',de:'Ticket mit Zeitfenster',pt:'Bilhete com Horário Marcado'},
+  tfCardTitle:   {it:'Biglietto Pantheon',en:'Pantheon Ticket',es:'Entrada al Panteón',fr:'Billet pour le Panthéon',de:'Pantheon-Ticket',pt:'Bilhete para o Pantheon'},
+  tfCardDesc:    {it:"Accesso garantito al Pantheon con fascia oraria riservata. Salta le code in biglietteria ed entra in uno dei monumenti meglio conservati dell'antica Roma, con la sua straordinaria cupola e il celebre oculo.",en:'Guaranteed access to the Pantheon with a reserved time slot. Skip the ticket office queues and step inside one of the best-preserved monuments of ancient Rome, with its extraordinary dome and famous oculus.',es:'Acceso garantizado al Panteón con franja horaria reservada. Evita las colas en taquilla y entra en uno de los monumentos mejor conservados de la antigua Roma, con su extraordinaria cúpula y su famoso óculo.',fr:"Accès garanti au Panthéon avec un créneau horaire réservé. Évitez les files d'attente et découvrez l'un des monuments les mieux conservés de la Rome antique, avec son extraordinaire dôme et son célèbre oculus.",de:'Garantierter Zugang zum Pantheon mit reserviertem Zeitfenster. Vermeiden Sie die Warteschlangen an der Kasse und betreten Sie eines der besterhaltenen Monumente des antiken Roms mit seiner aussergewöhnlichen Kuppel und dem berühmten Oculus.',pt:'Acesso garantido ao Pantheon com horário reservado. Evite as filas na bilheteira e entre num dos monumentos mais bem preservados da Roma antiga, com a sua extraordinária cúpula e o famoso óculo.'},
+  tfFeat1:       {it:'Ingresso con orario prenotato, salta la fila',en:'Timed entry ticket, skip the line',es:'Entrada con horario reservado, sin colas',fr:"Billet avec horaire réservé, sans file d'attente",de:'Ticket mit Zeitfenster, ohne Anstehen',pt:'Bilhete com horário marcado, sem filas'},
+  tfFeat2:       {it:'Accesso autonomo, senza visita guidata',en:'Independent access, no guided tour',es:'Acceso independiente, sin visita guiada',fr:'Accès indépendant, sans visite guidée',de:'Selbstständiger Zugang, ohne Führung',pt:'Acesso independente, sem visita guiada'},
+  tfFeat3:       {it:"Valido 1 ora dalla fascia oraria selezionata",en:'Valid for 1 hour from the selected time slot',es:'Válido durante 1 hora desde la franja horaria seleccionada',fr:"Valable 1 heure à partir du créneau horaire sélectionné",de:'1 Stunde ab dem gewählten Zeitfenster gültig',pt:'Válido por 1 hora a partir do horário selecionado'},
+  tfFeat4:       {it:'Conferma immediata via email',en:'Instant email confirmation',es:'Confirmación inmediata por email',fr:'Confirmation immédiate par email',de:'Sofortige E-Mail-Bestätigung',pt:'Confirmação imediata por email'},
+  tfMetaHours:   {it:'Tutti i giorni · 09:00-19:00',en:'Every day · 09:00-19:00',es:'Todos los días · 09:00-19:00',fr:'Tous les jours · 09h00-19h00',de:'Täglich · 09:00-19:00 Uhr',pt:'Todos os dias · 09:00-19:00'},
+  tfMetaFree:    {it:'Gratuito per minori di 18 anni',en:'Free for under 18s',es:'Gratis para menores de 18 años',fr:'Gratuit pour les moins de 18 ans',de:'Kostenlos für unter 18-Jährige',pt:'Gratuito para menores de 18 anos'},
+  tfBtn:         {it:'Prenota ora',en:'Book now',es:'Reservar ahora',fr:'Réserver',de:'Jetzt buchen',pt:'Reservar agora'},
 };
 
 function t(key){ return (UI_STRINGS[key]&&(UI_STRINGS[key][currentLang]||UI_STRINGS[key]['en']))||key; }
@@ -1948,8 +2001,15 @@ function applyTranslations(){
   const prbOr=document.getElementById('prb-or-text'); if(prbOr) prbOr.textContent=t('prbOrText');
 
   // ── TRUST STRIP ──
-  const ti=document.querySelectorAll('.trust-item');
-  [{i:0,k:'trust1'},{i:1,k:'trust2'},{i:2,k:'trust4'},{i:3,k:'trust3'},{i:4,k:'trust5'}].forEach(({i,k})=>{ if(!ti[i])return; const svg=ti[i].querySelector('svg'); ti[i].innerHTML=''; if(svg)ti[i].appendChild(svg); ti[i].appendChild(document.createTextNode(' '+t(k))); });
+  // ── TICKET FEATURE ──
+  const set0=(elId,val)=>{ const el=document.getElementById(elId); if(el) el.textContent=val; };
+  set0('tf-eyebrow',t('tfEyebrow')); set0('tf-title',t('tfTitle'));
+  set0('tf-price-from',t('tfPriceFrom'));
+  set0('tf-card-eyebrow',t('tfCardEyebrow')); set0('tf-card-title',t('tfCardTitle')); set0('tf-card-desc',t('tfCardDesc'));
+  set0('tf-feat-1',t('tfFeat1')); set0('tf-feat-2',t('tfFeat2')); set0('tf-feat-3',t('tfFeat3')); set0('tf-feat-4',t('tfFeat4'));
+  set0('tf-meta-hours',t('tfMetaHours')); set0('tf-meta-free',t('tfMetaFree'));
+  const tfBtn=document.getElementById('tf-btn'); if(tfBtn){ const svg=tfBtn.querySelector('svg'); tfBtn.innerHTML=''; tfBtn.appendChild(document.createTextNode(t('tfBtn')+' ')); if(svg)tfBtn.appendChild(svg); }
+  const tfPriceNum=document.getElementById('tf-price-num'); if(tfPriceNum) tfPriceNum.textContent='€'+PRICES.adults.toFixed(0);
 
   // ── GALLERY ──
   const galEye=document.querySelector('#gallery-section .section-eyebrow'); if(galEye) galEye.textContent=t('galEyebrow');
