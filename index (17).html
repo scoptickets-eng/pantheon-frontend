@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scop Tickets · Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0d0d;--surface:#141414;--surface-2:#1c1c1c;--surface-3:#242424;
+  --border:rgba(255,255,255,.07);--border-hover:rgba(255,255,255,.14);
+  --gold:#c9a84c;--gold-dim:rgba(201,168,76,.15);--gold-border:rgba(201,168,76,.3);
+  --green:#4caf7d;--green-bg:rgba(76,175,125,.1);
+  --red:#e05555;--red-bg:rgba(224,85,85,.1);
+  --amber:#e0a030;--amber-bg:rgba(224,160,48,.1);
+  --blue:#5b9bd5;--blue-bg:rgba(91,155,213,.1);
+  --pg:#4caf7d;--pg-bg:rgba(45,122,79,.15);
+  --text:#e8e4de;--text-muted:#7a7570;--text-dim:#4a4540;
+  --radius:6px;--radius-lg:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.5;min-height:100vh}
+
+/* LOGIN */
+#login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 40%,rgba(201,168,76,.06) 0%,transparent 60%)}
+.login-card{width:340px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px 36px;text-align:center}
+.login-logo{font-family:'Cinzel',serif;font-size:13px;letter-spacing:4px;color:var(--gold);margin-bottom:4px}
+.login-sub{font-size:12px;color:var(--text-muted);margin-bottom:28px;letter-spacing:1px}
+.login-card label{display:block;text-align:left;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.login-card input[type=password]{width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Mono',monospace;font-size:15px;padding:12px 14px;outline:none;letter-spacing:3px;transition:border-color .2s}
+.login-card input[type=password]:focus{border-color:var(--gold)}
+.btn-login{width:100%;margin-top:16px;background:var(--gold);color:#1a1200;border:none;border-radius:var(--radius);font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;padding:13px;cursor:pointer}
+.login-error{font-size:12px;color:var(--red);margin-top:12px;min-height:18px}
+
+#app{display:none}
+header{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:56px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-brand{display:flex;align-items:center;gap:12px}
+.header-logo{font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;color:var(--gold)}
+.header-sep{width:1px;height:16px;background:var(--border)}
+.header-title{font-size:13px;color:var(--text-muted)}
+.btn-icon{background:none;border:1px solid var(--border);border-radius:var(--radius);color:var(--text-muted);padding:6px 12px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.btn-icon:hover{border-color:var(--border-hover);color:var(--text)}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;margin-right:6px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+main{max-width:1400px;margin:0 auto;padding:24px 28px}
+
+/* ATTRACTION BAR */
+.attraction-bar{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.attr-btn{padding:7px 16px;border-radius:var(--radius);border:1px solid var(--border);background:none;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:7px}
+.attr-btn:hover{border-color:var(--border-hover);color:var(--text)}
+.sync-btn{padding:7px 14px;border-radius:var(--radius);border:1px solid var(--border);background:none;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px}
+.sync-btn:hover{border-color:var(--border-hover);color:var(--text)}
+.sync-btn:disabled{opacity:.5;cursor:not-allowed}
+.sync-status{font-size:11px;color:var(--text-muted);margin-left:4px}
+.attr-btn.active-all{background:var(--surface-2);border-color:var(--border-hover);color:var(--text)}
+.attr-btn.active-colosseum{background:var(--gold-dim);border-color:var(--gold-border);color:var(--gold)}
+.attr-btn.active-parkguell{background:var(--pg-bg);border-color:rgba(76,175,125,.4);color:var(--pg)}
+.attr-btn.active-uffizi{background:rgba(27,79,114,.18);border-color:rgba(27,79,114,.45);color:#5b9ec9}
+.attr-dot{width:8px;height:8px;border-radius:50%}
+.attr-dot.col{background:var(--gold)}.attr-dot.pg{background:var(--pg)}.attr-dot.all{background:var(--text-muted)}
+
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:20px}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px}
+.metric-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:5px}
+.metric-value{font-family:'DM Mono',monospace;font-size:24px;font-weight:500;line-height:1}
+.metric-value.green{color:var(--green)}.metric-value.red{color:var(--red)}.metric-value.amber{color:var(--amber)}.metric-value.gold{color:var(--gold)}.metric-value.teal{color:var(--pg)}
+.metric-sub{font-size:11px;color:var(--text-dim);margin-top:4px}
+
+/* TABS */
+.tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:16px}
+.tab{background:none;border:none;border-bottom:2px solid transparent;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 16px;cursor:pointer;margin-bottom:-1px;transition:all .15s}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* TOOLBAR */
+.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.toolbar-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
+.toolbar input,.toolbar select{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:6px 10px;outline:none;height:32px;transition:border-color .15s}
+.toolbar input:focus,.toolbar select:focus{border-color:var(--gold-border)}
+.toolbar select option{background:var(--surface-2)}
+.toolbar-sep{width:1px;height:20px;background:var(--border);margin:0 4px}
+
+/* BULK PANEL */
+.bulk-panel{background:var(--surface);border:1px solid var(--gold-border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px;display:none}
+.bulk-panel.open{display:block}
+.bulk-panel-title{font-size:13px;font-weight:500;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.bulk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.bulk-field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin-bottom:5px}
+.bulk-field input,.bulk-field select{width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:8px 10px;outline:none;transition:border-color .15s}
+.bulk-field input:focus,.bulk-field select:focus{border-color:var(--gold-border)}
+.bulk-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.bulk-preview{font-size:12px;color:var(--text-muted);margin-left:auto}
+.btn-bulk{font-size:13px;font-weight:500;padding:8px 16px;border-radius:var(--radius);cursor:pointer;font-family:'DM Sans',sans-serif;border:1px solid;transition:all .15s}
+.btn-bulk.block{background:var(--red-bg);border-color:rgba(224,85,85,.4);color:var(--red)}
+.btn-bulk.block:hover{background:rgba(224,85,85,.2)}
+.btn-bulk.unblock{background:var(--green-bg);border-color:rgba(76,175,125,.4);color:var(--green)}
+.btn-bulk.unblock:hover{background:rgba(76,175,125,.2)}
+.btn-bulk.capacity{background:var(--gold-dim);border-color:var(--gold-border);color:var(--gold)}
+.btn-bulk.capacity:hover{background:rgba(201,168,76,.25)}
+.bulk-cap-input{width:70px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Mono',monospace;font-size:13px;padding:7px 8px;text-align:center;outline:none}
+
+/* SELECTION BAR */
+.selection-bar{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;margin-bottom:10px;display:none;align-items:center;gap:10px;flex-wrap:wrap}
+.selection-bar.show{display:flex}
+.selection-count{font-size:13px;font-weight:500;color:var(--text)}
+.selection-count span{color:var(--gold)}
+.btn-sel{font-size:12px;padding:5px 12px;border-radius:var(--radius);cursor:pointer;font-family:'DM Sans',sans-serif;border:1px solid;transition:all .15s}
+.btn-sel.block{background:var(--red-bg);border-color:rgba(224,85,85,.4);color:var(--red)}
+.btn-sel.unblock{background:var(--green-bg);border-color:rgba(76,175,125,.4);color:var(--green)}
+.btn-sel.clear{background:none;border-color:var(--border);color:var(--text-muted)}
+
+/* TABLE */
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+table{width:100%;border-collapse:collapse}
+thead tr{background:var(--surface-2);border-bottom:1px solid var(--border)}
+th{text-align:left;padding:9px 12px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted);white-space:nowrap}
+th.check-col{width:36px;padding:9px 8px 9px 14px}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+td.check-col{padding:9px 8px 9px 14px}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,.02)}
+tbody tr.selected td{background:rgba(201,168,76,.05)}
+input[type=checkbox]{accent-color:var(--gold);width:14px;height:14px;cursor:pointer}
+
+/* BADGES */
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px}
+.badge.green{background:var(--green-bg);color:var(--green)}.badge.red{background:var(--red-bg);color:var(--red)}
+.badge.amber{background:var(--amber-bg);color:var(--amber)}.badge.blue{background:var(--blue-bg);color:var(--blue)}
+.badge.gold{background:var(--gold-dim);color:var(--gold)}.badge.pg{background:var(--pg-bg);color:var(--pg)}.badge.uffizi{background:rgba(27,79,114,.18);color:#5b9ec9}
+.badge.dim{background:var(--surface-3);color:var(--text-muted)}
+
+.cap-bar-wrap{display:flex;align-items:center;gap:7px}
+.cap-bar{width:60px;height:4px;background:var(--surface-3);border-radius:2px;flex-shrink:0;overflow:hidden}
+.cap-fill{height:100%;border-radius:2px;transition:width .3s}
+.cap-numbers{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-muted);white-space:nowrap}
+
+.actions{display:flex;gap:5px;align-items:center}
+.btn-action{font-size:12px;padding:4px 9px;border-radius:var(--radius);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;white-space:nowrap;border:1px solid}
+.btn-action.save{background:var(--gold-dim);border-color:var(--gold-border);color:var(--gold)}
+.btn-action.save:hover{background:rgba(201,168,76,.25)}
+.btn-action.block{background:var(--red-bg);border-color:rgba(224,85,85,.3);color:var(--red)}
+.btn-action.unblock{background:var(--green-bg);border-color:rgba(76,175,125,.3);color:var(--green)}
+.inline-cap{width:52px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Mono',monospace;font-size:13px;padding:4px 6px;text-align:center;outline:none}
+.inline-cap:focus{border-color:var(--gold-border)}
+
+.empty-state{text-align:center;padding:36px;color:var(--text-dim);font-size:13px}
+
+/* CONFIRM MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.7);align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;max-width:400px;width:90%}
+.modal-title{font-size:16px;font-weight:500;margin-bottom:10px;color:var(--text)}
+.modal-desc{font-size:14px;color:var(--text-muted);margin-bottom:20px;line-height:1.6}
+.modal-desc strong{color:var(--text)}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end}
+.btn-confirm{padding:9px 20px;border-radius:var(--radius);font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;border:none}
+.btn-confirm.danger{background:var(--red);color:#fff}
+.btn-confirm.success{background:var(--green);color:#fff}
+.btn-confirm.neutral{background:var(--gold);color:#1a1200}
+.btn-cancel{padding:9px 16px;border-radius:var(--radius);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;background:none;border:1px solid var(--border);color:var(--text-muted)}
+
+#toast{position:fixed;bottom:24px;right:24px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:11px 16px;font-size:13px;color:var(--text);transform:translateY(16px);opacity:0;transition:all .25s;z-index:999;pointer-events:none}
+#toast.show{transform:translateY(0);opacity:1}
+#toast.success{border-color:rgba(76,175,125,.4);color:var(--green)}
+#toast.error{border-color:rgba(224,85,85,.4);color:var(--red)}
+
+.spinner{width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;display:inline-block;vertical-align:middle;margin-right:5px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:900px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))};main{padding:16px}}
+
+/* EXPANDABLE ROW */
+.expand-btn{background:none;border:1px solid var(--border);border-radius:4px;color:var(--text-muted);width:22px;height:22px;cursor:pointer;font-size:11px;display:inline-flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;vertical-align:middle}
+.expand-btn:hover{border-color:var(--gold-border);color:var(--gold)}
+.expand-btn.open{background:var(--gold-dim);border-color:var(--gold-border);color:var(--gold)}
+.order-detail-row{display:none}
+.order-detail-row.open{display:table-row}
+.order-detail-row > td{padding:0;background:var(--surface-2);border-bottom:2px solid var(--gold-border)}
+.order-detail-inner{padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.detail-section h4{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:10px;font-weight:600;border-bottom:1px solid var(--border);padding-bottom:6px}
+.detail-field{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 0;font-size:12px}
+.detail-label{color:var(--text-muted);flex-shrink:0;min-width:90px}
+.detail-val-wrap{display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.detail-value{color:var(--text);font-family:'DM Mono',monospace;font-size:12px;text-align:right}
+.copy-btn{background:var(--surface-3);border:1px solid var(--border);border-radius:3px;color:var(--text-muted);font-size:10px;padding:2px 6px;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif}
+.copy-btn:hover{border-color:var(--gold-border);color:var(--gold)}
+.copy-btn.copied{border-color:rgba(76,175,125,.4);color:var(--green)}
+.companions-list{font-size:12px;color:var(--text);line-height:1.8;font-family:'DM Mono',monospace}
+.buy-btn{display:inline-flex;align-items:center;gap:6px;background:var(--green-bg);border:1px solid rgba(76,175,125,.3);border-radius:var(--radius);color:var(--green);font-size:12px;font-weight:600;padding:8px 14px;cursor:pointer;text-decoration:none;transition:all .15s;font-family:'DM Sans',sans-serif}
+.buy-btn:hover{background:rgba(76,175,125,.2)}
+
+/* ZOHO DESK */
+.zoho-ticket{padding:12px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.zoho-ticket:hover{background:var(--surface-3)}
+.zoho-ticket.active{background:var(--gold-dim);border-left:2px solid var(--gold)}
+.zoho-ticket-subject{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.zoho-ticket-meta{font-size:11px;color:var(--text-muted);display:flex;justify-content:space-between}
+.zoho-ticket-status{font-size:10px;padding:2px 6px;border-radius:3px;font-weight:500}
+.zt-open{background:var(--green-bg);color:var(--green)}
+.zt-closed{background:var(--surface-3);color:var(--text-dim)}
+.zt-pending{background:var(--amber-bg);color:var(--amber)}
+.zoho-detail-header{padding:16px 20px;border-bottom:1px solid var(--border);background:var(--surface-2)}
+.zoho-detail-subject{font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px}
+.zoho-detail-meta{font-size:12px;color:var(--text-muted)}
+.zoho-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.zoho-msg{max-width:85%}
+.zoho-msg.customer{align-self:flex-start}
+.zoho-msg.agent{align-self:flex-end}
+.zoho-msg-bubble{padding:10px 14px;border-radius:var(--radius-lg);font-size:13px;line-height:1.6}
+.zoho-msg.customer .zoho-msg-bubble{background:var(--surface-2);color:var(--text);border-bottom-left-radius:4px}
+.zoho-msg.agent .zoho-msg-bubble{background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--text);border-bottom-right-radius:4px}
+.zoho-msg-time{font-size:10px;color:var(--text-dim);margin-top:3px;text-align:right}
+.zoho-reply-box{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px}
+.zoho-reply-box textarea{flex:1;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 12px;outline:none;resize:none;height:70px;transition:border-color .15s}
+.zoho-reply-box textarea:focus{border-color:var(--gold-border)}
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">SCOP TICKETS</div>
+    <div class="login-sub">PANEL DE ADMINISTRACIÓN</div>
+    <label>Contraseña</label>
+    <input type="password" id="pwd" placeholder="••••••••••••••" autofocus />
+    <button class="btn-login" onclick="doLogin()">Ingresar</button>
+    <div class="login-error" id="login-err"></div>
+  </div>
+</div>
+
+<div id="app">
+  <header>
+    <div class="header-brand">
+      <span class="header-logo">SCOP TICKETS</span>
+      <div class="header-sep"></div>
+      <span class="header-title">Admin Panel</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:12px;color:var(--text-muted)"><span class="status-dot"></span>Conectado</span>
+      <button class="btn-icon" style="border-color:var(--gold-border);color:var(--gold)" onclick="openPriceModal()">💰 Precios</button>
+      <button class="btn-icon" onclick="loadData()" id="refresh-btn">↻ Actualizar</button>
+      <button class="btn-icon" onclick="logout()">Salir</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ATTRACTION FILTER -->
+    <div class="attraction-bar">
+      <span style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px">Atracción:</span>
+      <button class="attr-btn active-all" id="btn-all" onclick="setAttraction('all',this)"><span class="attr-dot all"></span>Todas</button>
+      <button class="attr-btn" id="btn-seine" onclick="setAttraction('seine',this)"><span class="attr-dot" style="background:#1a6bb5"></span>Seine (Bateaux Mouches)</button>
+      <button class="attr-btn" id="btn-parkguell" onclick="setAttraction('parkguell',this)"><span class="attr-dot pg"></span>Park Güell</button>
+      <button class="attr-btn" id="btn-uffizi" onclick="setAttraction('uffizi',this)"><span class="attr-dot" style="background:#1B4F72"></span>Uffizi Gallery</button>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:8px">
+        <button class="sync-btn" id="sync-parkguell-btn" onclick="runSync('parkguell')" style="display:none">↻ Sync PG</button>
+        <button class="sync-btn" id="sync-uffizi-btn" onclick="runSync('uffizi')" style="display:none">↻ Sync Uffizi</button>
+        <button class="sync-btn" id="sync-all-btn" onclick="runSync('all')">↻ Sync All</button>
+        <span class="sync-status" id="sync-status"></span>
+      </div>
+    </div>
+
+    <!-- METRICS -->
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">Slots activos</div><div class="metric-value green" id="m-active">—</div><div class="metric-sub" id="m-active-sub"></div></div>
+      <div class="metric"><div class="metric-label">Slots bloqueados</div><div class="metric-value red" id="m-blocked">—</div><div class="metric-sub" id="m-blocked-sub"></div></div>
+      <div class="metric"><div class="metric-label">Órdenes totales</div><div class="metric-value amber" id="m-orders">—</div><div class="metric-sub" id="m-orders-sub"></div></div>
+      <div class="metric"><div class="metric-label">Revenue</div><div class="metric-value gold" id="m-revenue">—</div><div class="metric-sub" id="m-revenue-sub"></div></div>
+      <div class="metric"><div class="metric-label">Entradas vendidas</div><div class="metric-value teal" id="m-tickets">—</div><div class="metric-sub" id="m-tickets-sub"></div></div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('avail',this)">Disponibilidad</button>
+      <button class="tab" onclick="showTab('orders',this)">Órdenes</button>
+      <button class="tab" onclick="showTab('support',this)">💬 Soporte</button>
+    </div>
+
+    <!-- ===== DISPONIBILIDAD ===== -->
+    <div id="tab-avail">
+
+      <!-- FILTERS -->
+      <div class="toolbar">
+        <span class="toolbar-label">Fecha</span>
+        <input type="date" id="f-date-from" onchange="renderAvail()" placeholder="Desde">
+        <span style="color:var(--text-dim);font-size:12px">→</span>
+        <input type="date" id="f-date-to" onchange="renderAvail()" placeholder="Hasta">
+        <div class="toolbar-sep"></div>
+        <span class="toolbar-label">Horario</span>
+        <input type="time" id="f-time-from" onchange="renderAvail()" style="width:100px">
+        <span style="color:var(--text-dim);font-size:12px">→</span>
+        <input type="time" id="f-time-to" onchange="renderAvail()" style="width:100px">
+        <div class="toolbar-sep"></div>
+        <span class="toolbar-label">Estado</span>
+        <select id="f-status" onchange="renderAvail()">
+          <option value="active">Activos</option>
+          <option value="blocked">Bloqueados</option>
+          <option value="all">Todos</option>
+        </select>
+        <button class="btn-icon" onclick="clearFilters()">✕ Limpiar</button>
+        <button class="btn-icon" style="border-color:var(--gold-border);color:var(--gold)" onclick="toggleBulkPanel()">⚡ Bulk Edit</button>
+      </div>
+
+      <!-- BULK PANEL -->
+      <div class="bulk-panel" id="bulk-panel">
+        <div class="bulk-panel-title">⚡ Edición Masiva — aplicá cambios a múltiples slots a la vez</div>
+        <div class="bulk-grid">
+          <div class="bulk-field">
+            <label>Atracción</label>
+            <select id="b-attraction">
+              <option value="">Todas</option>
+              <option value="parkguell">Park Güell</option>
+              <option value="seine">Seine - Bateaux Mouches</option>
+              <option value="uffizi">Uffizi Gallery</option>
+            </select>
+          </div>
+          <div class="bulk-field">
+            <label>Fecha desde</label>
+            <input type="date" id="b-date-from">
+          </div>
+          <div class="bulk-field">
+            <label>Fecha hasta</label>
+            <input type="date" id="b-date-to">
+          </div>
+          <div class="bulk-field">
+            <label>Horario desde</label>
+            <input type="time" id="b-time-from">
+          </div>
+          <div class="bulk-field">
+            <label>Horario hasta</label>
+            <input type="time" id="b-time-to">
+          </div>
+          <div class="bulk-field">
+            <label>Tipo de ticket</label>
+            <select id="b-ticket-type">
+              <option value="">Todos</option>
+              <option value="standard">Standard</option>
+              <option value="general">General</option>
+              <option value="full">Full</option>
+              <option value="vip">VIP</option>
+            </select>
+          </div>
+        </div>
+        <div class="bulk-actions">
+          <button class="btn-bulk block" onclick="runBulk('block')">🔴 Bloquear todo</button>
+          <button class="btn-bulk unblock" onclick="runBulk('unblock')">🟢 Desbloquear todo</button>
+          <div style="display:flex;align-items:center;gap:6px">
+            <button class="btn-bulk capacity" onclick="runBulk('set_capacity')">✏️ Establecer capacidad</button>
+            <input class="bulk-cap-input" type="number" id="b-capacity" value="50" min="0" max="999">
+          </div>
+          <span class="bulk-preview" id="b-preview"></span>
+        </div>
+      </div>
+
+      <!-- SELECTION BAR -->
+      <div class="selection-bar" id="selection-bar">
+        <span class="selection-count">Seleccionados: <span id="sel-count">0</span></span>
+        <button class="btn-sel block" onclick="bulkSelected('block')">🔴 Bloquear</button>
+        <button class="btn-sel unblock" onclick="bulkSelected('unblock')">🟢 Desbloquear</button>
+        <button class="btn-sel clear" onclick="clearSelection()">✕ Deseleccionar</button>
+      </div>
+
+      <!-- TABLE -->
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th class="check-col"><input type="checkbox" id="select-all" onchange="toggleSelectAll(this)"></th>
+            <th>Atracción</th><th>Fecha</th><th>Horario</th><th>Tipo</th>
+            <th>Ocupación</th><th>Capacity</th><th>Estado</th><th>Acciones</th>
+          </tr></thead>
+          <tbody id="avail-tbody"></tbody>
+        </table>
+      </div>
+      <div style="font-size:12px;color:var(--text-dim);margin-top:8px;text-align:right" id="row-count"></div>
+    </div>
+
+    <!-- ===== ÓRDENES ===== -->
+    <div id="tab-orders" style="display:none">
+      <div class="toolbar">
+        <span class="toolbar-label">Buscar</span>
+        <input type="text" id="f-search" placeholder="email..." oninput="renderOrders()" style="width:180px">
+        <span class="toolbar-label">Estado</span>
+        <select id="f-ostatus" onchange="renderOrders()">
+          <option value="">Todos</option>
+          <option value="paid">Paid</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="pending">Pending</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th class="check-col"></th>
+            <th>Atracción</th><th>Fecha</th><th>Horario</th>
+            <th>Email</th><th>Entradas</th><th>Total</th><th>Estado orden</th><th>Email</th><th>Hace</th><th></th>
+          </tr></thead>
+          <tbody id="orders-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== SOPORTE / ZOHO DESK ===== -->
+    <div id="tab-support" style="display:none">
+      <div style="display:grid;grid-template-columns:320px 1fr;gap:16px;height:600px">
+
+        <!-- TICKET LIST -->
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="toolbar" style="margin-bottom:0">
+            <input type="text" id="zoho-search" placeholder="Buscar por email..." style="flex:1" oninput="searchZohoTickets()">
+            <button class="btn-icon" onclick="loadZohoTickets()">↻</button>
+          </div>
+          <div class="table-wrap" style="overflow-y:auto;flex:1">
+            <div id="zoho-tickets-list" style="padding:8px">
+              <div class="empty-state">Cargando tickets...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TICKET DETAIL -->
+        <div class="table-wrap" style="display:flex;flex-direction:column;overflow:hidden" id="zoho-detail-panel">
+          <div style="padding:20px;color:var(--text-muted);font-size:13px;text-align:center;margin:auto">
+            Seleccioná un ticket para ver la conversación
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal-overlay" id="confirm-modal">
+  <div class="modal-box">
+    <div class="modal-title" id="modal-title">Confirmar acción</div>
+    <div class="modal-desc" id="modal-desc"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-confirm" id="modal-confirm-btn" onclick="confirmAction()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- SEND TICKETS MODAL -->
+<div class="modal-overlay" id="send-tickets-modal">
+  <div class="modal-box" style="max-width:500px">
+    <div class="modal-title">✉️ Enviar tickets al cliente</div>
+    <div style="font-size:13px;color:var(--text-muted);margin-bottom:16px;display:flex;flex-direction:column;gap:4px">
+      <span>Para: <strong id="st-email" style="color:var(--text)"></strong></span>
+      <span>Atracción: <strong id="st-attraction" style="color:var(--text)"></strong></span>
+      <span>Visita: <strong id="st-date" style="color:var(--text)"></strong></span>
+    </div>
+
+    <!-- Tab selector -->
+    <div style="display:flex;gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px">
+      <button id="tab-link-btn" onclick="switchTicketTab('link')" style="flex:1;padding:8px;font-size:12px;font-weight:500;background:var(--gold-dim);border:none;color:var(--gold);cursor:pointer;font-family:'DM Sans',sans-serif">🔗 Link de descarga</button>
+      <button id="tab-file-btn" onclick="switchTicketTab('file')" style="flex:1;padding:8px;font-size:12px;font-weight:500;background:none;border:none;color:var(--text-muted);cursor:pointer;font-family:'DM Sans',sans-serif;border-left:1px solid var(--border)">📎 Subir archivo</button>
+    </div>
+
+    <!-- Link option -->
+    <div id="tab-link" style="margin-bottom:12px">
+      <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">URL del ticket</label>
+      <input type="url" id="st-url" placeholder="https://drive.google.com/..." style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 12px;outline:none">
+      <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Subí el PDF a Google Drive y pegá el link público aquí</div>
+    </div>
+
+    <!-- File option -->
+    <div id="tab-file" style="margin-bottom:12px;display:none">
+      <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">Archivo PDF del ticket</label>
+      <input type="file" id="st-file" accept=".pdf,.jpg,.jpeg,.png" style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 12px;outline:none" onchange="onFileSelected(this)">
+      <div id="st-file-status" style="font-size:11px;color:var(--text-dim);margin-top:4px">Seleccioná el PDF recibido del sitio oficial</div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">Nota para el cliente (opcional)</label>
+      <textarea id="st-note" rows="2" placeholder="Ej: Tu horario fue ajustado a las 10:30..." style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 12px;outline:none;resize:vertical"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeSendTickets()">Cancelar</button>
+      <button class="btn-confirm neutral" id="st-send-btn" onclick="submitSendTickets()">Enviar tickets</button>
+    </div>
+  </div>
+</div>
+
+<!-- PRICE MODAL -->
+<div class="modal-overlay" id="price-modal">
+  <div class="modal-box" style="max-width:520px">
+    <div class="modal-title">💰 Precios de entradas</div>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">Los cambios se guardan en la base de datos y el frontend los lee automáticamente.</p>
+
+    <div style="margin-bottom:20px">
+      <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">Atracción</label>
+      <select id="price-attraction-select" onchange="switchPriceAttraction(this.value)" style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;padding:10px 12px;outline:none">
+        <option value="parkguell">Park Güell</option>
+        <option value="seine_traditional">Seine — Ticket Tradicional</option>
+        <option value="seine_lunch">Seine — Almuerzo</option>
+        <option value="seine_dinner">Seine — Cena</option>
+        <option value="uffizi">Uffizi Gallery</option>
+      </select>
+    </div>
+
+    <div id="price-fields-parkguell">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+        <div>
+          <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">General · Adultos</label>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:0 12px">
+            <span style="color:var(--text-muted);font-size:15px">€</span>
+            <input type="number" id="price-adults" min="0" step="0.50" style="flex:1;background:none;border:none;color:var(--text);font-family:'DM Mono',monospace;font-size:18px;font-weight:600;padding:10px 0;outline:none">
+          </div>
+        </div>
+        <div>
+          <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">Niños 7-12 años</label>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:0 12px">
+            <span style="color:var(--text-muted);font-size:15px">€</span>
+            <input type="number" id="price-children" min="0" step="0.50" style="flex:1;background:none;border:none;color:var(--text);font-family:'DM Mono',monospace;font-size:18px;font-weight:600;padding:10px 0;outline:none">
+          </div>
+        </div>
+        <div>
+          <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">Mayores 65+</label>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:0 12px">
+            <span style="color:var(--text-muted);font-size:15px">€</span>
+            <input type="number" id="price-seniors" min="0" step="0.50" style="flex:1;background:none;border:none;color:var(--text);font-family:'DM Mono',monospace;font-size:18px;font-weight:600;padding:10px 0;outline:none">
+          </div>
+        </div>
+        <div>
+          <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">Niños 0-6 años</label>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:0 12px">
+            <span style="color:var(--text-muted);font-size:15px">€</span>
+            <input type="number" id="price-infants" min="0" step="0.50" style="flex:1;background:none;border:none;color:var(--text);font-family:'DM Mono',monospace;font-size:18px;font-weight:600;padding:10px 0;outline:none">
+            <span style="font-size:11px;color:var(--text-dim)">0 = Gratis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="price-fields-seine" style="display:none">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+        <div>
+          <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">Adulto</label>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:0 12px">
+            <span style="color:var(--text-muted);font-size:15px">€</span>
+            <input type="number" id="price-seine-adult" min="0" step="0.50" style="flex:1;background:none;border:none;color:var(--text);font-family:'DM Mono',monospace;font-size:18px;font-weight:600;padding:10px 0;outline:none">
+          </div>
+        </div>
+        <div>
+          <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">Niño</label>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:0 12px">
+            <span style="color:var(--text-muted);font-size:15px">€</span>
+            <input type="number" id="price-seine-child" min="0" step="0.50" style="flex:1;background:none;border:none;color:var(--text);font-family:'DM Mono',monospace;font-size:18px;font-weight:600;padding:10px 0;outline:none">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="price-fields-uffizi" style="display:none">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+        <div>
+          <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">Intero (adultos)</label>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:0 12px">
+            <span style="color:var(--text-muted);font-size:15px">€</span>
+            <input type="number" id="price-uffizi-adult" min="0" step="0.50" style="flex:1;background:none;border:none;color:var(--text);font-family:'DM Mono',monospace;font-size:18px;font-weight:600;padding:10px 0;outline:none">
+          </div>
+        </div>
+        <div>
+          <label style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px">Ridotto (reducido)</label>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:0 12px">
+            <span style="color:var(--text-muted);font-size:15px">€</span>
+            <input type="number" id="price-uffizi-reduced" min="0" step="0.50" style="flex:1;background:none;border:none;color:var(--text);font-family:'DM Mono',monospace;font-size:18px;font-weight:600;padding:10px 0;outline:none">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="price-save-status" style="font-size:13px;min-height:20px;margin-bottom:12px;text-align:center"></div>
+
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closePriceModal()">Cerrar</button>
+      <button class="btn-confirm neutral" id="price-save-btn" onclick="savePrices()">💾 Guardar precios</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const API = 'https://odhogdwxafqdlfvfbsux.supabase.co/functions/v1/admin-availability';
+const SECRET = 'colosseum-admin-2026';
+let allAvail = [], allOrders = [], currentAttraction = 'all';
+let pendingAction = null;
+let selectedIds = new Set();
+
+// ── AUTH ──
+function doLogin(){
+  if(document.getElementById('pwd').value === SECRET){
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadData();
+  } else { document.getElementById('login-err').textContent = 'Contraseña incorrecta'; }
+}
+document.getElementById('pwd').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+function logout(){ document.getElementById('app').style.display='none'; document.getElementById('login-screen').style.display='flex'; document.getElementById('pwd').value=''; }
+
+// ── DATA ──
+async function loadData(){
+  const btn = document.getElementById('refresh-btn');
+  btn.innerHTML = '<span class="spinner"></span>Cargando...'; btn.disabled = true;
+  try {
+    const r = await fetch(API+'?action=data', { headers: {'x-admin-secret': SECRET} });
+    const d = await r.json();
+    allAvail = d.availability || [];
+    allOrders = d.orders || [];
+    // Load prices from config
+    const cfg = d.config || [];
+    const getVal = (key) => parseFloat(cfg.find(c => c.key === key)?.value || '0');
+    currentPrices = {
+      adults: getVal('price_adults') || 28,
+      children: getVal('price_children') || 28,
+      seniors: getVal('price_seniors') || 28,
+      infants: getVal('price_infants') || 0,
+    };
+    selectedIds = new Set();
+    updateMetrics(); renderAvail(); renderOrders();
+    toast('Datos actualizados', 'success');
+  } catch(e) { toast('Error al cargar', 'error'); }
+  finally { btn.innerHTML = '↻ Actualizar'; btn.disabled = false; }
+}
+
+// ── ATTRACTION ──
+async function runSync(attraction) {
+  const statusEl = document.getElementById('sync-status');
+  const allBtn = document.getElementById('sync-all-btn');
+  const pgBtn = document.getElementById('sync-parkguell-btn');
+  const ufBtn = document.getElementById('sync-uffizi-btn');
+  const btns = [allBtn, pgBtn, ufBtn].filter(Boolean);
+
+  btns.forEach(b => b.disabled = true);
+  statusEl.textContent = 'Sincronizando...';
+
+  const SUPABASE = 'https://odhogdwxafqdlfvfbsux.supabase.co/functions/v1';
+  const headers = { 'Content-Type': 'application/json' };
+
+  try {
+    const calls = [];
+    if (attraction === 'parkguell' || attraction === 'all') {
+      calls.push(fetch(`${SUPABASE}/parkguell-sync`, { method: 'POST', headers }));
+    }
+    if (attraction === 'uffizi' || attraction === 'all') {
+      calls.push(fetch(`${SUPABASE}/uffizi-sync`, { method: 'POST', headers }));
+    }
+    await Promise.all(calls);
+
+    const now = new Date();
+    const hhmm = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+    statusEl.textContent = `Actualizado a las ${hhmm}`;
+    await loadData();
+  } catch(e) {
+    statusEl.textContent = 'Error al sincronizar';
+  } finally {
+    btns.forEach(b => b.disabled = false);
+  }
+}
+
+function setAttraction(a, el){
+  currentAttraction = a;
+  document.querySelectorAll('.attr-btn').forEach(b => b.className = 'attr-btn');
+  // Show individual sync buttons only for attractions that have a sync
+  const pgBtn = document.getElementById('sync-parkguell-btn');
+  const ufBtn = document.getElementById('sync-uffizi-btn');
+  const allBtn = document.getElementById('sync-all-btn');
+  if (pgBtn) pgBtn.style.display = (a === 'parkguell') ? 'flex' : 'none';
+  if (ufBtn) ufBtn.style.display = (a === 'uffizi') ? 'flex' : 'none';
+  if (allBtn) allBtn.style.display = (a === 'parkguell' || a === 'uffizi') ? 'none' : 'flex';
+  el.classList.add(`active-${a}`);
+  selectedIds = new Set();
+  updateSelectionBar();
+  updateMetrics(); renderAvail(); renderOrders();
+}
+
+function filteredAvail(){
+  let rows = currentAttraction === 'all' ? allAvail : allAvail.filter(s => s.attraction === currentAttraction);
+  const df = document.getElementById('f-date-from').value;
+  const dt = document.getElementById('f-date-to').value;
+  const tf = document.getElementById('f-time-from').value;
+  const tt = document.getElementById('f-time-to').value;
+  const st = document.getElementById('f-status').value;
+  if(df) rows = rows.filter(r => r.date >= df);
+  if(dt) rows = rows.filter(r => r.date <= dt);
+  if(tf) rows = rows.filter(r => r.time_slot >= tf);
+  if(tt) rows = rows.filter(r => r.time_slot <= tt);
+  if(st === 'active') rows = rows.filter(r => r.capacity > 0);
+  if(st === 'blocked') rows = rows.filter(r => r.capacity <= 0);
+  return rows;
+}
+
+function filteredOrders(){
+  return currentAttraction === 'all' ? allOrders : allOrders.filter(o => o.attraction === currentAttraction);
+}
+
+function clearFilters(){
+  ['f-date-from','f-date-to','f-time-from','f-time-to'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-status').value = 'active';
+  renderAvail();
+}
+
+// ── METRICS ──
+function updateMetrics(){
+  const av = filteredAvail().length > 0 ? (currentAttraction==='all'?allAvail:allAvail.filter(s=>s.attraction===currentAttraction)) : (currentAttraction==='all'?allAvail:allAvail.filter(s=>s.attraction===currentAttraction));
+  const or = filteredOrders();
+  const active = av.filter(s=>s.capacity>0).length;
+  const blocked = av.filter(s=>s.capacity<=0).length;
+  const paid = or.filter(o=>['paid','confirmed'].includes(o.status));
+  const revenue = paid.reduce((s,o)=>s+Number(o.amount_total||0),0);
+  const tickets = paid.reduce((s,o)=>s+(o.qty_adults||0)+(o.qty_children||0)+(o.qty_infants||0)+(o.qty_seniors||0),0);
+  const booked = av.reduce((s,a)=>s+(a.booked||0),0);
+  document.getElementById('m-active').textContent = active;
+  document.getElementById('m-active-sub').textContent = `de ${av.length} slots · ${booked} reservadas`;
+  document.getElementById('m-blocked').textContent = blocked;
+  document.getElementById('m-blocked-sub').textContent = blocked > 0 ? `${blocked} sin venta` : 'Sin bloqueos';
+  document.getElementById('m-orders').textContent = or.length;
+  document.getElementById('m-orders-sub').textContent = `${paid.length} pagadas`;
+  document.getElementById('m-revenue').textContent = '€'+revenue.toLocaleString('es-ES',{minimumFractionDigits:2});
+  document.getElementById('m-revenue-sub').textContent = paid.length ? `€${(revenue/paid.length).toFixed(2)} promedio` : '';
+  document.getElementById('m-tickets').textContent = tickets;
+  document.getElementById('m-tickets-sub').textContent = 'entradas vendidas';
+}
+
+// ── AVAIL TABLE ──
+const ATTR_LABELS = {colosseum:'Coliseo',parkguell:'Park Güell',seine:'Seine',uffizi:'Uffizi Gallery'};
+const ATTR_BADGE = {colosseum:'gold',parkguell:'pg',uffizi:'uffizi'};
+const TYPE_MAP = {standard:'Standard',full:'Full',vip:'VIP',general:'General',traditional:'Tradicional',lunch:'Lunch',dinner:'Cena'};
+
+function renderAvail(){
+  const rows = filteredAvail();
+  const tbody = document.getElementById('avail-tbody');
+  document.getElementById('row-count').textContent = `${rows.length} slots mostrados`;
+  document.getElementById('select-all').checked = false;
+
+  if(!rows.length){ tbody.innerHTML='<tr><td colspan="9" class="empty-state">Sin resultados para los filtros seleccionados</td></tr>'; return; }
+
+  tbody.innerHTML = rows.map(row => {
+    const total = row.capacity + (row.booked||0);
+    const pct = total > 0 ? Math.round((row.booked/total)*100) : 0;
+    const fill = pct>=90?'var(--red)':pct>=70?'var(--amber)':'var(--green)';
+    const blocked = row.capacity <= 0;
+    const sel = selectedIds.has(row.id);
+    const status = blocked
+      ? '<span class="badge red">bloqueado</span>'
+      : pct>=100 ? '<span class="badge red">agotado</span>'
+      : pct>=80 ? '<span class="badge amber">casi lleno</span>'
+      : '<span class="badge green">disponible</span>';
+    return `<tr class="${sel?'selected':''}">
+      <td class="check-col"><input type="checkbox" ${sel?'checked':''} onchange="toggleRow('${row.id}',this)"></td>
+      <td><span class="badge ${ATTR_BADGE[row.attraction]||'dim'}">${ATTR_LABELS[row.attraction]||row.attraction}</span></td>
+      <td style="font-family:'DM Mono',monospace;font-size:13px">${row.date}</td>
+      <td><strong>${row.time_slot}</strong></td>
+      <td><span class="badge blue">${TYPE_MAP[row.ticket_type]||row.ticket_type}</span></td>
+      <td><div class="cap-bar-wrap"><div class="cap-bar"><div class="cap-fill" style="width:${Math.min(pct,100)}%;background:${fill}"></div></div><span class="cap-numbers">${row.booked||0}/${total} (${pct}%)</span></div></td>
+      <td><input class="inline-cap" type="number" min="0" value="${row.capacity}" id="cap-${row.id}"></td>
+      <td>${status}</td>
+      <td><div class="actions">
+        <button class="btn-action save" onclick="saveCapacity('${row.id}')">Guardar</button>
+        ${blocked
+          ? `<button class="btn-action unblock" onclick="unblockSlot('${row.id}')">Desbloquear</button>`
+          : `<button class="btn-action block" onclick="blockSlot('${row.id}')">Bloquear</button>`}
+      </div></td>
+    </tr>`;
+  }).join('');
+}
+
+// ── SELECTION ──
+function toggleRow(id, cb){
+  if(cb.checked) selectedIds.add(id);
+  else selectedIds.delete(id);
+  const tr = cb.closest('tr');
+  tr.classList.toggle('selected', cb.checked);
+  updateSelectionBar();
+}
+
+function toggleSelectAll(cb){
+  const rows = filteredAvail();
+  if(cb.checked) rows.forEach(r => selectedIds.add(r.id));
+  else rows.forEach(r => selectedIds.delete(r.id));
+  renderAvail();
+  updateSelectionBar();
+}
+
+function clearSelection(){
+  selectedIds = new Set();
+  document.getElementById('select-all').checked = false;
+  renderAvail();
+  updateSelectionBar();
+}
+
+function updateSelectionBar(){
+  const bar = document.getElementById('selection-bar');
+  const count = selectedIds.size;
+  if(count > 0){
+    bar.classList.add('show');
+    document.getElementById('sel-count').textContent = count;
+  } else { bar.classList.remove('show'); }
+}
+
+async function bulkSelected(actionType){
+  const ids = Array.from(selectedIds);
+  if(!ids.length) return;
+  const label = actionType==='block' ? 'bloquear' : 'desbloquear';
+  showModal(
+    `¿${label.charAt(0).toUpperCase()+label.slice(1)} ${ids.length} slots?`,
+    `Esta acción ${label}á <strong>${ids.length} slots seleccionados</strong> manualmente.`,
+    actionType==='block' ? 'danger' : 'success',
+    async () => {
+      await callBulk({ ids, action_type: actionType, capacity: 50 });
+      clearSelection();
+    }
+  );
+}
+
+// ── BULK PANEL ──
+function toggleBulkPanel(){
+  const p = document.getElementById('bulk-panel');
+  p.classList.toggle('open');
+}
+
+async function runBulk(actionType){
+  const attraction = document.getElementById('b-attraction').value;
+  const dateFrom = document.getElementById('b-date-from').value;
+  const dateTo = document.getElementById('b-date-to').value;
+  const timeFrom = document.getElementById('b-time-from').value;
+  const timeTo = document.getElementById('b-time-to').value;
+  const ticketType = document.getElementById('b-ticket-type').value;
+  const capacity = parseInt(document.getElementById('b-capacity').value) || 50;
+
+  // Preview count
+  let preview = allAvail;
+  if(attraction) preview = preview.filter(r => r.attraction === attraction);
+  if(dateFrom) preview = preview.filter(r => r.date >= dateFrom);
+  if(dateTo) preview = preview.filter(r => r.date <= dateTo);
+  if(timeFrom) preview = preview.filter(r => r.time_slot >= timeFrom);
+  if(timeTo) preview = preview.filter(r => r.time_slot <= timeTo);
+  if(ticketType) preview = preview.filter(r => r.ticket_type === ticketType);
+
+  const count = preview.length;
+  if(!count){ toast('No hay slots que coincidan con los filtros', 'error'); return; }
+
+  const actionLabel = actionType==='block' ? 'bloquear' : actionType==='unblock' ? 'desbloquear' : `establecer capacidad ${capacity} en`;
+  const btnClass = actionType==='block' ? 'danger' : actionType==='unblock' ? 'success' : 'neutral';
+
+  const filters = {};
+  if(attraction) filters.attraction = attraction;
+  if(dateFrom) filters.date_from = dateFrom;
+  if(dateTo) filters.date_to = dateTo;
+  if(timeFrom) filters.time_from = timeFrom;
+  if(timeTo) filters.time_to = timeTo;
+  if(ticketType) filters.ticket_type = ticketType;
+
+  showModal(
+    `Confirmar acción masiva`,
+    `Vas a <strong>${actionLabel}</strong> los <strong>${count} slots</strong> que coinciden con los filtros seleccionados.<br><br>Esta acción no se puede deshacer.`,
+    btnClass,
+    async () => { await callBulk({ filters, action_type: actionType, capacity }); }
+  );
+}
+
+async function callBulk(body){
+  try {
+    const r = await fetch(API+'?action=bulk-update', {
+      method: 'POST',
+      headers: {'x-admin-secret': SECRET, 'Content-Type': 'application/json'},
+      body: JSON.stringify(body)
+    });
+    const d = await r.json();
+    if(!r.ok) throw new Error(d.error);
+    toast(`✓ ${d.updated} slots actualizados`, 'success');
+    await loadData();
+  } catch(e){ toast('Error: '+e.message, 'error'); }
+}
+
+// ── SINGLE SLOT OPS ──
+async function saveCapacity(id){
+  const val = parseInt(document.getElementById('cap-'+id).value);
+  if(isNaN(val)||val<0){ toast('Valor inválido','error'); return; }
+  try {
+    const r = await fetch(API+'?action=update-slot', { method:'POST', headers:{'x-admin-secret':SECRET,'Content-Type':'application/json'}, body:JSON.stringify({id,capacity:val}) });
+    if(!r.ok) throw new Error();
+    const s = allAvail.find(s=>s.id===id); if(s) s.capacity = val;
+    updateMetrics(); renderAvail(); toast('Capacidad actualizada','success');
+  } catch { toast('Error al guardar','error'); }
+}
+
+async function blockSlot(id){
+  try {
+    const r = await fetch(API+'?action=block-slot', { method:'POST', headers:{'x-admin-secret':SECRET,'Content-Type':'application/json'}, body:JSON.stringify({id}) });
+    if(!r.ok) throw new Error();
+    const s = allAvail.find(s=>s.id===id); if(s) s.capacity = 0;
+    updateMetrics(); renderAvail(); toast('Slot bloqueado','success');
+  } catch { toast('Error','error'); }
+}
+
+async function unblockSlot(id){
+  try {
+    const r = await fetch(API+'?action=unblock-slot', { method:'POST', headers:{'x-admin-secret':SECRET,'Content-Type':'application/json'}, body:JSON.stringify({id,restore_capacity:50}) });
+    if(!r.ok) throw new Error();
+    const s = allAvail.find(s=>s.id===id); if(s) s.capacity = 50;
+    updateMetrics(); renderAvail(); toast('Slot desbloqueado','success');
+  } catch { toast('Error','error'); }
+}
+
+// ── ORDERS ──
+const STATUS_COLOR = {paid:'green',confirmed:'green',pending:'amber',cancelled:'red',refunded:'dim'};
+const BUY_URLS = {
+  parkguell: 'https://www.parkguellonline.cat/pg_muslinkIII/venda/index.jsp?lang=2&nom_cache=PARC&property=PARC',
+  colosseum: 'https://ticketing.colosseo.it/',
+  uffizi: 'https://tickets.uffizi.it/',
+};
+
+function renderOrders(){
+  const search = document.getElementById('f-search').value.toLowerCase();
+  const status = document.getElementById('f-ostatus').value;
+  let rows = filteredOrders();
+  if(search) rows = rows.filter(o => (o.email||'').toLowerCase().includes(search));
+  if(status) rows = rows.filter(o => o.status === status);
+  const tbody = document.getElementById('orders-tbody');
+  if(!rows.length){ tbody.innerHTML='<tr><td colspan="11" class="empty-state">Sin resultados</td></tr>'; return; }
+
+  const EMAIL_STATUS_COLOR = { confirmation_sent:'green', tickets_sent:'green', pending:'amber' };
+  const EMAIL_STATUS_LABEL = { confirmation_sent:'✓ Conf.', tickets_sent:'✓ Tickets', pending:'Pendiente' };
+
+  tbody.innerHTML = rows.slice(0,60).map(o => {
+    const qty = (o.qty_adults||0)+(o.qty_children||0)+(o.qty_infants||0)+(o.qty_seniors||0);
+    const canSendTickets = ['paid','confirmed'].includes(o.status);
+    const emailSt = o.email_status || 'pending';
+    const emailBadge = `<span class="badge ${EMAIL_STATUS_COLOR[emailSt]||'dim'}">${EMAIL_STATUS_LABEL[emailSt]||emailSt}</span>`;
+    const emailTime = o.email_sent_at ? `<div style="font-size:10px;color:var(--text-dim);margin-top:2px">${timeAgo(o.email_sent_at)}</div>` : '';
+    const oid = o.id;
+
+    return `
+    <tr class="order-main-row" id="row-${oid}">
+      <td class="check-col"><button class="expand-btn" id="expand-${oid}" onclick="toggleOrderDetail('${oid}')">▶</button></td>
+      <td><span class="badge ${ATTR_BADGE[o.attraction]||'dim'}">${ATTR_LABELS[o.attraction]||o.attraction||'—'}</span></td>
+      <td style="font-family:'DM Mono',monospace;font-size:13px">${o.visit_date||'—'}</td>
+      <td>${o.time_slot||'—'}</td>
+      <td style="font-size:12px;color:var(--text-muted);max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${o.email||'—'}</td>
+      <td style="text-align:center;font-family:'DM Mono',monospace">${qty}</td>
+      <td style="font-family:'DM Mono',monospace;font-weight:500">€${Number(o.amount_total||0).toLocaleString('es-ES',{minimumFractionDigits:2})}</td>
+      <td><span class="badge ${STATUS_COLOR[o.status]||'dim'}">${o.status}</span></td>
+      <td>${emailBadge}${emailTime}</td>
+      <td style="font-size:12px;color:var(--text-muted);white-space:nowrap">${o.created_at ? timeAgo(o.created_at) : '—'}</td>
+      <td>${canSendTickets ? `<button class="btn-action save" onclick="openSendTickets('${oid}','${o.email}','${o.attraction}','${o.visit_date}','${o.time_slot}')">✉️ Tickets</button>` : ''}</td>
+    </tr>
+    <tr class="order-detail-row" id="detail-${oid}">
+      <td colspan="11">${buildOrderDetail(o)}</td>
+    </tr>`;
+  }).join('');
+}
+
+function buildOrderDetail(o) {
+  const companions = Array.isArray(o.companion_names) ? o.companion_names : [];
+  // Para Park Güell, incluir el ID de la orden en el hash para que la extensión precargue los datos
+  const baseUrl = BUY_URLS[o.attraction] || '#';
+  const buyUrl = o.attraction === 'parkguell'
+    ? baseUrl + '#scoporder=' + o.id
+    : baseUrl;
+  const copyField = (label, value) => {
+    if(!value) return '';
+    const safe = value.replace(/`/g,'').replace(/\\/g,'').replace(/'/g,'&apos;');
+    return `<div class="detail-field"><span class="detail-label">${label}</span><div class="detail-val-wrap"><span class="detail-value">${value}</span><button class="copy-btn" onclick='copyToClipboard(this,${JSON.stringify(value)})'>Copiar</button></div></div>`;
+  };
+
+  const isSeine = o.attraction === 'seine';
+  const isUffizi = o.attraction === 'uffizi';
+  const qtyParts = [];
+
+  // Use ticket_breakdown if available (new orders with structured data)
+  let bd = o.ticket_breakdown;
+  if(typeof bd === 'string') { try { bd = JSON.parse(bd); } catch(e) { bd = null; } }
+  if(bd && typeof bd === 'object') {
+    ['adults','children','infants','seniors'].forEach(k => {
+      if(bd[k] && bd[k].qty > 0) qtyParts.push(`${bd[k].qty} ${bd[k].label}`);
+    });
+  } else {
+    // Fallback: per-attraction labels for old orders
+    const labels = {
+      adults:   isUffizi ? 'Intero' : 'adulto',
+      children: isUffizi ? 'Ridotto UE 18-25' : isSeine ? 'niño 4-12' : 'niño 7-12',
+      infants:  isUffizi ? 'Minori 6-17' : isSeine ? 'niño 0-3' : 'niño 0-6',
+      seniors:  isUffizi ? 'Gratuito' : 'mayor 65+',
+    };
+    if(o.qty_adults)   qtyParts.push(`${o.qty_adults} ${labels.adults}${(!isUffizi && o.qty_adults>1)?'s':''}`);
+    if(o.qty_children) qtyParts.push(`${o.qty_children} ${labels.children}${(!isUffizi && o.qty_children>1)?'s':''}`);
+    if(o.qty_infants)  qtyParts.push(`${o.qty_infants} ${labels.infants}${(!isUffizi && o.qty_infants>1)?'s':''}`);
+    if(o.qty_seniors)  qtyParts.push(`${o.qty_seniors} ${labels.seniors}${(!isUffizi && o.qty_seniors>1)?'es':''}`);
+  }
+
+  // Build full visitors list: main buyer first, then companions
+  const mainTicketLabel = qtyParts.length > 0 ? qtyParts[0].replace(/^\d+ /, '') : '';
+  const mainEntry = `1. ${o.visitor_name || o.email} [${mainTicketLabel}]`;
+  const allVisitors = [mainEntry, ...companions.map((c,i) => `${i+2}. ${c}`)];
+
+  return `<div class="order-detail-inner">
+    <div class="detail-section">
+      <h4>Datos del comprador</h4>
+      ${copyField('Nombre', o.visitor_name || '')}
+      ${copyField('Email', o.email || '')}
+      ${copyField('Teléfono', o.phone || '')}
+      ${copyField('País', o.country || '')}
+    </div>
+    <div class="detail-section">
+      <h4>Detalle de la reserva</h4>
+      ${copyField('Fecha', o.visit_date || '')}
+      ${copyField('Horario', o.time_slot || '')}
+      ${copyField('Entradas', qtyParts.join(' · '))}
+      ${copyField('Total', '€' + Number(o.amount_total||0).toFixed(2))}
+      ${copyField('Stripe ID', o.stripe_payment_id || '')}
+    </div>
+    <div class="detail-section" style="grid-column:1/-1">
+      <h4>Visitantes</h4>
+      <div class="companions-list">${allVisitors.join('<br>')}</div>
+    </div>
+    <div style="grid-column:1/-1;padding-top:4px">
+      <a class="buy-btn" href="${buyUrl}" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Comprar en sitio oficial
+      </a>
+    </div>
+  </div>`;
+}
+
+function toggleOrderDetail(id) {
+  const detail = document.getElementById(`detail-${id}`);
+  const btn = document.getElementById(`expand-${id}`);
+  const isOpen = detail.classList.contains('open');
+  // Close all others
+  document.querySelectorAll('.order-detail-row.open').forEach(r => r.classList.remove('open'));
+  document.querySelectorAll('.expand-btn.open').forEach(b => { b.classList.remove('open'); b.textContent='▶'; });
+  if(!isOpen){
+    detail.classList.add('open');
+    btn.classList.add('open');
+    btn.textContent = '▼';
+  }
+}
+
+function copyToClipboard(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function timeAgo(dateStr) {
+  const diff = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
+  if(diff < 60) return 'ahora';
+  if(diff < 3600) return `hace ${Math.floor(diff/60)}min`;
+  if(diff < 86400) return `hace ${Math.floor(diff/3600)}h`;
+  if(diff < 604800) return `hace ${Math.floor(diff/86400)}d`;
+  return new Date(dateStr).toLocaleDateString('es-ES',{day:'numeric',month:'short'});
+}
+
+// ── SEND TICKETS MODAL ──
+let sendTicketsOrderId = null;
+let currentTicketTab = 'link';
+let selectedFileBase64 = null;
+let selectedFileName = null;
+
+function switchTicketTab(tab) {
+  currentTicketTab = tab;
+  document.getElementById('tab-link').style.display = tab === 'link' ? 'block' : 'none';
+  document.getElementById('tab-file').style.display = tab === 'file' ? 'block' : 'none';
+  document.getElementById('tab-link-btn').style.background = tab === 'link' ? 'var(--gold-dim)' : 'none';
+  document.getElementById('tab-link-btn').style.color = tab === 'link' ? 'var(--gold)' : 'var(--text-muted)';
+  document.getElementById('tab-file-btn').style.background = tab === 'file' ? 'var(--gold-dim)' : 'none';
+  document.getElementById('tab-file-btn').style.color = tab === 'file' ? 'var(--gold)' : 'var(--text-muted)';
+}
+
+function onFileSelected(input) {
+  const file = input.files[0];
+  if (!file) return;
+  selectedFileName = file.name;
+  document.getElementById('st-file-status').textContent = `✓ ${file.name} (${(file.size/1024).toFixed(0)} KB)`;
+  document.getElementById('st-file-status').style.color = 'var(--green)';
+  const reader = new FileReader();
+  reader.onload = e => { selectedFileBase64 = e.target.result.split(',')[1]; };
+  reader.readAsDataURL(file);
+}
+function openSendTickets(id, email, attraction, date, time){
+  sendTicketsOrderId = id;
+  selectedFileBase64 = null; selectedFileName = null;
+  document.getElementById('st-email').textContent = email;
+  document.getElementById('st-date').textContent = `${date} · ${time}`;
+  document.getElementById('st-attraction').textContent = ATTR_LABELS[attraction] || attraction;
+  document.getElementById('st-url').value = '';
+  document.getElementById('st-note').value = '';
+  document.getElementById('st-file-status').textContent = 'Seleccioná el PDF recibido del sitio oficial';
+  document.getElementById('st-file-status').style.color = 'var(--text-dim)';
+  switchTicketTab('link');
+  document.getElementById('send-tickets-modal').classList.add('open');
+}
+function closeSendTickets(){ document.getElementById('send-tickets-modal').classList.remove('open'); sendTicketsOrderId = null; }
+
+async function submitSendTickets(){
+  const url = currentTicketTab === 'link' ? document.getElementById('st-url').value.trim() : null;
+  const note = document.getElementById('st-note').value.trim();
+  if(!sendTicketsOrderId){ toast('Error: no hay orden seleccionada', 'error'); return; }
+  const order = allOrders.find(o => o.id === sendTicketsOrderId);
+  if(!order){ toast('Orden no encontrada', 'error'); return; }
+
+  // If file tab but no file selected
+  if(currentTicketTab === 'file' && !selectedFileBase64){
+    toast('Seleccioná un archivo primero', 'error'); return;
+  }
+
+  const btn = document.getElementById('st-send-btn');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  try {
+    // Build order payload — include file if uploaded
+    const orderPayload = {
+      ...order,
+      ticket_url: url || null,
+      ticket_note: note || null,
+      ticket_file_base64: selectedFileBase64 || null,
+      ticket_file_name: selectedFileName || null,
+    };
+
+    const r = await fetch('https://odhogdwxafqdlfvfbsux.supabase.co/functions/v1/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9kaG9nZHd4YWZxZGxmdmZic3V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxMTM2MDAsImV4cCI6MjA4OTY4OTYwMH0.sDgtKOdVeK9Xf7VI2aNQhUO5Hs_rY2tmXD1z5pHayF8' },
+      body: JSON.stringify({ type: 'tickets_ready', order: orderPayload })
+    });
+    const d = await r.json();
+    if(!r.ok) throw new Error(d.error);
+
+    // Update email_status in DB
+    await fetch(API+'?action=update-order-email-status', {
+      method: 'POST',
+      headers: {'x-admin-secret': SECRET, 'Content-Type': 'application/json'},
+      body: JSON.stringify({ id: order.id, email_status: 'tickets_sent', email_sent_at: new Date().toISOString() })
+    });
+
+    // Update local state
+    const localOrder = allOrders.find(o => o.id === order.id);
+    if(localOrder){ localOrder.email_status = 'tickets_sent'; localOrder.email_sent_at = new Date().toISOString(); }
+
+    closeSendTickets();
+    renderOrders();
+    toast('✉️ Tickets enviados a ' + order.email, 'success');
+  } catch(e){ toast('Error: ' + e.message, 'error'); }
+  finally { btn.disabled = false; btn.textContent = 'Enviar tickets'; }
+}
+
+// ── MODAL ──
+function showModal(title, desc, btnClass, onConfirm){
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-desc').innerHTML = desc;
+  const btn = document.getElementById('modal-confirm-btn');
+  btn.className = `btn-confirm ${btnClass}`;
+  btn.textContent = 'Confirmar';
+  pendingAction = onConfirm;
+  document.getElementById('confirm-modal').classList.add('open');
+}
+function closeModal(){ document.getElementById('confirm-modal').classList.remove('open'); pendingAction = null; }
+async function confirmAction(){ const action = pendingAction; closeModal(); if(action) await action(); }
+
+// ── ZOHO MAIL ──
+const ZOHO_API = 'https://odhogdwxafqdlfvfbsux.supabase.co/functions/v1/zoho-desk';
+let zohoAccountId = '4069807000000008002';
+let activeMessageId = null;
+let activeThreadId = null;
+let allZohoMessages = [];
+let currentEmailFrom = '';
+let currentEmailSubject = '';
+let currentEmailMessageId = '';
+
+async function zohoFetch(action, params = '') {
+  const r = await fetch(`${ZOHO_API}?action=${action}${params ? '&' + params : ''}`, {
+    headers: { 'x-admin-secret': SECRET }
+  });
+  return r.json();
+}
+
+async function loadZohoTickets() {
+  const list = document.getElementById('zoho-tickets-list');
+  list.innerHTML = '<div class="empty-state">Cargando...</div>';
+  try {
+    const search = document.getElementById('zoho-search').value.trim();
+    const params = `account_id=${zohoAccountId}&limit=30${search ? '&search=' + encodeURIComponent(search) : ''}`;
+    const data = await zohoFetch('messages', params);
+    allZohoMessages = data?.data || [];
+    renderZohoMessages(allZohoMessages);
+  } catch(e) {
+    list.innerHTML = `<div class="empty-state" style="color:var(--red)">Error: ${e.message}</div>`;
+  }
+}
+
+function renderZohoMessages(messages) {
+  const list = document.getElementById('zoho-tickets-list');
+  if (!messages.length) { list.innerHTML = '<div class="empty-state">Sin mensajes</div>'; return; }
+  list.innerHTML = messages.map((m, idx) => {
+    const isActive = activeMessageId === m.messageId;
+    const isUnread = m.status === '0';
+    const sender = m.fromAddress || m.sender || '—';
+    const date = m.receivedTime || m.sentDateInGMT;
+    return `<div class="zoho-ticket ${isActive ? 'active' : ''}" onclick="loadEmailByIndex(${idx})">
+      <div style="display:flex;align-items:center;gap:6px">
+        ${isUnread ? '<div style="width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0"></div>' : '<div style="width:7px;height:7px;flex-shrink:0"></div>'}
+        <div class="zoho-ticket-subject" style="${isUnread ? 'font-weight:700' : 'color:var(--text-muted)'}">${m.subject || '(Sin asunto)'}</div>
+      </div>
+      <div class="zoho-ticket-meta" style="margin-top:3px">
+        <span style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px">${sender}</span>
+        <span style="font-size:10px;color:var(--text-dim)">${date ? timeAgo(new Date(parseInt(date)).toISOString()) : '—'}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function loadEmailByIndex(idx) {
+  const m = allZohoMessages[idx];
+  if (!m) return;
+  loadEmailDetail(m.messageId, m.folderId || '', m.fromAddress || m.sender || '', m.subject || '');
+}
+
+function searchZohoTickets() {
+  clearTimeout(window._zohoSearchTimer);
+  window._zohoSearchTimer = setTimeout(() => loadZohoTickets(), 500);
+}
+
+async function loadEmailDetail(messageId, folderId, fromAddr, subject) {
+  activeMessageId = messageId;
+  currentEmailFrom = fromAddr;
+  currentEmailSubject = subject;
+  currentEmailMessageId = messageId;
+  // Mark as read
+  fetch(`${ZOHO_API}?action=mark-read`, { method:'POST', headers:{'x-admin-secret':SECRET,'Content-Type':'application/json'}, body:JSON.stringify({message_id:messageId,folder_id:folderId}) }).then(() => { const msg = allZohoMessages.find(m => m.messageId === messageId); if(msg) { msg.status = '1'; renderZohoMessages(allZohoMessages); } });
+  renderZohoMessages(allZohoMessages);
+  const panel = document.getElementById('zoho-detail-panel');
+  panel.innerHTML = '<div style="padding:20px;color:var(--text-muted);font-size:13px;text-align:center;margin:auto">Cargando conversacion...</div>';
+  panel.style.display = 'flex';
+  panel.style.flexDirection = 'column';
+  try {
+    const params = `message_id=${messageId}&folder_id=${folderId}&subject=${encodeURIComponent(subject)}`;
+    const data = await zohoFetch('thread', params);
+    const msgs = data?.messages || [];
+    const cleanHtml = (html) => (html || '').replace(/<script[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<style[^>]*>[\s\S]*?<\/style>/gi,'') || '(Sin contenido)';
+
+    const msgsHtml = msgs.length > 0 ? msgs.map(m => {
+      const isSent = m._type === 'sent';
+      const ts = m.receivedTime || m.sentDateInGMT;
+      const dateStr = ts ? new Date(parseInt(ts)).toLocaleString('es-ES',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}) : '';
+      const from = isSent ? 'info@scoptickets.com' : (m.fromAddress || m.sender || 'Cliente');
+      const msgContent = cleanHtml(m._content);
+      return `<div class="zoho-msg ${isSent ? 'agent' : 'customer'}" style="max-width:90%;align-self:${isSent?'flex-end':'flex-start'}">
+        <div style="font-size:10px;color:var(--text-dim);margin-bottom:3px;text-align:${isSent?'right':'left'}">${from}</div>
+        <div class="zoho-msg-bubble" style="max-width:100%;overflow:auto;font-size:13px">${msgContent}</div>
+        <div class="zoho-msg-time" style="text-align:${isSent?'right':'left'}">${dateStr}</div>
+      </div>`;
+    }).join('') : '<div style="padding:16px;color:var(--text-muted);font-size:13px">(Sin mensajes)</div>';
+
+    const firstReceived = msgs.find(m => m._type === 'received');
+    const displayFrom = firstReceived?.fromAddress || fromAddr || '—';
+    const displaySubj = firstReceived?.subject || subject || '(Sin asunto)';
+    currentEmailFrom = displayFrom;
+    currentEmailSubject = displaySubj;
+
+    panel.innerHTML = `
+      <div class="zoho-detail-header">
+        <div class="zoho-detail-subject">${displaySubj}</div>
+        <div class="zoho-detail-meta">Con: ${displayFrom} &nbsp;&middot;&nbsp; ${msgs.length} mensaje${msgs.length!==1?'s':''}</div>
+      </div>
+      <div class="zoho-messages" id="zoho-msgs">${msgsHtml}</div>
+      <div class="zoho-reply-box">
+        <textarea id="zoho-reply-text" placeholder="Responder a ${displayFrom}..."></textarea>
+        <button class="btn-primary" style="width:auto;padding:8px 14px;font-size:12px" onclick="sendZohoReply(currentEmailFrom, currentEmailSubject, currentEmailMessageId)">Enviar</button>
+      </div>`;
+    setTimeout(() => { const m = document.getElementById('zoho-msgs'); if(m) m.scrollTop = m.scrollHeight; }, 100);
+  } catch(e) {
+    panel.innerHTML = `<div style="padding:20px;color:var(--red);font-size:13px">Error: ${e.message}</div>`;
+  }
+}
+
+
+async function sendZohoReply(to, subject, inReplyTo) {
+  const content = document.getElementById('zoho-reply-text')?.value.trim();
+  if (!content) { toast('Escribí un mensaje primero', 'error'); return; }
+  const replySubject = subject && !subject.startsWith('Re:') ? `Re: ${subject}` : (subject || 'Re: (sin asunto)');
+  try {
+    const r = await fetch(`${ZOHO_API}?action=send`, {
+      method: 'POST',
+      headers: { 'x-admin-secret': SECRET, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        account_id: zohoAccountId,
+        to: to,
+        subject: replySubject,
+        content: content.replace(/\n/g, '<br>'),
+        in_reply_to: inReplyTo,
+      })
+    });
+    const d = await r.json();
+    // Success if status code is 200
+    if (d.status?.code && d.status.code !== 200) throw new Error(d.status.description || JSON.stringify(d.status));
+    if (d.error) throw new Error(d.error);
+    document.getElementById('zoho-reply-text').value = '';
+    toast('Email enviado a ' + to, 'success');
+    setTimeout(() => loadZohoTickets(), 1500);
+  } catch(e) { toast('Error al enviar: ' + e.message, 'error'); }
+}
+
+// ── PRICE MODAL ──
+let currentPrices = { adults: 28, children: 28, seniors: 28, infants: 0 };
+
+let currentPriceAttraction = 'parkguell';
+
+function switchPriceAttraction(val) {
+  currentPriceAttraction = val;
+  const isPG = val === 'parkguell';
+  const isUffizi = val === 'uffizi';
+  document.getElementById('price-fields-parkguell').style.display = isPG ? '' : 'none';
+  document.getElementById('price-fields-seine').style.display = (!isPG && !isUffizi) ? '' : 'none';
+  document.getElementById('price-fields-uffizi').style.display = isUffizi ? '' : 'none';
+  if (!isPG && !isUffizi) {
+    const cfg = window._configCache || [];
+    const getVal = k => parseFloat(cfg.find(c => c.key === k)?.value || '0') || '';
+    document.getElementById('price-seine-adult').value = getVal(`seine_price_${val}_adult`);
+    document.getElementById('price-seine-child').value = getVal(`seine_price_${val}_child`);
+  }
+  if (isUffizi) {
+    const cfg = window._configCache || [];
+    const getVal = k => parseFloat(cfg.find(c => c.key === k)?.value || '0') || '';
+    document.getElementById('price-uffizi-adult').value = getVal('uffizi_price_standard_adult');
+    document.getElementById('price-uffizi-reduced').value = getVal('uffizi_price_standard_reduced');
+  }
+}
+
+async function openPriceModal() {
+  try {
+    const { data } = await sb.from('config').select('key,value');
+    window._configCache = data || [];
+    const getVal = k => parseFloat((data||[]).find(c => c.key === k)?.value || '0') || '';
+    document.getElementById('price-adults').value = getVal('price_adults');
+    document.getElementById('price-children').value = getVal('price_children');
+    document.getElementById('price-seniors').value = getVal('price_seniors');
+    document.getElementById('price-infants').value = getVal('price_infants');
+  } catch(e) {
+    document.getElementById('price-adults').value = currentPrices.adults;
+    document.getElementById('price-children').value = currentPrices.children;
+    document.getElementById('price-seniors').value = currentPrices.seniors;
+    document.getElementById('price-infants').value = currentPrices.infants;
+  }
+  document.getElementById('price-save-status').textContent = '';
+  document.getElementById('price-attraction-select').value = 'parkguell';
+  switchPriceAttraction('parkguell');
+  document.getElementById('price-modal').classList.add('open');
+}
+function closePriceModal() {
+  document.getElementById('price-modal').classList.remove('open');
+}
+async function savePrices() {
+  const btn = document.getElementById('price-save-btn');
+  const status = document.getElementById('price-save-status');
+  btn.disabled = true; btn.textContent = 'Guardando...';
+  status.style.color = 'var(--text-muted)'; status.textContent = '';
+  try {
+    if (currentPriceAttraction === 'parkguell') {
+      const adults = parseFloat(document.getElementById('price-adults').value) || 0;
+      const children = parseFloat(document.getElementById('price-children').value) || 0;
+      const seniors = parseFloat(document.getElementById('price-seniors').value) || 0;
+      const infants = parseFloat(document.getElementById('price-infants').value) || 0;
+      const r = await fetch(API + '?action=update-prices', {
+        method: 'POST',
+        headers: { 'x-admin-secret': SECRET, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prices: { adults, children, seniors, infants } })
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error);
+      currentPrices = { adults, children, seniors, infants };
+  } else if (currentPriceAttraction === 'uffizi') {
+    const adult = parseFloat(document.getElementById('price-uffizi-adult').value) || 0;
+    const reduced = parseFloat(document.getElementById('price-uffizi-reduced').value) || 0;
+    const { error } = await sb.from('config').upsert([
+      { key: 'uffizi_price_standard_adult', value: String(adult), description: 'Uffizi: precio intero adulto (€)' },
+      { key: 'uffizi_price_standard_reduced', value: String(reduced), description: 'Uffizi: precio ridotto reducido (€)' },
+    ], { onConflict: 'key' });
+    if (error) throw new Error(error.message);
+    window._configCache = null;
+  } else {
+  const val = currentPriceAttraction;
+  const adult = document.getElementById('price-seine-adult').value;
+  const child = document.getElementById('price-seine-child').value;
+  const r = await fetch(API + '?action=update-seine-prices', {
+    method: 'POST',
+    headers: { 'x-admin-secret': SECRET, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ticket_type: val, adult, child })
+  });
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.error);
+  window._configCache = null;
+}
+    status.style.color = 'var(--green)';
+    status.textContent = '✓ Precios guardados correctamente.';
+    toast('Precios actualizados ✓', 'success');
+  } catch(e) {
+    status.style.color = 'var(--red)';
+    status.textContent = 'Error: ' + e.message;
+  } finally {
+    btn.disabled = false; btn.textContent = '💾 Guardar precios';
+  }
+}
+
+// ── TABS ──
+function showTab(name, el){
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-avail').style.display = name==='avail' ? 'block' : 'none';
+  document.getElementById('tab-orders').style.display = name==='orders' ? 'block' : 'none';
+  document.getElementById('tab-support').style.display = name==='support' ? 'block' : 'none';
+  if(name==='support' && allZohoTickets.length===0) loadZohoTickets();
+}
+
+// ── TOAST ──
+let tt;
+function toast(msg, type=''){
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.className = `show ${type}`;
+  clearTimeout(tt); tt = setTimeout(() => el.className='', 2800);
+}
+</script>
+</body>
+</html>
