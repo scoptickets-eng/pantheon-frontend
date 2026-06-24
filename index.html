@@ -460,6 +460,65 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
 #cm-save{background:var(--accent);color:#fff}#cm-save:hover{background:var(--accent-dark)}
 #cm-accept-all{background:var(--gray-100);color:var(--gray-700)}#cm-accept-all:hover{background:var(--gray-200)}
 @media(max-width:780px){#wcu-grid{grid-template-columns:1fr!important}}
+
+/* ══ WCU ICON STRIP ══ */
+.wcu-icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 155px;
+  padding: 28px 16px 24px;
+  border-radius: var(--radius-xl);
+  background: #fff;
+  border: 1.5px solid transparent;
+  cursor: default;
+  transition: background .22s, border-color .22s, transform .18s;
+}
+.wcu-icon-card:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.wcu-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--accent);
+  transition: background .22s, color .22s;
+}
+.wcu-icon-card:hover .wcu-icon-wrap {
+  background: rgba(255,255,255,.2);
+  color: #fff;
+}
+.wcu-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  color: var(--gray-800);
+  margin-bottom: 8px;
+  transition: color .22s;
+  line-height: 1.3;
+}
+.wcu-icon-card:hover .wcu-label { color: #fff; }
+.wcu-desc {
+  font-size: 12px;
+  color: var(--gray-400);
+  line-height: 1.6;
+  margin: 0;
+  transition: color .22s;
+}
+.wcu-icon-card:hover .wcu-desc { color: rgba(255,255,255,.8); }
+@media(max-width:600px){
+  .wcu-icon-card { width: calc(50% - 8px); }
+  #wcu-grid { gap: 8px; }
+}
 @media(max-width:600px){#cookie-banner{padding:16px 20px}.cookie-btns{width:100%}.cookie-btn-accept,.cookie-btn-reject{flex:1;text-align:center}}
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
@@ -896,66 +955,67 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
 </div>
 
 <!-- ══ PIÙ CHE UN BIGLIETTO ══ -->
-<div style="background:#faf9f5;padding:72px 0" id="perche-noi-section">
+<div style="background:#f5f3ef;padding:60px 0" id="perche-noi-section">
   <div style="max-width:1100px;margin:0 auto;padding:0 36px">
-    <div class="fade-up" style="text-align:center;margin-bottom:52px">
+    <div style="text-align:center;margin-bottom:44px">
       <div class="section-eyebrow" id="wcu-eyebrow">I nostri servizi</div>
       <h2 class="section-title" id="wcu-title">Più che un biglietto</h2>
       <p id="wcu-sub" style="font-size:15px;color:var(--gray-500);max-width:540px;margin:0 auto;line-height:1.7">Quando prenoti con noi, aggiungi un team che ti accompagna in ogni dettaglio del viaggio</p>
     </div>
-    <div class="fade-up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px" id="wcu-grid">
+    <div id="wcu-grid" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
 
-      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
-        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 6 6z"/></svg>
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 6 6z"/></svg>
         </div>
-        <h3 id="wcu-h1" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Supporto 24/7 multilingue</h3>
-        <p id="wcu-p1" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Assistenza in italiano, inglese, spagnolo, francese, tedesco e portoghese. Prima, durante e dopo la visita.</p>
+        <span class="wcu-label" id="wcu-h1">Supporto 24/7</span>
+        <p class="wcu-desc" id="wcu-p1">Assistenza multilingue prima, durante e dopo la visita</p>
       </div>
 
-      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
-        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
         </div>
-        <h3 id="wcu-h2" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Tutti i metodi di pagamento</h3>
-        <p id="wcu-p2" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Visa, Mastercard, American Express, Apple Pay, Google Pay e pagamenti sicuri via Stripe. Il sito ufficiale non li accetta tutti.</p>
+        <span class="wcu-label" id="wcu-h2">Tutti i pagamenti</span>
+        <p class="wcu-desc" id="wcu-p2">Visa, Mastercard, Apple Pay, Google Pay via Stripe</p>
       </div>
 
-      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
-        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 id="wcu-h3" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Accesso garantito</h3>
-        <p id="wcu-p3" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Biglietto con orario prenotato, conferma immediata via email. Niente code in biglietteria, accesso diretto al monumento.</p>
+        <span class="wcu-label" id="wcu-h3">Accesso garantito</span>
+        <p class="wcu-desc" id="wcu-p3">Orario prenotato, conferma immediata via email</p>
       </div>
 
-      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
-        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         </div>
-        <h3 id="wcu-h4" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Servizio personalizzato</h3>
-        <p id="wcu-p4" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Ti assistiamo dalla prenotazione fino al post-visita. Cambi di nome, riprogrammazioni, consigli su Roma: siamo qui.</p>
+        <span class="wcu-label" id="wcu-h4">Servizio personalizzato</span>
+        <p class="wcu-desc" id="wcu-p4">Ti assistiamo dalla prenotazione al post-visita</p>
       </div>
 
-      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
-        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3 id="wcu-h5" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Gruppi e famiglie</h3>
-        <p id="wcu-p5" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Coordiniamo l'acquisto per gruppi numerosi e famiglie con bambini, con assistenza in ogni fase e tariffe dedicate.</p>
+        <span class="wcu-label" id="wcu-h5">Gruppi e famiglie</span>
+        <p class="wcu-desc" id="wcu-p5">Assistenza per gruppi numerosi e famiglie con bambini</p>
       </div>
 
-      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
-        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <h3 id="wcu-h6" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Oltre il Pantheon</h3>
-        <p id="wcu-p6" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Ti aiutiamo a pianificare tutta la tua visita a Roma: Colosseo, Vaticano, Fontana di Trevi, ristoranti e trasporti.</p>
+        <span class="wcu-label" id="wcu-h6">Oltre il Pantheon</span>
+        <p class="wcu-desc" id="wcu-p6">Ti aiutiamo a pianificare tutta la visita a Roma</p>
       </div>
 
     </div>
   </div>
 </div>
+
 
 <!-- ══ CAROUSEL ══ -->
 <div style="background:#111009;padding:0 0 72px">
@@ -1988,18 +2048,18 @@ const UI_STRINGS = {
   wcuEyebrow:    {it:'I nostri servizi',en:'Our services',es:'Nuestros servicios',fr:'Nos services',de:'Unsere Leistungen',pt:'Os nossos serviços'},
   wcuTitle:      {it:'Più che un biglietto',en:'More than a ticket',es:'Más que una entrada',fr:"Plus qu'un billet",de:'Mehr als ein Ticket',pt:'Mais do que um bilhete'},
   wcuSub:        {it:'Quando prenoti con noi, aggiungi un team che ti accompagna in ogni dettaglio del viaggio',en:'When you book with us, you add a team that accompanies you in every detail of your trip',es:'Cuando reservás con nosotros, sumás un equipo que te acompaña en cada detalle del viaje',fr:"Quand vous réservez avec nous, vous ajoutez une équipe qui vous accompagne dans chaque détail du voyage",de:'Wenn Sie bei uns buchen, haben Sie ein Team, das Sie in jedem Detail Ihrer Reise begleitet',pt:'Quando reserva connosco, conta com uma equipa que o acompanha em cada detalhe da viagem'},
-  wcuH1:         {it:'Supporto 24/7 multilingue',en:'24/7 multilingual support',es:'Soporte 24/7 multiidioma',fr:'Support 24h/24 multilingue',de:'24/7 mehrsprachiger Support',pt:'Suporte 24/7 multilingue'},
-  wcuP1:         {it:'Assistenza in italiano, inglese, spagnolo, francese, tedesco e portoghese. Prima, durante e dopo la visita.',en:'Support in Italian, English, Spanish, French, German and Portuguese. Before, during and after your visit.',es:'Asistencia en italiano, inglés, español, francés, alemán y portugués. Antes, durante y después de la visita.',fr:'Assistance en italien, anglais, espagnol, français, allemand et portugais. Avant, pendant et après la visite.',de:'Unterstützung auf Italienisch, Englisch, Spanisch, Französisch, Deutsch und Portugiesisch. Vor, während und nach dem Besuch.',pt:'Assistência em italiano, inglês, espanhol, francês, alemão e português. Antes, durante e depois da visita.'},
-  wcuH2:         {it:'Tutti i metodi di pagamento',en:'All payment methods',es:'Todos los métodos de pago',fr:'Tous les moyens de paiement',de:'Alle Zahlungsmethoden',pt:'Todos os métodos de pagamento'},
-  wcuP2:         {it:'Visa, Mastercard, American Express, Apple Pay, Google Pay e pagamenti sicuri via Stripe. Il sito ufficiale non li accetta tutti.',en:'Visa, Mastercard, American Express, Apple Pay, Google Pay and secure payments via Stripe. The official site does not accept all of them.',es:'Visa, Mastercard, American Express, Apple Pay, Google Pay y pagos seguros vía Stripe. El sitio oficial no los acepta todos.',fr:'Visa, Mastercard, American Express, Apple Pay, Google Pay et paiements sécurisés via Stripe. Le site officiel ne les accepte pas tous.',de:'Visa, Mastercard, American Express, Apple Pay, Google Pay und sichere Zahlungen über Stripe. Die offizielle Website akzeptiert nicht alle.',pt:'Visa, Mastercard, American Express, Apple Pay, Google Pay e pagamentos seguros via Stripe. O site oficial não os aceita todos.'},
+  wcuH1:         {it:'Supporto 24/7',en:'24/7 Support',es:'Soporte 24/7',fr:'Support 24h/24',de:'24/7 Support',pt:'Suporte 24/7'},
+  wcuP1:         {it:'Assistenza multilingue prima, durante e dopo la visita',en:'Multilingual support before, during and after your visit',es:'Asistencia multilingue antes, durante y después de la visita',fr:'Assistance multilingue avant, pendant et après la visite',de:'Mehrsprachige Unterstützung vor, während und nach dem Besuch',pt:'Assistência multilingue antes, durante e depois da visita'},
+  wcuH2:         {it:'Tutti i pagamenti',en:'All payments',es:'Todos los pagos',fr:'Tous les paiements',de:'Alle Zahlungen',pt:'Todos os pagamentos'},
+  wcuP2:         {it:'Visa, Mastercard, Apple Pay, Google Pay via Stripe',en:'Visa, Mastercard, Apple Pay, Google Pay via Stripe',es:'Visa, Mastercard, Apple Pay, Google Pay via Stripe',fr:'Visa, Mastercard, Apple Pay, Google Pay via Stripe',de:'Visa, Mastercard, Apple Pay, Google Pay via Stripe',pt:'Visa, Mastercard, Apple Pay, Google Pay via Stripe'},
   wcuH3:         {it:'Accesso garantito',en:'Guaranteed access',es:'Acceso garantizado',fr:'Accès garanti',de:'Garantierter Zugang',pt:'Acesso garantido'},
-  wcuP3:         {it:'Biglietto con orario prenotato, conferma immediata via email. Niente code in biglietteria, accesso diretto al monumento.',en:'Timed entry ticket, instant email confirmation. No queues at the ticket office, direct access to the monument.',es:'Entrada con horario reservado, confirmación inmediata por email. Sin colas en taquilla, acceso directo al monumento.',fr:'Billet avec horaire réservé, confirmation immédiate par email. Pas de file au guichet, accès direct au monument.',de:'Ticket mit Zeitfenster, sofortige E-Mail-Bestätigung. Keine Warteschlangen, direkter Zugang zum Monument.',pt:'Bilhete com horário marcado, confirmação imediata por email. Sem filas na bilheteira, acesso direto ao monumento.'},
-  wcuH4:         {it:'Servizio personalizzato',en:'Personalised service',es:'Servicio personalizado',fr:'Service personnalisé',de:'Persönlicher Service',pt:'Serviço personalizado'},
-  wcuP4:         {it:'Ti assistiamo dalla prenotazione fino al post-visita. Cambi di nome, riprogrammazioni, consigli su Roma: siamo qui.',en:'We assist you from booking to post-visit. Name changes, rescheduling, tips on Rome: we are here.',es:'Te asistimos desde la reserva hasta el post-visita. Cambios de nombre, reprogramaciones, consejos sobre Roma: estamos aquí.',fr:'Nous vous assistons de la réservation jusqu\'après la visite. Changements de nom, reprogrammations, conseils sur Rome: nous sommes là.',de:'Wir begleiten Sie von der Buchung bis nach dem Besuch. Namensänderungen, Umbuchungen, Rometipps: wir sind für Sie da.',pt:'Assistimo-lo desde a reserva até depois da visita. Alterações de nome, reagendamentos, dicas sobre Roma: estamos aqui.'},
+  wcuP3:         {it:'Orario prenotato, conferma immediata via email',en:'Timed entry, instant email confirmation',es:'Horario reservado, confirmación inmediata por email',fr:'Horaire réservé, confirmation immédiate par email',de:'Zeitfenster, sofortige E-Mail-Bestätigung',pt:'Horário marcado, confirmação imediata por email'},
+  wcuH4:         {it:'Servizio su misura',en:'Tailored service',es:'Servicio a medida',fr:'Service sur mesure',de:'Persönlicher Service',pt:'Serviço personalizado'},
+  wcuP4:         {it:'Ti assistiamo dalla prenotazione al post-visita',en:'We assist you from booking to post-visit',es:'Te asistimos desde la reserva hasta el post-visita',fr:'Nous vous assistons de la réservation jusqu\'après la visite',de:'Begleitung von der Buchung bis nach dem Besuch',pt:'Assistência desde a reserva até depois da visita'},
   wcuH5:         {it:'Gruppi e famiglie',en:'Groups and families',es:'Grupos y familias',fr:'Groupes et familles',de:'Gruppen und Familien',pt:'Grupos e famílias'},
-  wcuP5:         {it:"Coordiniamo l'acquisto per gruppi numerosi e famiglie con bambini, con assistenza in ogni fase e tariffe dedicate.",en:'We coordinate purchases for large groups and families with children, with assistance at every step and dedicated rates.',es:'Coordinamos la compra para grupos grandes y familias con niños, con asistencia en cada etapa y tarifas dedicadas.',fr:'Nous coordonnons les achats pour les grands groupes et les familles avec enfants, avec assistance à chaque étape.',de:'Wir koordinieren Einkäufe für große Gruppen und Familien mit Kindern, mit Unterstützung in jeder Phase.',pt:'Coordenamos compras para grupos grandes e famílias com crianças, com assistência em cada fase e tarifas dedicadas.'},
+  wcuP5:         {it:'Assistenza per gruppi numerosi e famiglie con bambini',en:'Support for large groups and families with children',es:'Asistencia para grupos grandes y familias con niños',fr:'Assistance pour les grands groupes et familles',de:'Unterstützung für Gruppen und Familien mit Kindern',pt:'Assistência para grupos grandes e famílias com crianças'},
   wcuH6:         {it:'Oltre il Pantheon',en:'Beyond the Pantheon',es:'Más allá del Panteón',fr:'Au-delà du Panthéon',de:'Über das Pantheon hinaus',pt:'Além do Pantheon'},
-  wcuP6:         {it:'Ti aiutiamo a pianificare tutta la tua visita a Roma: Colosseo, Vaticano, Fontana di Trevi, ristoranti e trasporti.',en:'We help you plan your entire visit to Rome: Colosseum, Vatican, Trevi Fountain, restaurants and transport.',es:'Te ayudamos a planificar toda tu visita a Roma: Coliseo, Vaticano, Fontana di Trevi, restaurantes y transporte.',fr:'Nous vous aidons à planifier toute votre visite à Rome: Colisée, Vatican, Fontaine de Trévi, restaurants et transports.',de:'Wir helfen Ihnen, Ihren gesamten Rombesuch zu planen: Kolosseum, Vatikan, Trevi-Brunnen, Restaurants und Transport.',pt:'Ajudamo-lo a planear toda a sua visita a Roma: Coliseu, Vaticano, Fontana di Trevi, restaurantes e transportes.'},
+  wcuP6:         {it:'Ti aiutiamo a pianificare tutta la visita a Roma',en:'We help you plan your entire visit to Rome',es:'Te ayudamos a planificar toda tu visita a Roma',fr:'Nous vous aidons à planifier toute votre visite à Rome',de:'Wir helfen Ihnen, Ihren Rombesuch zu planen',pt:'Ajudamo-lo a planear toda a sua visita a Roma'},
   prbOrText:     {it:'oppure paga con carta',en:'or pay with card',es:'o pagar con tarjeta',fr:'ou payer par carte',de:'oder mit Karte zahlen',pt:'ou pagar com cartão'},
   tfEyebrow:     {it:'Biglietto Standard',en:'Standard Ticket',es:'Entrada Estándar',fr:'Billet Standard',de:'Standardticket',pt:'Bilhete Padrão'},
   tfTitle:       {it:'Scegli il tuo biglietto',en:'Choose your ticket',es:'Elige tu entrada',fr:'Choisissez votre billet',de:'Wählen Sie Ihr Ticket',pt:'Escolha o seu bilhete'},
