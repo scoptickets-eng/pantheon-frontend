@@ -459,6 +459,7 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
 .cookie-modal-btns button{flex:1;padding:10px;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:background .2s}
 #cm-save{background:var(--accent);color:#fff}#cm-save:hover{background:var(--accent-dark)}
 #cm-accept-all{background:var(--gray-100);color:var(--gray-700)}#cm-accept-all:hover{background:var(--gray-200)}
+@media(max-width:780px){#wcu-grid{grid-template-columns:1fr!important}}
 @media(max-width:600px){#cookie-banner{padding:16px 20px}.cookie-btns{width:100%}.cookie-btn-accept,.cookie-btn-reject{flex:1;text-align:center}}
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
@@ -752,7 +753,7 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
           <div class="tnc-wrap">
             <label class="tnc-label">
               <input type="checkbox" id="tnc-check">
-              <span>Ho letto e accetto i <a href="/legal" target="_blank">Termini e Condizioni</a>, inclusa la politica di non rimborso.</span>
+              <span>Ho letto e accetto i <a href="/legal" target="_blank">Termini e Condizioni</a>.</span>
             </label>
           </div>
           <div class="secure-note">
@@ -840,15 +841,15 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
     </div>
     <div class="gallery-grid fade-up">
       <div class="gallery-main" onclick="openLightbox('https://images.unsplash.com/photo-1552832230-c0198040d8a4?w=1600&q=85')">
-        <img src="https://images.unsplash.com/photo-1552832230-c0198040d8a4?w=900&q=80" alt="Cupola interna del Pantheon con oculo" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1770463179605-cca2c3c53641?w=900&q=80" alt="Facciata del Pantheon su Piazza della Rotonda" loading="lazy">
         <div class="gallery-label">La Cupola e l'Oculo</div>
       </div>
-      <div class="gallery-sub" onclick="openLightbox('https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1600&q=85')">
-        <img src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=900&q=80" alt="Facciata esterna del Pantheon su Piazza della Rotonda" loading="lazy">
+      <div class="gallery-sub" onclick="openLightbox('https://images.unsplash.com/photo-1663875438608-6720c0c1601d?w=1600&q=85')">
+        <img src="https://images.unsplash.com/photo-1663875438608-6720c0c1601d?w=900&q=80" alt="Fontana e Pantheon su Piazza della Rotonda" loading="lazy">
         <div class="gallery-label">Piazza della Rotonda</div>
       </div>
-      <div class="gallery-sub" onclick="openLightbox('https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1600&q=85')">
-        <img src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=900&q=80" alt="Colonne del portico del Pantheon" loading="lazy">
+      <div class="gallery-sub" onclick="openLightbox('https://images.unsplash.com/photo-1684275507407-28032196faeb?w=1600&q=85')">
+        <img src="https://images.unsplash.com/photo-1758901683595-7f587a4c9963?w=900&q=80" alt="Colonne del portico del Pantheon" loading="lazy">
         <div class="gallery-label">Il Portico</div>
       </div>
     </div>
@@ -862,34 +863,96 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
       </div>
       <div class="masterworks-grid">
         <div class="masterwork-card" onclick="openLightbox('https://images.unsplash.com/photo-1552832230-c0198040d8a4?w=1600&q=85')">
-          <img src="https://images.unsplash.com/photo-1552832230-c0198040d8a4?w=600&q=80" alt="Oculo del Pantheon, unica fonte di luce naturale" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1714687398842-e8a64967163c?w=600&q=80" alt="Luce al centro della cupola del Pantheon" loading="lazy">
           <div class="masterwork-card-label">
             <span class="masterwork-card-title">L'Oculo</span>
             <span class="masterwork-card-artist">Diametro 8.7 m · unica apertura</span>
           </div>
         </div>
-        <div class="masterwork-card" onclick="openLightbox('https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1600&q=85')">
-          <img src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=600&q=80" alt="Colonne corinzie del portico del Pantheon" loading="lazy">
+        <div class="masterwork-card" onclick="openLightbox('https://images.unsplash.com/photo-1684275507407-28032196faeb?w=1600&q=85')">
+          <img src="https://images.unsplash.com/photo-1684275507407-28032196faeb?w=600&q=80" alt="Colonne corinzie del portico del Pantheon" loading="lazy">
           <div class="masterwork-card-label">
             <span class="masterwork-card-title">Il Portico</span>
             <span class="masterwork-card-artist">16 colonne in granito egizio</span>
           </div>
         </div>
-        <div class="masterwork-card" onclick="openLightbox('https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1600&q=85')">
-          <img src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=600&q=80" alt="Tomba di Raffaello all'interno del Pantheon" loading="lazy">
+        <div class="masterwork-card" onclick="openLightbox('https://images.unsplash.com/photo-1663875438608-6720c0c1601d?w=1600&q=85')">
+          <img src="https://images.unsplash.com/photo-1714687399299-65bb774aa061?w=600&q=80" alt="Interno del Pantheon, colonne e nicchie con le tombe" loading="lazy">
           <div class="masterwork-card-label">
             <span class="masterwork-card-title">Le Tombe Reali</span>
             <span class="masterwork-card-artist">Raffaello e i Re d'Italia</span>
           </div>
         </div>
-        <div class="masterwork-card" onclick="openLightbox('https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?w=1600&q=85')">
-          <img src="https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?w=600&q=80" alt="Pavimento marmoreo originale del Pantheon" loading="lazy">
+        <div class="masterwork-card" onclick="openLightbox('https://images.unsplash.com/photo-1662406427153-f9c18cf0a1c5?w=1600&q=85')">
+          <img src="https://images.unsplash.com/photo-1662406427153-f9c18cf0a1c5?w=600&q=80" alt="Cupola e pavimento marmoreo del Pantheon" loading="lazy">
           <div class="masterwork-card-label">
             <span class="masterwork-card-title">Il Pavimento</span>
             <span class="masterwork-card-artist">Marmo originale · II secolo</span>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PIÙ CHE UN BIGLIETTO ══ -->
+<div style="background:#faf9f5;padding:72px 0" id="perche-noi-section">
+  <div style="max-width:1100px;margin:0 auto;padding:0 36px">
+    <div class="fade-up" style="text-align:center;margin-bottom:52px">
+      <div class="section-eyebrow" id="wcu-eyebrow">I nostri servizi</div>
+      <h2 class="section-title" id="wcu-title">Più che un biglietto</h2>
+      <p id="wcu-sub" style="font-size:15px;color:var(--gray-500);max-width:540px;margin:0 auto;line-height:1.7">Quando prenoti con noi, aggiungi un team che ti accompagna in ogni dettaglio del viaggio</p>
+    </div>
+    <div class="fade-up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px" id="wcu-grid">
+
+      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
+        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 6 6z"/></svg>
+        </div>
+        <h3 id="wcu-h1" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Supporto 24/7 multilingue</h3>
+        <p id="wcu-p1" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Assistenza in italiano, inglese, spagnolo, francese, tedesco e portoghese. Prima, durante e dopo la visita.</p>
+      </div>
+
+      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
+        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h3 id="wcu-h2" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Tutti i metodi di pagamento</h3>
+        <p id="wcu-p2" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Visa, Mastercard, American Express, Apple Pay, Google Pay e pagamenti sicuri via Stripe. Il sito ufficiale non li accetta tutti.</p>
+      </div>
+
+      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
+        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 id="wcu-h3" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Accesso garantito</h3>
+        <p id="wcu-p3" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Biglietto con orario prenotato, conferma immediata via email. Niente code in biglietteria, accesso diretto al monumento.</p>
+      </div>
+
+      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
+        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3 id="wcu-h4" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Servizio personalizzato</h3>
+        <p id="wcu-p4" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Ti assistiamo dalla prenotazione fino al post-visita. Cambi di nome, riprogrammazioni, consigli su Roma: siamo qui.</p>
+      </div>
+
+      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
+        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 id="wcu-h5" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Gruppi e famiglie</h3>
+        <p id="wcu-p5" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Coordiniamo l'acquisto per gruppi numerosi e famiglie con bambini, con assistenza in ogni fase e tariffe dedicate.</p>
+      </div>
+
+      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px">
+        <div style="width:44px;height:44px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3 id="wcu-h6" style="font-size:14px;font-weight:600;color:var(--gray-900);margin:0 0 10px">Oltre il Pantheon</h3>
+        <p id="wcu-p6" style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0">Ti aiutiamo a pianificare tutta la tua visita a Roma: Colosseo, Vaticano, Fontana di Trevi, ristoranti e trasporti.</p>
+      </div>
+
     </div>
   </div>
 </div>
@@ -905,7 +968,7 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
       <div class="carousel-feature-img-wrap">
         <div class="carousel-feature-track" id="carousel-track">
           <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1752886355849-38cb2118cf1f?w=1000&q=85" alt="Luce che entra dall'oculo nella cupola del Pantheon" loading="lazy"></div>
-          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?w=1000&q=85" alt="Interno del Pantheon, pavimento in marmo e nicchie con le tombe" loading="lazy"></div>
+          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1714687399142-ea5ff3fb038e?w=1000&q=85" alt="Luce attraverso la finestra nell'interno del Pantheon" loading="lazy"></div>
           <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1761558507028-cf236b4c3ee7?w=1000&q=85" alt="Facciata e portico con colonne del Pantheon" loading="lazy"></div>
         </div>
         <button class="carousel-btn" style="left:12px" onclick="carouselMove(-1)" aria-label="Precedente">
@@ -1547,7 +1610,7 @@ function goStep3(){
     }
   }
   if(!cardMounted){
-    cardElement=stripe.elements().create('card',{style:{base:{fontFamily:'Inter,sans-serif',fontSize:'14px',color:'#1f2937'}}});
+    cardElement=stripe.elements().create('card',{hidePostalCode:true,style:{base:{fontFamily:'Inter,sans-serif',fontSize:'14px',color:'#1f2937'}}});
     cardElement.mount('#card-element'); cardMounted=true;
   }
   initPaymentRequestButton();
@@ -1891,7 +1954,7 @@ const UI_STRINGS = {
   cardLabel:     {it:'Dati della carta',en:'Card details',es:'Datos de la tarjeta',fr:'Données de la carte',de:'Kartendaten',pt:'Dados do cartão'},
   tncText:       {it:'Ho letto e accetto i',en:'I have read and accept the',es:'He leído y acepto los',fr:'J\'ai lu et accepte les',de:'Ich habe gelesen und akzeptiere die',pt:'Li e aceito os'},
   tncLink:       {it:'Termini e Condizioni',en:'Terms & Conditions',es:'Términos y Condiciones',fr:'Conditions Générales',de:'AGB',pt:'Termos e Condições'},
-  tncSuffix:     {it:', inclusa la politica di non rimborso.',en:', including the no-refund policy.',es:', incluida la política de no reembolso.',fr:', y compris la politique de non-remboursement.',de:', einschließlich der Nichterstattungsrichtlinie.',pt:', incluindo a política de não reembolso.'},
+  tncSuffix:     {it:'.',en:'.',es:'.',fr:'.',de:'.',pt:'.'},
   secureNote:    {it:'Pagamento elaborato da Stripe · Non conserviamo dati della carta',en:'Payment processed by Stripe · We do not store card data',es:'Pago procesado por Stripe · No almacenamos datos de tarjeta',fr:'Paiement traité par Stripe · Nous ne conservons pas les données de carte',de:'Zahlung über Stripe · Wir speichern keine Kartendaten',pt:'Pagamento processado pela Stripe · Não guardamos dados do cartão'},
   payBtn:        {it:'Conferma e Paga',en:'Confirm & Pay',es:'Confirmar y Pagar',fr:'Confirmer et Payer',de:'Bestätigen & Bezahlen',pt:'Confirmar e Pagar'},
   successTitle:  {it:'Prenotazione confermata!',en:'Booking confirmed!',es:'¡Reserva confirmada!',fr:'Réservation confirmée !',de:'Buchung bestätigt!',pt:'Reserva confirmada!'},
@@ -1922,6 +1985,21 @@ const UI_STRINGS = {
   freeOnlyError:  {it:'I biglietti gratuiti devono essere accompagnati da almeno un biglietto a pagamento.',en:'Free tickets must be accompanied by at least one paid ticket.',es:'Las entradas gratuitas deben ir acompanadas de al menos una entrada de pago.',fr:"Les billets gratuits doivent etre accompagnes d'au moins un billet payant.",de:'Kostenlose Tickets muessen von mindestens einem kostenpflichtigen Ticket begleitet werden.',pt:'Os bilhetes gratuitos devem ser acompanhados de pelo menos um bilhete pago.'},
   minorsOnlyError:{it:'I biglietti Minori (6-17) devono essere accompagnati da almeno un adulto o un Ridotto.',en:'Children tickets (6-17) must be accompanied by at least one adult or reduced ticket.',es:'Las entradas de Menores (6-17) deben ir acompañadas de al menos un adulto o reducido.',fr:"Les billets Mineurs (6-17) doivent être accompagnés d'au moins un adulte ou réduit.",de:'Kinder-Tickets (6-17) müssen von mindestens einem Erwachsenen- oder Ermäßigungsticket begleitet werden.',pt:'Os bilhetes de Menores (6-17) devem ser acompanhados de pelo menos um adulto ou reduzido.'},
   buyMoreBtn:    {it:'Acquista altri biglietti',en:'Buy more tickets',es:'Comprar mas entradas',fr:"Acheter d'autres billets",de:'Weitere Tickets kaufen',pt:'Comprar mais bilhetes'},
+  wcuEyebrow:    {it:'I nostri servizi',en:'Our services',es:'Nuestros servicios',fr:'Nos services',de:'Unsere Leistungen',pt:'Os nossos serviços'},
+  wcuTitle:      {it:'Più che un biglietto',en:'More than a ticket',es:'Más que una entrada',fr:"Plus qu'un billet",de:'Mehr als ein Ticket',pt:'Mais do que um bilhete'},
+  wcuSub:        {it:'Quando prenoti con noi, aggiungi un team che ti accompagna in ogni dettaglio del viaggio',en:'When you book with us, you add a team that accompanies you in every detail of your trip',es:'Cuando reservás con nosotros, sumás un equipo que te acompaña en cada detalle del viaje',fr:"Quand vous réservez avec nous, vous ajoutez une équipe qui vous accompagne dans chaque détail du voyage",de:'Wenn Sie bei uns buchen, haben Sie ein Team, das Sie in jedem Detail Ihrer Reise begleitet',pt:'Quando reserva connosco, conta com uma equipa que o acompanha em cada detalhe da viagem'},
+  wcuH1:         {it:'Supporto 24/7 multilingue',en:'24/7 multilingual support',es:'Soporte 24/7 multiidioma',fr:'Support 24h/24 multilingue',de:'24/7 mehrsprachiger Support',pt:'Suporte 24/7 multilingue'},
+  wcuP1:         {it:'Assistenza in italiano, inglese, spagnolo, francese, tedesco e portoghese. Prima, durante e dopo la visita.',en:'Support in Italian, English, Spanish, French, German and Portuguese. Before, during and after your visit.',es:'Asistencia en italiano, inglés, español, francés, alemán y portugués. Antes, durante y después de la visita.',fr:'Assistance en italien, anglais, espagnol, français, allemand et portugais. Avant, pendant et après la visite.',de:'Unterstützung auf Italienisch, Englisch, Spanisch, Französisch, Deutsch und Portugiesisch. Vor, während und nach dem Besuch.',pt:'Assistência em italiano, inglês, espanhol, francês, alemão e português. Antes, durante e depois da visita.'},
+  wcuH2:         {it:'Tutti i metodi di pagamento',en:'All payment methods',es:'Todos los métodos de pago',fr:'Tous les moyens de paiement',de:'Alle Zahlungsmethoden',pt:'Todos os métodos de pagamento'},
+  wcuP2:         {it:'Visa, Mastercard, American Express, Apple Pay, Google Pay e pagamenti sicuri via Stripe. Il sito ufficiale non li accetta tutti.',en:'Visa, Mastercard, American Express, Apple Pay, Google Pay and secure payments via Stripe. The official site does not accept all of them.',es:'Visa, Mastercard, American Express, Apple Pay, Google Pay y pagos seguros vía Stripe. El sitio oficial no los acepta todos.',fr:'Visa, Mastercard, American Express, Apple Pay, Google Pay et paiements sécurisés via Stripe. Le site officiel ne les accepte pas tous.',de:'Visa, Mastercard, American Express, Apple Pay, Google Pay und sichere Zahlungen über Stripe. Die offizielle Website akzeptiert nicht alle.',pt:'Visa, Mastercard, American Express, Apple Pay, Google Pay e pagamentos seguros via Stripe. O site oficial não os aceita todos.'},
+  wcuH3:         {it:'Accesso garantito',en:'Guaranteed access',es:'Acceso garantizado',fr:'Accès garanti',de:'Garantierter Zugang',pt:'Acesso garantido'},
+  wcuP3:         {it:'Biglietto con orario prenotato, conferma immediata via email. Niente code in biglietteria, accesso diretto al monumento.',en:'Timed entry ticket, instant email confirmation. No queues at the ticket office, direct access to the monument.',es:'Entrada con horario reservado, confirmación inmediata por email. Sin colas en taquilla, acceso directo al monumento.',fr:'Billet avec horaire réservé, confirmation immédiate par email. Pas de file au guichet, accès direct au monument.',de:'Ticket mit Zeitfenster, sofortige E-Mail-Bestätigung. Keine Warteschlangen, direkter Zugang zum Monument.',pt:'Bilhete com horário marcado, confirmação imediata por email. Sem filas na bilheteira, acesso direto ao monumento.'},
+  wcuH4:         {it:'Servizio personalizzato',en:'Personalised service',es:'Servicio personalizado',fr:'Service personnalisé',de:'Persönlicher Service',pt:'Serviço personalizado'},
+  wcuP4:         {it:'Ti assistiamo dalla prenotazione fino al post-visita. Cambi di nome, riprogrammazioni, consigli su Roma: siamo qui.',en:'We assist you from booking to post-visit. Name changes, rescheduling, tips on Rome: we are here.',es:'Te asistimos desde la reserva hasta el post-visita. Cambios de nombre, reprogramaciones, consejos sobre Roma: estamos aquí.',fr:'Nous vous assistons de la réservation jusqu\'après la visite. Changements de nom, reprogrammations, conseils sur Rome: nous sommes là.',de:'Wir begleiten Sie von der Buchung bis nach dem Besuch. Namensänderungen, Umbuchungen, Rometipps: wir sind für Sie da.',pt:'Assistimo-lo desde a reserva até depois da visita. Alterações de nome, reagendamentos, dicas sobre Roma: estamos aqui.'},
+  wcuH5:         {it:'Gruppi e famiglie',en:'Groups and families',es:'Grupos y familias',fr:'Groupes et familles',de:'Gruppen und Familien',pt:'Grupos e famílias'},
+  wcuP5:         {it:"Coordiniamo l'acquisto per gruppi numerosi e famiglie con bambini, con assistenza in ogni fase e tariffe dedicate.",en:'We coordinate purchases for large groups and families with children, with assistance at every step and dedicated rates.',es:'Coordinamos la compra para grupos grandes y familias con niños, con asistencia en cada etapa y tarifas dedicadas.',fr:'Nous coordonnons les achats pour les grands groupes et les familles avec enfants, avec assistance à chaque étape.',de:'Wir koordinieren Einkäufe für große Gruppen und Familien mit Kindern, mit Unterstützung in jeder Phase.',pt:'Coordenamos compras para grupos grandes e famílias com crianças, com assistência em cada fase e tarifas dedicadas.'},
+  wcuH6:         {it:'Oltre il Pantheon',en:'Beyond the Pantheon',es:'Más allá del Panteón',fr:'Au-delà du Panthéon',de:'Über das Pantheon hinaus',pt:'Além do Pantheon'},
+  wcuP6:         {it:'Ti aiutiamo a pianificare tutta la tua visita a Roma: Colosseo, Vaticano, Fontana di Trevi, ristoranti e trasporti.',en:'We help you plan your entire visit to Rome: Colosseum, Vatican, Trevi Fountain, restaurants and transport.',es:'Te ayudamos a planificar toda tu visita a Roma: Coliseo, Vaticano, Fontana di Trevi, restaurantes y transporte.',fr:'Nous vous aidons à planifier toute votre visite à Rome: Colisée, Vatican, Fontaine de Trévi, restaurants et transports.',de:'Wir helfen Ihnen, Ihren gesamten Rombesuch zu planen: Kolosseum, Vatikan, Trevi-Brunnen, Restaurants und Transport.',pt:'Ajudamo-lo a planear toda a sua visita a Roma: Coliseu, Vaticano, Fontana di Trevi, restaurantes e transportes.'},
   prbOrText:     {it:'oppure paga con carta',en:'or pay with card',es:'o pagar con tarjeta',fr:'ou payer par carte',de:'oder mit Karte zahlen',pt:'ou pagar com cartão'},
   tfEyebrow:     {it:'Biglietto Standard',en:'Standard Ticket',es:'Entrada Estándar',fr:'Billet Standard',de:'Standardticket',pt:'Bilhete Padrão'},
   tfTitle:       {it:'Scegli il tuo biglietto',en:'Choose your ticket',es:'Elige tu entrada',fr:'Choisissez votre billet',de:'Wählen Sie Ihr Ticket',pt:'Escolha o seu bilhete'},
@@ -2001,6 +2079,13 @@ function applyTranslations(){
   const prbOr=document.getElementById('prb-or-text'); if(prbOr) prbOr.textContent=t('prbOrText');
 
   // ── TRUST STRIP ──
+  // ── PIÙ CHE UN BIGLIETTO ──
+  const setW=(id,key)=>{const el=document.getElementById(id);if(el)el.textContent=t(key);};
+  setW('wcu-eyebrow','wcuEyebrow');setW('wcu-title','wcuTitle');setW('wcu-sub','wcuSub');
+  setW('wcu-h1','wcuH1');setW('wcu-p1','wcuP1');setW('wcu-h2','wcuH2');setW('wcu-p2','wcuP2');
+  setW('wcu-h3','wcuH3');setW('wcu-p3','wcuP3');setW('wcu-h4','wcuH4');setW('wcu-p4','wcuP4');
+  setW('wcu-h5','wcuH5');setW('wcu-p5','wcuP5');setW('wcu-h6','wcuH6');setW('wcu-p6','wcuP6');
+
   // ── TICKET FEATURE ──
   const set0=(elId,val)=>{ const el=document.getElementById(elId); if(el) el.textContent=val; };
   set0('tf-eyebrow',t('tfEyebrow')); set0('tf-title',t('tfTitle'));
