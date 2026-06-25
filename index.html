@@ -66,7 +66,7 @@ img{max-width:100%;display:block}
 .nav-logo-text{}
 .nav-logo-main{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:20px;letter-spacing:2px;line-height:1;color:var(--white);transition:color .3s}
 .nav-logo-main em{color:var(--gold);font-style:normal}
-.nav-logo-sub{font-family:'Jost',sans-serif;font-weight:300;font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.55);transition:color .3s}
+.nav-logo-sub{font-family:'Jost',sans-serif;font-weight:400;font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.55);transition:color .3s}
 
 #navbar.scrolled .nav-logo-main{color:var(--gray-900)}
 #navbar.scrolled .nav-logo-main em{color:var(--gold)}
@@ -101,7 +101,7 @@ img{max-width:100%;display:block}
 @media(max-width:900px){
   .hero-bg{
     background-image:url('hero-mobile.jpg');
-    background-position:center center;
+    background-position:center 65%;
   }
 }
 .hero-bg::after{
@@ -339,13 +339,13 @@ img{max-width:100%;display:block}
   background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);
   padding:24px;transition:box-shadow .2s;
 }
-.info-card:hover{box-shadow:var(--shadow-md)}
+.info-card:hover{box-shadow:var(--shadow-md);border-color:var(--accent);transform:translateY(-2px)}
 .info-card-icon{
   width:42px;height:42px;background:var(--accent-light);border-radius:var(--radius);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .info-card-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.info-card h3{font-size:17px;font-weight:600;color:var(--gray-900);margin:0;letter-spacing:.1px;font-family:'Cormorant Garamond',serif}
+.info-card h3{font-size:14px;font-weight:600;color:var(--gray-900);margin:0;letter-spacing:.1px}
 .info-card p{font-size:13.5px;color:var(--gray-600);line-height:1.75;margin-bottom:6px}
 .info-card p:last-child{margin-bottom:0}
 .info-card .info-badge{
@@ -392,7 +392,7 @@ img{max-width:100%;display:block}
 .dir-card{background:var(--gray-50);border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);padding:20px}
 .dir-card-icon{width:40px;height:40px;background:var(--accent-light);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .dir-card-head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
-.dir-card h4{font-size:16px;font-weight:600;color:var(--gray-900);margin:0;font-family:'Cormorant Garamond',serif}
+.dir-card h4{font-size:14px;font-weight:600;color:var(--gray-900);margin:0}
 .dir-card p{font-size:13px;color:var(--gray-600);line-height:1.6}
 
 /* ══ LEGAL PAGES ══ */
@@ -583,7 +583,7 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
   <div class="nav-logo-wrap" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <div class="nav-logo-text">
       <div class="nav-logo-main">PANTHEON <em>ROME</em></div>
-      <div class="nav-logo-sub">Tickets · Rome</div>
+      <div class="nav-logo-sub">By Scop Tickets</div>
     </div>
   </div>
 
@@ -634,10 +634,9 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
       </div>
       <p class="hero-eyebrow">Tempio Romano Antico · Eretto nel 113-125 d.C.</p>
       <h1 class="hero-title">
-        <strong>Pantheon<br>di Roma</strong>
-        <span>Roma, Italia</span>
+        <strong>Pantheon di Roma</strong>
+        <span id="hero-tagline-sub">Salta la fila · Roma, Italia</span>
       </h1>
-      <p class="hero-subtitle">Accesso garantito con orario prenotato. Conferma immediata via email. Salta la fila alla biglietteria.</p>
       <div class="hero-trust">
         <div class="hero-trust-item">
           <div class="hero-trust-icon">
@@ -656,6 +655,12 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           Supporto 24/7
+        </div>
+        <div class="hero-trust-item">
+          <div class="hero-trust-icon">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span id="trust-indie" data-key="trustIndie">Intermediario Indipendente</span>
         </div>
       </div>
     </div>
@@ -855,7 +860,7 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
   <div class="ticket-feature-inner">
     <div class="fade-up" style="text-align:center;margin-bottom:36px">
       <div class="section-eyebrow" id="tf-eyebrow">Biglietto Standard</div>
-      <h2 class="section-title" id="tf-title">Scegli il tuo biglietto</h2>
+      <h2 class="section-title" id="tf-title">Il tuo biglietto</h2>
     </div>
     <div class="ticket-feature-card fade-up">
       <div class="ticket-feature-img">
@@ -893,23 +898,53 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
 <!-- ══ GALLERY SECTION ══ -->
 <div style="background:#f9f8f6;padding:72px 0" id="gallery-section">
   <div style="max-width:1100px;margin:0 auto;padding:0 36px">
-    <div class="fade-up" style="text-align:center;margin-bottom:48px">
-      <div class="section-eyebrow">Il Monumento</div>
-      <h2 class="section-title">Duemila anni di storia</h2>
-      <p id="gal-sub-text" style="font-size:15px;color:var(--gray-500);max-width:500px;margin:0 auto;line-height:1.7">Il Pantheon e il monumento romano antico meglio conservato al mondo, con la piu grande cupola in calcestruzzo non armato mai costruita</p>
-    </div>
-    <div class="gallery-grid fade-up">
-      <div class="gallery-main" onclick="openLightbox('https://images.unsplash.com/photo-1552832230-c0198040d8a4?w=1600&q=85')">
-        <img src="https://images.unsplash.com/photo-1770463179605-cca2c3c53641?w=900&q=80" alt="Facciata del Pantheon su Piazza della Rotonda" loading="lazy">
-        <div class="gallery-label">La Cupola e l'Oculo</div>
+
+    <!-- ── STORIA: image left + text right ── -->
+    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-bottom:72px" id="storia-grid">
+      <div style="border-radius:var(--radius-xl);overflow:hidden;height:480px">
+        <img id="storia-img" src="storia.jpg" alt="Il Pantheon di Roma" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
       </div>
-      <div class="gallery-sub" onclick="openLightbox('https://images.unsplash.com/photo-1663875438608-6720c0c1601d?w=1600&q=85')">
-        <img src="https://images.unsplash.com/photo-1663875438608-6720c0c1601d?w=900&q=80" alt="Fontana e Pantheon su Piazza della Rotonda" loading="lazy">
-        <div class="gallery-label">Piazza della Rotonda</div>
-      </div>
-      <div class="gallery-sub" onclick="openLightbox('https://images.unsplash.com/photo-1684275507407-28032196faeb?w=1600&q=85')">
-        <img src="https://images.unsplash.com/photo-1758901683595-7f587a4c9963?w=900&q=80" alt="Colonne del portico del Pantheon" loading="lazy">
-        <div class="gallery-label">Il Portico</div>
+      <div>
+        <div class="section-eyebrow" id="storia-eyebrow">Il Monumento</div>
+        <h2 class="section-title" id="storia-title">Duemila anni di storia</h2>
+        <div style="display:flex;flex-direction:column;gap:20px;margin-top:24px">
+          <div style="display:flex;gap:16px">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0 0 4px" id="storia-h1">27 a.C. — Il primo Pantheon</p>
+              <p style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0" id="storia-p1">Marco Agrippa costrui il primo Pantheon come tempio dedicato a tutti gli dei. Venne poi ricostruito dall'imperatore Adriano tra il 113 e il 125 d.C. nella forma che vediamo oggi.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0 0 4px" id="storia-h2">609 d.C. — Da tempio a basilica</p>
+              <p style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0" id="storia-p2">L'imperatore Foca dono il Pantheon a Papa Bonifacio IV, che lo trasformo in una chiesa cristiana. Questo e il motivo per cui e uno dei monumenti antichi meglio conservati al mondo.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0 0 4px" id="storia-h3">La cupola piu grande del mondo antico</p>
+              <p style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0" id="storia-p3">Con 43,3 metri di diametro, la cupola del Pantheon rimase la piu grande del mondo per oltre 1300 anni. L'oculo centrale di 9 metri e l'unica fonte di luce naturale dell'edificio.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div>
+              <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0 0 4px" id="storia-h4">Le tombe illustri</p>
+              <p style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0" id="storia-p4">Il Pantheon ospita le spoglie del pittore rinascimentale Raffaello e le tombe dei primi re d'Italia, tra cui Vittorio Emanuele II e Umberto I.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -948,113 +983,6 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
             <span class="masterwork-card-title">Il Pavimento</span>
             <span class="masterwork-card-artist">Marmo originale · II secolo</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ PIÙ CHE UN BIGLIETTO ══ -->
-<div style="background:#f5f3ef;padding:40px 0" id="perche-noi-section">
-  <div style="max-width:1100px;margin:0 auto;padding:0 36px">
-    <div id="wcu-grid" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
-
-      <div class="wcu-icon-card">
-        <div class="wcu-icon-wrap">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 6 6z"/></svg>
-        </div>
-        <span class="wcu-label" id="wcu-h1">Supporto 24/7</span>
-        <p class="wcu-desc" id="wcu-p1">Assistenza multilingue prima, durante e dopo la visita</p>
-      </div>
-
-      <div class="wcu-icon-card">
-        <div class="wcu-icon-wrap">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-        </div>
-        <span class="wcu-label" id="wcu-h2">Tutti i pagamenti</span>
-        <p class="wcu-desc" id="wcu-p2">Visa, Mastercard, Apple Pay, Google Pay via Stripe</p>
-      </div>
-
-      <div class="wcu-icon-card">
-        <div class="wcu-icon-wrap">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <span class="wcu-label" id="wcu-h3">Accesso garantito</span>
-        <p class="wcu-desc" id="wcu-p3">Orario prenotato, conferma immediata via email</p>
-      </div>
-
-      <div class="wcu-icon-card">
-        <div class="wcu-icon-wrap">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        </div>
-        <span class="wcu-label" id="wcu-h4">Servizio personalizzato</span>
-        <p class="wcu-desc" id="wcu-p4">Ti assistiamo dalla prenotazione al post-visita</p>
-      </div>
-
-      <div class="wcu-icon-card">
-        <div class="wcu-icon-wrap">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <span class="wcu-label" id="wcu-h5">Gruppi e famiglie</span>
-        <p class="wcu-desc" id="wcu-p5">Assistenza per gruppi numerosi e famiglie con bambini</p>
-      </div>
-
-      <div class="wcu-icon-card">
-        <div class="wcu-icon-wrap">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <span class="wcu-label" id="wcu-h6">Oltre il Pantheon</span>
-        <p class="wcu-desc" id="wcu-p6">Ti aiutiamo a pianificare tutta la visita a Roma</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-<!-- ══ CAROUSEL ══ -->
-<div style="background:#111009;padding:0 0 72px">
-  <div style="max-width:1100px;margin:0 auto;padding:0 36px">
-    <div style="text-align:center;padding:56px 0 40px">
-      <div class="section-eyebrow" id="carousel-eyebrow" style="color:var(--gold)">Scopri il Pantheon</div>
-      <h2 class="section-title" id="carousel-title" style="color:#fff">Un capolavoro senza tempo</h2>
-    </div>
-    <div class="carousel-feature fade-up">
-      <div class="carousel-feature-img-wrap">
-        <div class="carousel-feature-track" id="carousel-track">
-          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1752886355849-38cb2118cf1f?w=1000&q=85" alt="Luce che entra dall'oculo nella cupola del Pantheon" loading="lazy"></div>
-          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1714687399142-ea5ff3fb038e?w=1000&q=85" alt="Luce attraverso la finestra nell'interno del Pantheon" loading="lazy"></div>
-          <div class="carousel-feature-slide"><img src="https://images.unsplash.com/photo-1761558507028-cf236b4c3ee7?w=1000&q=85" alt="Facciata e portico con colonne del Pantheon" loading="lazy"></div>
-        </div>
-        <button class="carousel-btn" style="left:12px" onclick="carouselMove(-1)" aria-label="Precedente">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="carousel-btn" style="right:12px" onclick="carouselMove(1)" aria-label="Successivo">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-        <button class="carousel-btn carousel-pause-btn" id="carousel-pause-btn" onclick="toggleCarouselPause()" aria-label="Pausa" style="bottom:14px;left:12px;top:auto;transform:none;width:28px;height:28px">
-          <svg id="carousel-pause-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-        </button>
-        <div class="carousel-dots" id="carousel-dots"></div>
-      </div>
-      <div class="carousel-feature-info" id="carousel-info">
-        <div class="carousel-info-slide active" id="carousel-slide-0">
-          <div class="carousel-info-num">01 / 03</div>
-          <h3 class="carousel-info-title" id="c-title-0">L'Oculo</h3>
-          <p class="carousel-info-desc" id="c-desc-0">Un'apertura circolare di 9 metri nella cupola, unica fonte di luce naturale dell'edificio e collegamento simbolico tra il tempio e il cielo. La cupola stessa, con i suoi 43,3 metri di diametro, e la piu grande cupola in calcestruzzo non armato del mondo.</p>
-          <div class="carousel-info-tag" id="c-tag-0">Oculo · 9 m di diametro</div>
-        </div>
-        <div class="carousel-info-slide" id="carousel-slide-1">
-          <div class="carousel-info-num">02 / 03</div>
-          <h3 class="carousel-info-title" id="c-title-1">Tombe Illustri e Pavimento Originale</h3>
-          <p class="carousel-info-desc" id="c-desc-1">Il Pantheon custodisce le spoglie del pittore rinascimentale Raffaello e le tombe dei primi re d'Italia, tra cui Vittorio Emanuele II. Il pavimento in marmo conserva ancora oggi il suo disegno geometrico originale, posato quasi duemila anni fa.</p>
-          <div class="carousel-info-tag" id="c-tag-1">Tombe di Raffaello e dei Re d'Italia</div>
-        </div>
-        <div class="carousel-info-slide" id="carousel-slide-2">
-          <div class="carousel-info-num">03 / 03</div>
-          <h3 class="carousel-info-title" id="c-title-2">Il Portico Monumentale</h3>
-          <p class="carousel-info-desc" id="c-desc-2">La facciata si apre su uno spettacolare atrio sostenuto da sedici imponenti colonne di granito, alte quasi 12 metri, che reggono il frontone con l'iscrizione originale di Marco Agrippa, costruttore del primo Pantheon nel 27 a.C.</p>
-          <div class="carousel-info-tag" id="c-tag-2">16 colonne di granito · 27 a.C.</div>
         </div>
       </div>
     </div>
@@ -1172,6 +1100,59 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
 <hr class="section-divider">
 
 <!-- ══ FAQ ══ -->
+<!-- ══ PIÙ CHE UN BIGLIETTO ══ -->
+<div style="background:#f5f3ef;padding:40px 0" id="perche-noi-section">
+  <div style="max-width:1100px;margin:0 auto;padding:0 36px">
+    <div id="wcu-grid" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 6 6z"/></svg>
+        </div>
+        <span class="wcu-label" id="wcu-h1">Supporto 24/7</span>
+              </div>
+
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <span class="wcu-label" id="wcu-h2">Tutti i pagamenti</span>
+              </div>
+
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="wcu-label" id="wcu-h3">Skip the line</span>
+              </div>
+
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <span class="wcu-label" id="wcu-h4">Servizio personalizzato</span>
+              </div>
+
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span class="wcu-label" id="wcu-h5">Gruppi e famiglie</span>
+              </div>
+
+      <div class="wcu-icon-card">
+        <div class="wcu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <span class="wcu-label" id="wcu-h6">Oltre il Pantheon</span>
+              </div>
+
+    </div>
+  </div>
+</div>
+
+
+
 <section id="faq-section">
   <div class="section fade-up">
     <div style="text-align:center;margin-bottom:48px">
@@ -2026,6 +2007,17 @@ const UI_STRINGS = {
   freeOnlyError:  {it:'I biglietti gratuiti devono essere accompagnati da almeno un biglietto a pagamento.',en:'Free tickets must be accompanied by at least one paid ticket.',es:'Las entradas gratuitas deben ir acompanadas de al menos una entrada de pago.',fr:"Les billets gratuits doivent etre accompagnes d'au moins un billet payant.",de:'Kostenlose Tickets muessen von mindestens einem kostenpflichtigen Ticket begleitet werden.',pt:'Os bilhetes gratuitos devem ser acompanhados de pelo menos um bilhete pago.'},
   minorsOnlyError:{it:'I biglietti Minori (6-17) devono essere accompagnati da almeno un adulto o un Ridotto.',en:'Children tickets (6-17) must be accompanied by at least one adult or reduced ticket.',es:'Las entradas de Menores (6-17) deben ir acompañadas de al menos un adulto o reducido.',fr:"Les billets Mineurs (6-17) doivent être accompagnés d'au moins un adulte ou réduit.",de:'Kinder-Tickets (6-17) müssen von mindestens einem Erwachsenen- oder Ermäßigungsticket begleitet werden.',pt:'Os bilhetes de Menores (6-17) devem ser acompanhados de pelo menos um adulto ou reduzido.'},
   buyMoreBtn:    {it:'Acquista altri biglietti',en:'Buy more tickets',es:'Comprar mas entradas',fr:"Acheter d'autres billets",de:'Weitere Tickets kaufen',pt:'Comprar mais bilhetes'},
+  storiaEyebrow: {it:'Il Monumento',en:'The Monument',es:'El Monumento',fr:'Le Monument',de:'Das Monument',pt:'O Monumento'},
+  storiaTitle:   {it:'Duemila anni di storia',en:'Two thousand years of history',es:'Dos mil años de historia',fr:'Deux mille ans d\'histoire',de:'Zweitausend Jahre Geschichte',pt:'Dois mil anos de história'},
+  storiaH1:      {it:'27 a.C. — Il primo Pantheon',en:'27 BC — The first Pantheon',es:'27 a.C. — El primer Panteón',fr:'27 av. J.-C. — Le premier Panthéon',de:'27 v. Chr. — Das erste Pantheon',pt:'27 a.C. — O primeiro Pantheon'},
+  storiaP1:      {it:"Marco Agrippa costrui il primo Pantheon come tempio dedicato a tutti gli dei. Venne poi ricostruito dall'imperatore Adriano tra il 113 e il 125 d.C. nella forma che vediamo oggi.",en:"Marcus Agrippa built the first Pantheon as a temple dedicated to all the gods. It was later rebuilt by Emperor Hadrian between 113 and 125 AD in the form we see today.",es:"Marco Agripa construyó el primer Panteón como templo dedicado a todos los dioses. Fue reconstruido por el emperador Adriano entre el 113 y el 125 d.C. con la forma que vemos hoy.",fr:"Marcus Agrippa construisit le premier Panthéon comme temple dédié à tous les dieux. Il fut ensuite reconstruit par l'empereur Hadrien entre 113 et 125 apr. J.-C. sous la forme que nous voyons aujourd'hui.",de:"Marcus Agrippa erbaute das erste Pantheon als Tempel für alle Götter. Es wurde später von Kaiser Hadrian zwischen 113 und 125 n. Chr. in der Form, die wir heute sehen, wiederaufgebaut.",pt:"Marco Agripa construiu o primeiro Pantheon como templo dedicado a todos os deuses. Foi depois reconstruído pelo imperador Adriano entre 113 e 125 d.C. na forma que vemos hoje."},
+  storiaH2:      {it:'609 d.C. — Da tempio a basilica',en:'609 AD — From temple to basilica',es:'609 d.C. — De templo a basílica',fr:'609 apr. J.-C. — De temple à basilique',de:'609 n. Chr. — Vom Tempel zur Basilika',pt:'609 d.C. — De templo a basílica'},
+  storiaP2:      {it:"L'imperatore Foca dono il Pantheon a Papa Bonifacio IV, che lo trasformo in una chiesa cristiana. Questo e il motivo per cui e uno dei monumenti antichi meglio conservati al mondo.",en:'Emperor Phocas donated the Pantheon to Pope Boniface IV, who transformed it into a Christian church. This is why it is one of the best-preserved ancient monuments in the world.',es:'El emperador Focas donó el Panteón al Papa Bonifacio IV, quien lo transformó en una iglesia cristiana. Por eso es uno de los monumentos antiguos mejor conservados del mundo.',fr:"L'empereur Phocas fit don du Panthéon au pape Boniface IV, qui le transforma en église chrétienne. C'est pourquoi il est l'un des monuments antiques les mieux conservés au monde.",de:"Kaiser Phokas schenkte das Pantheon Papst Bonifatius IV., der es in eine christliche Kirche umwandelte. Deshalb ist es eines der am besten erhaltenen antiken Monumente der Welt.",pt:"O imperador Focas doou o Pantheon ao Papa Bonifácio IV, que o transformou numa igreja cristã. É por isso que é um dos monumentos antigos mais bem conservados do mundo."},
+  storiaH3:      {it:'La cupola piu grande del mondo antico',en:'The largest dome of the ancient world',es:'La cúpula más grande del mundo antiguo',fr:'Le plus grand dôme du monde antique',de:'Die größte Kuppel der antiken Welt',pt:'A maior cúpula do mundo antigo'},
+  storiaP3:      {it:"Con 43,3 metri di diametro, la cupola del Pantheon rimase la piu grande del mondo per oltre 1300 anni. L'oculo centrale di 9 metri e l'unica fonte di luce naturale dell'edificio.",en:'With a diameter of 43.3 metres, the Pantheon dome remained the largest in the world for over 1,300 years. The central oculus of 9 metres is the only source of natural light in the building.',es:'Con 43,3 metros de diámetro, la cúpula del Panteón fue la más grande del mundo durante más de 1300 años. El óculo central de 9 metros es la única fuente de luz natural del edificio.',fr:"Avec un diamètre de 43,3 mètres, la coupole du Panthéon est restée la plus grande du monde pendant plus de 1 300 ans. L'oculus central de 9 mètres est la seule source de lumière naturelle du bâtiment.",de:"Mit einem Durchmesser von 43,3 Metern blieb die Kuppel des Pantheons über 1.300 Jahre lang die größte der Welt. Das zentrale Oculus von 9 Metern ist die einzige natürliche Lichtquelle des Gebäudes.",pt:'Com 43,3 metros de diâmetro, a cúpula do Pantheon foi a maior do mundo durante mais de 1300 anos. O óculo central de 9 metros é a única fonte de luz natural do edifício.'},
+  storiaH4:      {it:'Le tombe illustri',en:'The illustrious tombs',es:'Las tumbas ilustres',fr:'Les tombes illustres',de:'Die berühmten Gräber',pt:'Os túmulos ilustres'},
+  storiaP4:      {it:"Il Pantheon ospita le spoglie del pittore rinascimentale Raffaello e le tombe dei primi re d'Italia, tra cui Vittorio Emanuele II e Umberto I.",en:"The Pantheon houses the remains of the Renaissance painter Raphael and the tombs of the first kings of Italy, including Victor Emmanuel II and Umberto I.",es:"El Panteón alberga los restos del pintor renacentista Rafael y las tumbas de los primeros reyes de Italia, entre ellos Víctor Manuel II y Humberto I.",fr:"Le Panthéon abrite les restes du peintre de la Renaissance Raphaël et les tombes des premiers rois d'Italie, dont Victor-Emmanuel II et Humbert Ier.",de:"Das Pantheon beherbergt die sterblichen Überreste des Renaissancemalers Raffael und die Grabstätten der ersten Könige Italiens, darunter Viktor Emanuel II. und Umberto I.",pt:"O Pantheon abriga os restos mortais do pintor renascentista Rafael e os túmulos dos primeiros reis de Itália, incluindo Víctor Manuel II e Umberto I."},
+  trustIndie:    {it:'Intermediario Indipendente',en:'Independent Reseller',es:'Intermediario Independiente',fr:'Revendeur Indépendant',de:'Unabhängiger Vermittler',pt:'Intermediário Independente'},
   wcuEyebrow:    {it:'I nostri servizi',en:'Our services',es:'Nuestros servicios',fr:'Nos services',de:'Unsere Leistungen',pt:'Os nossos serviços'},
   wcuTitle:      {it:'Più che un biglietto',en:'More than a ticket',es:'Más que una entrada',fr:"Plus qu'un billet",de:'Mehr als ein Ticket',pt:'Mais do que um bilhete'},
   wcuSub:        {it:'Quando prenoti con noi, aggiungi un team che ti accompagna in ogni dettaglio del viaggio',en:'When you book with us, you add a team that accompanies you in every detail of your trip',es:'Cuando reservás con nosotros, sumás un equipo que te acompaña en cada detalle del viaje',fr:"Quand vous réservez avec nous, vous ajoutez une équipe qui vous accompagne dans chaque détail du voyage",de:'Wenn Sie bei uns buchen, haben Sie ein Team, das Sie in jedem Detail Ihrer Reise begleitet',pt:'Quando reserva connosco, conta com uma equipa que o acompanha em cada detalhe da viagem'},
@@ -2033,7 +2025,7 @@ const UI_STRINGS = {
   wcuP1:         {it:'Assistenza multilingue prima, durante e dopo la visita',en:'Multilingual support before, during and after your visit',es:'Asistencia multilingue antes, durante y después de la visita',fr:'Assistance multilingue avant, pendant et après la visite',de:'Mehrsprachige Unterstützung vor, während und nach dem Besuch',pt:'Assistência multilingue antes, durante e depois da visita'},
   wcuH2:         {it:'Tutti i pagamenti',en:'All payments',es:'Todos los pagos',fr:'Tous les paiements',de:'Alle Zahlungen',pt:'Todos os pagamentos'},
   wcuP2:         {it:'Visa, Mastercard, Apple Pay, Google Pay via Stripe',en:'Visa, Mastercard, Apple Pay, Google Pay via Stripe',es:'Visa, Mastercard, Apple Pay, Google Pay via Stripe',fr:'Visa, Mastercard, Apple Pay, Google Pay via Stripe',de:'Visa, Mastercard, Apple Pay, Google Pay via Stripe',pt:'Visa, Mastercard, Apple Pay, Google Pay via Stripe'},
-  wcuH3:         {it:'Accesso garantito',en:'Guaranteed access',es:'Acceso garantizado',fr:'Accès garanti',de:'Garantierter Zugang',pt:'Acesso garantido'},
+  wcuH3:         {it:'Skip the line',en:'Skip the line',es:'Salta la cola',fr:'Sans attente',de:'Ohne Warteschlange',pt:'Sem filas'},
   wcuP3:         {it:'Orario prenotato, conferma immediata via email',en:'Timed entry, instant email confirmation',es:'Horario reservado, confirmación inmediata por email',fr:'Horaire réservé, confirmation immédiate par email',de:'Zeitfenster, sofortige E-Mail-Bestätigung',pt:'Horário marcado, confirmação imediata por email'},
   wcuH4:         {it:'Servizio su misura',en:'Tailored service',es:'Servicio a medida',fr:'Service sur mesure',de:'Persönlicher Service',pt:'Serviço personalizado'},
   wcuP4:         {it:'Ti assistiamo dalla prenotazione al post-visita',en:'We assist you from booking to post-visit',es:'Te asistimos desde la reserva hasta el post-visita',fr:'Nous vous assistons de la réservation jusqu\'après la visite',de:'Begleitung von der Buchung bis nach dem Besuch',pt:'Assistência desde a reserva até depois da visita'},
@@ -2120,6 +2112,15 @@ function applyTranslations(){
   const prbOr=document.getElementById('prb-or-text'); if(prbOr) prbOr.textContent=t('prbOrText');
 
   // ── TRUST STRIP ──
+  // ── STORIA ──
+  const setS=(id,key)=>{const el=document.getElementById(id);if(el)el.textContent=t(key);};
+  setS('storia-eyebrow','storiaEyebrow');setS('storia-title','storiaTitle');
+  setS('storia-h1','storiaH1');setS('storia-p1','storiaP1');
+  setS('storia-h2','storiaH2');setS('storia-p2','storiaP2');
+  setS('storia-h3','storiaH3');setS('storia-p3','storiaP3');
+  setS('storia-h4','storiaH4');setS('storia-p4','storiaP4');
+  const trustIndie=document.getElementById('trust-indie'); if(trustIndie) trustIndie.textContent=t('trustIndie');
+
   // ── PIÙ CHE UN BIGLIETTO ──
   const setW=(id,key)=>{const el=document.getElementById(id);if(el)el.textContent=t(key);};
   setW('wcu-eyebrow','wcuEyebrow');setW('wcu-title','wcuTitle');setW('wcu-sub','wcuSub');
