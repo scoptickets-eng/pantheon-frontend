@@ -131,6 +131,7 @@ img{max-width:100%;display:block}
 .hero-trust{display:flex;flex-direction:column;gap:9px}
 .hero-trust-item{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.8)}
 .hero-trust-icon{width:18px;height:18px;background:rgba(201,168,76,.25);border:1px solid rgba(201,168,76,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
 
 /* ══ CHECKOUT PANEL ══ */
 .checkout-panel{
@@ -662,6 +663,14 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
           </div>
           <span id="trust-indie" data-key="trustIndie">Intermediario Indipendente</span>
         </div>
+      </div>
+
+      <!-- BOOKED BADGE -->
+      <div id="booked-badge" style="display:none;margin-top:20px;align-items:center;gap:10px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:40px;padding:8px 16px;width:fit-content">
+        <span style="display:flex;gap:3px">
+          <span style="width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse-dot 1.8s ease-in-out infinite"></span>
+        </span>
+        <span id="booked-text" style="font-size:13px;font-weight:500;color:#fff"></span>
       </div>
     </div>
 
@@ -1452,6 +1461,53 @@ function toggleCarouselPause(){
 
 // ── LOAD PRICES ──
 loadPrices();
+
+// ── BOOKED YESTERDAY BADGE ──
+async function loadBookedYesterday(){
+  try{
+    // Yesterday in Rome timezone (sv-SE gives YYYY-MM-DD)
+    const now = new Date();
+    const romeNow = new Date(now.toLocaleString('en-US',{timeZone:'Europe/Rome'}));
+    const yesterday = new Date(romeNow);
+    yesterday.setDate(yesterday.getDate()-1);
+    const yStr = yesterday.toLocaleDateString('sv-SE',{timeZone:'Europe/Rome'});
+    const todayStr = romeNow.toLocaleDateString('sv-SE',{timeZone:'Europe/Rome'});
+
+    const {data, error} = await sb
+      .from('orders')
+      .select('qty_adults,qty_children,qty_infants,qty_seniors', {count:'exact'})
+      .eq('status','paid')
+      .gte('visit_date', yStr)
+      .lt('visit_date', todayStr);
+
+    if(error || !data) return;
+
+    // Sum total tickets across all orders yesterday
+    const total = data.reduce((sum, o) => {
+      return sum + (Number(o.qty_adults)||0) + (Number(o.qty_children)||0)
+                 + (Number(o.qty_infants)||0) + (Number(o.qty_seniors)||0);
+    }, 0);
+
+    if(total < 1) return; // Don't show if 0
+
+    const badge = document.getElementById('booked-badge');
+    const txt = document.getElementById('booked-text');
+    if(!badge || !txt) return;
+
+    const lang = document.documentElement.lang || 'en';
+    const messages = {
+      it: `Prenotato ${total} volt${total===1?'a':'e'} ieri`,
+      en: `Booked ${total} time${total===1?'':'s'} yesterday`,
+      es: `Reservado ${total} ${total===1?'vez':'veces'} ayer`,
+      fr: `Réservé ${total} fois hier`,
+      de: `Gestern ${total} Mal gebucht`,
+      pt: `Reservado ${total} ${total===1?'vez':'vezes'} ontem`,
+    };
+    txt.textContent = messages[lang] || messages.en;
+    badge.style.display = 'flex';
+  }catch(e){ console.warn('booked badge error:',e); }
+}
+loadBookedYesterday();
 async function loadPrices(){
   try{
     const {data} = await sb.from('config').select('key,value');
@@ -2203,6 +2259,8 @@ function applyTranslations(){
   // Re-load slots if date already selected
   const dateInput = document.getElementById('s1-date');
   if(dateInput && dateInput.value) onDateChange(dateInput.value);
+  // Refresh booked badge for new language
+  loadBookedYesterday();
 }
 
 function setLang(lang){
