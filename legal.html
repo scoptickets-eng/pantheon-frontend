@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Legal — Pantheon Rome Tickets</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--accent:#C4912A;--accent-dark:#a07620;--accent-light:#fdf3e0;--gold:#C4912A;--gray-900:#111009;--gray-700:#37322c;--gray-600:#4b4540;--gray-500:#6b6357;--gray-200:#e5e1d8;--gray-100:#f3f1ec;--gray-50:#f9f8f6}
+  body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-700);min-height:100vh}
+  header{background:#fff;border-bottom:1px solid var(--gray-200);padding:16px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10}
+  .back-link{display:flex;align-items:center;gap:6px;color:var(--accent);font-size:13px;font-weight:500;text-decoration:none;transition:opacity .2s}
+  .back-link:hover{opacity:.7}
+  .header-brand{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--gray-900)}
+  .header-brand em{color:var(--gold);font-style:italic}
+  main{max-width:860px;margin:0 auto;padding:32px 24px 80px}
+  .page-title{font-size:28px;font-weight:600;color:var(--gray-900);margin-bottom:8px;letter-spacing:-.3px;font-family:'Cormorant Garamond',serif}
+  .page-sub{font-size:13px;color:var(--gray-500);margin-bottom:32px}
+  .tabs{display:flex;gap:0;border:1px solid var(--gray-200);border-radius:10px;overflow:hidden;margin-bottom:32px;background:#fff}
+  .tab-btn{flex:1;padding:12px 8px;font-size:13px;font-weight:500;color:var(--gray-500);background:none;border:none;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;border-right:1px solid var(--gray-200)}
+  .tab-btn:last-child{border-right:none}
+  .tab-btn:hover{background:var(--gray-50);color:var(--gray-700)}
+  .tab-btn.active{background:var(--accent);color:#fff;font-weight:600}
+  .tab-content{display:none;background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:32px 36px}
+  .tab-content.active{display:block}
+  .legal-company{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px 20px;margin-bottom:24px;font-size:14px;color:var(--gray-700);line-height:1.8}
+  .tab-content h3{font-size:15px;font-weight:700;color:var(--gray-900);margin:24px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--gray-100)}
+  .tab-content h3:first-of-type{margin-top:0}
+  .tab-content p,.tab-content li{font-size:14px;color:var(--gray-600);line-height:1.8;margin-bottom:8px}
+  .tab-content ul{padding-left:20px;margin-bottom:12px}
+  .tab-content a{color:var(--accent)}
+  .tab-content code{background:var(--gray-100);padding:2px 6px;border-radius:4px;font-size:12px}
+  footer{text-align:center;padding:24px;font-size:12px;color:var(--gray-500);border-top:1px solid var(--gray-200);background:#fff;margin-top:40px}
+  .lang-switcher-legal{position:relative;display:flex;align-items:center;margin-left:auto}
+  .lang-btn-legal{display:flex;align-items:center;gap:6px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:8px;color:var(--gray-700);font-size:12px;font-weight:500;padding:6px 10px;cursor:pointer;font-family:'Inter',sans-serif}
+  .lang-dropdown-legal{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid var(--gray-200);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);min-width:160px;overflow:hidden;z-index:600}
+  .lang-dropdown-legal.open{display:block}
+  .lang-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:var(--gray-700);cursor:pointer}
+  .lang-opt:hover{background:var(--gray-50)}
+  .lang-opt.active{background:var(--accent-light);color:var(--accent);font-weight:600}
+  @media(max-width:600px){
+    main{padding:20px 16px 60px}
+    .tab-content{padding:20px 16px}
+    .tab-btn{font-size:11px;padding:10px 4px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    Torna al sito
+  </a>
+  <div class="header-brand">PANTHEON <em>ROME</em> Tickets</div>
+  <div class="lang-switcher-legal" id="legal-lang-switcher">
+    <button class="lang-btn-legal" onclick="toggleLegalLang()">
+      <span id="legal-lang-flag">🇮🇹</span>
+      <span id="legal-lang-label">IT</span>
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="lang-dropdown-legal" id="legal-lang-dropdown">
+      <div class="lang-opt active" onclick="setLegalLang('it')">🇮🇹 Italiano</div>
+      <div class="lang-opt" onclick="setLegalLang('en')">🇬🇧 English</div>
+      <div class="lang-opt" onclick="setLegalLang('es')">🇪🇸 Español</div>
+      <div class="lang-opt" onclick="setLegalLang('fr')">🇫🇷 Français</div>
+      <div class="lang-opt" onclick="setLegalLang('de')">🇩🇪 Deutsch</div>
+      <div class="lang-opt" onclick="setLegalLang('pt')">🇧🇷 Português</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h1 class="page-title">Informazioni legali</h1>
+  <p class="page-sub">Scop Tickets LLC · 30 North Gould Street, Sheridan, WY 82801, United States · info@scoptickets.com</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('terms',this)">Termini e Condizioni</button>
+    <button class="tab-btn" onclick="showTab('privacy',this)">Privacy</button>
+    <button class="tab-btn" onclick="showTab('cookies',this)">Cookies</button>
+    <button class="tab-btn" onclick="showTab('refund',this)">Rimborsi</button>
+  </div>
+
+  <div id="tab-terms" class="tab-content active">
+    <div class="legal-company"><strong>Scop Tickets LLC</strong><br>30 North Gould Street, Sheridan, WY 82801, United States<br>info@scoptickets.com</div>
+    <h3>1. Servizio di intermediazione</h3>
+    <p>Scop Tickets LLC è un servizio di intermediazione indipendente che facilita l'acquisto di biglietti per attrazioni turistiche. Non siamo l'operatore ufficiale del Pantheon di Roma, né siamo affiliati con la Direzione Musei Statali di Roma o il Ministero della Cultura italiano.</p>
+    <h3>2. Natura del servizio</h3>
+    <p>Agiamo come intermediari tra il cliente e gli operatori ufficiali. Effettuando un acquisto, autorizzi Scop Tickets LLC ad acquistare biglietti a tuo nome. Il prezzo include il costo del biglietto più le commissioni di servizio di Scop Tickets LLC.</p>
+    <h3>3. Politica di non rimborso</h3>
+    <p><strong>I biglietti sono personali, nominativi e non trasferibili. Non sono consentite modifiche, cancellazioni o rimborsi in nessuna circostanza una volta completato l'acquisto.</strong> Confermando il pagamento, il cliente accetta espressamente questa condizione.</p>
+    <h3>4. Biglietto nominativo</h3>
+    <p>Il biglietto è personale e non trasferibile. All'ingresso sarà richiesto un documento d'identità corrispondente al nome sul biglietto. In caso di discrepanza, l'accesso potrà essere negato.</p>
+    <h3>5. Modifica del nome (dal 10 marzo 2026)</h3>
+    <p>La modifica del nome deve essere effettuata entro 72 ore dalla data e ora di visita indicata sul biglietto. È consentita una sola modifica, accessibile tramite l'area personale del portale Musei Italiani.</p>
+    <h3>6. Chiusura per cause di forza maggiore</h3>
+    <p>Se il monumento chiude per cause al di fuori del nostro controllo (emergenze, condizioni straordinarie), Scop Tickets offrirà riprogrammazione gratuita o rimborso completo, indipendentemente dalla politica generale di non rimborso.</p>
+    <h3>7. Limitazione di responsabilità</h3>
+    <p>Scop Tickets LLC agisce esclusivamente come intermediario. La nostra responsabilità è limitata al valore dei biglietti acquistati.</p>
+    <h3>8. Legge applicabile</h3>
+    <p>Questi termini sono regolati dalle leggi dello Stato del Wyoming, Stati Uniti. Qualsiasi controversia sarà sottoposta ai tribunali competenti di Sheridan County, Wyoming.</p>
+    <h3>9. Politiche aziendali di Scop Tickets LLC</h3>
+    <ul>
+      <li><a href="https://www.scoptickets.com/legal/terms" target="_blank">Termini e Condizioni — scoptickets.com/legal/terms</a></li>
+      <li><a href="https://www.scoptickets.com/legal/privacy" target="_blank">Privacy Policy — scoptickets.com/legal/privacy</a></li>
+      <li><a href="https://www.scoptickets.com/legal/cookies" target="_blank">Cookie Policy — scoptickets.com/legal/cookies</a></li>
+      <li><a href="https://www.scoptickets.com/legal/refund" target="_blank">Politica Rimborsi — scoptickets.com/legal/refund</a></li>
+    </ul>
+  </div>
+
+  <div id="tab-privacy" class="tab-content">
+    <div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div>
+    <h3>Dati raccolti</h3>
+    <p>Nome, cognome, paese, telefono, email, dati della visita. I dati della carta sono trattati esclusivamente da Stripe — non li conserviamo.</p>
+    <h3>Uso dei dati</h3>
+    <p>Per elaborare la prenotazione e inviare i biglietti. Usiamo Google Analytics e Google Ads per migliorare il servizio.</p>
+    <h3>Google Ads</h3>
+    <p>Puoi disattivare la pubblicità personalizzata su <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</p>
+    <h3>I tuoi diritti</h3>
+    <p>Puoi richiedere accesso, rettifica o cancellazione scrivendo a info@scoptickets.com.</p>
+  </div>
+
+  <div id="tab-cookies" class="tab-content">
+    <h3>1. Cosa sono i cookie?</h3>
+    <p>Piccoli file di testo salvati sul tuo dispositivo quando visiti un sito web.</p>
+    <h3>2. Tipi di cookie</h3>
+    <p><strong>Essenziali:</strong> <code>scop_cookie_consent</code> — salva le tue preferenze sui cookie.</p>
+    <p><strong>Analitici:</strong> <code>_ga</code>, <code>_gid</code>, <code>_ga_*</code> — Google Analytics.</p>
+    <p><strong>Pubblicitari:</strong> <code>_gcl_au</code>, <code>_gac_*</code> — Google Ads.</p>
+    <h3>3. Gestione</h3>
+    <p>Gestisci le preferenze tramite il banner cookie o le impostazioni del browser.</p>
+    <h3>4. Informazioni</h3>
+    <p><a href="mailto:info@scoptickets.com">info@scoptickets.com</a></p>
+  </div>
+
+  <div id="tab-refund" class="tab-content">
+    <div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div>
+    <h3>Politica di non rimborso</h3>
+    <p><strong>Tutte le vendite sono definitive. I biglietti non sono rimborsabili, modificabili né trasferibili in nessuna circostanza.</strong></p>
+    <h3>Eccezioni</h3>
+    <p>L'unica eccezione si applica quando il monumento chiude per cause di forza maggiore. In tal caso, Scop Tickets offrirà riprogrammazione gratuita o rimborso completo.</p>
+    <h3>Contatto per reclami</h3>
+    <p>info@scoptickets.com · Includere il numero d'ordine.</p>
+  </div>
+</main>
+
+<footer>
+  <p id="footer-text">© 2026 Scop Tickets LLC · Tutti i diritti riservati · <a href="/" style="color:var(--accent)">pantheonrometickets.org</a></p>
+</footer>
+
+<script>
+let legalLang = (navigator.language || 'it').substring(0,2).toLowerCase();
+if(!['it','en','es','fr','de','pt'].includes(legalLang)) legalLang = 'it';
+
+const LEGAL_LANGS = {
+  it:{flag:'🇮🇹',label:'IT'}, en:{flag:'🇬🇧',label:'EN'},
+  es:{flag:'🇪🇸',label:'ES'}, fr:{flag:'🇫🇷',label:'FR'},
+  de:{flag:'🇩🇪',label:'DE'}, pt:{flag:'🇧🇷',label:'PT'},
+};
+
+const LEGAL_T = {
+  back:     {it:'Torna al sito',en:'Back to site',es:'Volver al sitio',fr:'Retour au site',de:'Zurück zur Website',pt:'Voltar ao site'},
+  title:    {it:'Informazioni legali',en:'Legal information',es:'Información legal',fr:'Informations légales',de:'Rechtliche Informationen',pt:'Informações legais'},
+  tab_terms:{it:'Termini e Condizioni',en:'Terms & Conditions',es:'Términos y Condiciones',fr:'Conditions Générales',de:'AGB',pt:'Termos e Condições'},
+  tab_privacy:{it:'Privacy',en:'Privacy',es:'Privacidad',fr:'Confidentialité',de:'Datenschutz',pt:'Privacidade'},
+  tab_cookies:{it:'Cookies',en:'Cookies',es:'Cookies',fr:'Cookies',de:'Cookies',pt:'Cookies'},
+  tab_refund:{it:'Rimborsi',en:'Refunds',es:'Reembolsos',fr:'Remboursements',de:'Erstattungen',pt:'Reembolsos'},
+  footer:   {it:'Tutti i diritti riservati',en:'All rights reserved',es:'Todos los derechos reservados',fr:'Tous droits réservés',de:'Alle Rechte vorbehalten',pt:'Todos os direitos reservados'},
+};
+
+const LEGAL_TRANS = {
+  terms:{
+    en:`<div class="legal-company"><strong>Scop Tickets LLC</strong><br>30 North Gould Street, Sheridan, WY 82801, United States<br>info@scoptickets.com</div><h3>1. Intermediary service</h3><p>Scop Tickets LLC is an independent intermediary service facilitating the purchase of tickets for tourist attractions. We are not the official operator of the Pantheon in Rome, nor are we affiliated with the Direzione Musei Statali di Roma or the Italian Ministry of Culture.</p><h3>2. Nature of the service</h3><p>We act as intermediaries between the customer and official operators. By making a purchase, you authorise Scop Tickets LLC to purchase tickets on your behalf. The price includes the ticket cost plus Scop Tickets LLC service fees.</p><h3>3. No-refund policy</h3><p><strong>Tickets are personal, named and non-transferable. No modifications, cancellations or refunds are permitted under any circumstances once the purchase is completed.</strong></p><h3>4. Named ticket</h3><p>The ticket is personal and non-transferable. A valid identity document matching the name on the ticket will be required at entry.</p><h3>5. Name change (from 10 March 2026)</h3><p>Name changes must be made within 72 hours of the visit date and time. Only one change is permitted, via the personal area of the Musei Italiani portal.</p><h3>6. Force majeure</h3><p>If the monument closes due to circumstances beyond our control, Scop Tickets will offer free rescheduling or a full refund.</p><h3>7. Limitation of liability</h3><p>Scop Tickets LLC acts solely as an intermediary. Our liability is limited to the value of the tickets purchased.</p><h3>8. Applicable law</h3><p>These terms are governed by the laws of the State of Wyoming, United States.</p>`,
+    es:`<div class="legal-company"><strong>Scop Tickets LLC</strong><br>30 North Gould Street, Sheridan, WY 82801, Estados Unidos<br>info@scoptickets.com</div><h3>1. Servicio de intermediación</h3><p>Scop Tickets LLC es un servicio de intermediación independiente. No somos el operador oficial del Panteón de Roma ni estamos afiliados con la Direzione Musei Statali di Roma o el Ministerio de Cultura italiano.</p><h3>2. Naturaleza del servicio</h3><p>Actuamos como intermediarios entre el cliente y los operadores oficiales. El precio incluye el costo de la entrada más las comisiones de servicio de Scop Tickets LLC.</p><h3>3. Política de no reembolso</h3><p><strong>Las entradas son personales, nominativas e intransferibles. No se permiten modificaciones, cancelaciones ni reembolsos bajo ninguna circunstancia.</strong></p><h3>4. Entrada nominativa</h3><p>Se requerirá un documento de identidad válido que coincida con el nombre en la entrada.</p><h3>5. Cambio de nombre (desde el 10 de marzo de 2026)</h3><p>Los cambios de nombre deben realizarse dentro de las 72 horas. Solo se permite un cambio.</p><h3>6. Fuerza mayor</h3><p>Si el monumento cierra por causas ajenas a nuestro control, Scop Tickets ofrecerá reprogramación o reembolso completo.</p><h3>7. Limitación de responsabilidad</h3><p>La responsabilidad de Scop Tickets LLC se limita al valor de las entradas adquiridas.</p><h3>8. Ley aplicable</h3><p>Estos términos se rigen por las leyes del Estado de Wyoming, Estados Unidos.</p>`,
+    fr:`<div class="legal-company"><strong>Scop Tickets LLC</strong><br>30 North Gould Street, Sheridan, WY 82801, États-Unis<br>info@scoptickets.com</div><h3>1. Service d'intermédiation</h3><p>Scop Tickets LLC est un service d'intermédiation indépendant. Nous ne sommes pas l'opérateur officiel du Panthéon de Rome, ni affiliés à la Direzione Musei Statali di Roma.</p><h3>2. Nature du service</h3><p>Nous agissons comme intermédiaires entre le client et les opérateurs officiels. Le prix inclut le coût du billet plus les frais de service de Scop Tickets LLC.</p><h3>3. Politique de non-remboursement</h3><p><strong>Les billets sont personnels, nominatifs et non transférables. Aucune modification, annulation ou remboursement n'est autorisé.</strong></p><h3>4. Billet nominatif</h3><p>Une pièce d'identité valide correspondant au nom sur le billet sera exigée à l'entrée.</p><h3>5. Changement de nom (à partir du 10 mars 2026)</h3><p>Les changements de nom doivent être effectués dans les 72 heures. Un seul changement est autorisé.</p><h3>6. Force majeure</h3><p>Si le monument ferme pour des raisons indépendantes de notre volonté, Scop Tickets proposera une reprogrammation ou un remboursement complet.</p><h3>7. Limitation de responsabilité</h3><p>La responsabilité de Scop Tickets LLC est limitée à la valeur des billets achetés.</p><h3>8. Loi applicable</h3><p>Ces conditions sont régies par les lois de l'État du Wyoming, États-Unis.</p>`,
+    de:`<div class="legal-company"><strong>Scop Tickets LLC</strong><br>30 North Gould Street, Sheridan, WY 82801, USA<br>info@scoptickets.com</div><h3>1. Vermittlungsservice</h3><p>Scop Tickets LLC ist ein unabhängiger Vermittlungsservice. Wir sind nicht der offizielle Betreiber des Pantheons in Rom und nicht mit der Direzione Musei Statali di Roma verbunden.</p><h3>2. Art des Dienstes</h3><p>Wir handeln als Vermittler zwischen dem Kunden und den offiziellen Betreibern. Der Preis enthält die Ticketkosten zuzüglich der Servicegebühren von Scop Tickets LLC.</p><h3>3. Keine-Erstattungs-Richtlinie</h3><p><strong>Tickets sind persönlich, auf den Namen ausgestellt und nicht übertragbar. Änderungen, Stornierungen oder Erstattungen sind nicht möglich.</strong></p><h3>4. Personalisiertes Ticket</h3><p>An der Eingangstür ist ein gültiger Lichtbildausweis erforderlich, der mit dem Namen auf dem Ticket übereinstimmt.</p><h3>5. Namensänderung (ab 10. März 2026)</h3><p>Namensänderungen müssen innerhalb von 72 Stunden vorgenommen werden. Es ist nur eine Änderung erlaubt.</p><h3>6. Höhere Gewalt</h3><p>Wenn das Monument aus Gründen, die außerhalb unserer Kontrolle liegen, schließt, bietet Scop Tickets kostenlose Umbuchung oder vollständige Erstattung an.</p><h3>7. Haftungsbeschränkung</h3><p>Die Haftung von Scop Tickets LLC ist auf den Wert der gekauften Tickets beschränkt.</p><h3>8. Anwendbares Recht</h3><p>Diese Bedingungen unterliegen den Gesetzen des Staates Wyoming, USA.</p>`,
+    pt:`<div class="legal-company"><strong>Scop Tickets LLC</strong><br>30 North Gould Street, Sheridan, WY 82801, Estados Unidos<br>info@scoptickets.com</div><h3>1. Serviço de intermediação</h3><p>Scop Tickets LLC é um serviço de intermediação independente. Não somos o operador oficial do Pantheon de Roma nem estamos afiliados à Direzione Musei Statali di Roma.</p><h3>2. Natureza do serviço</h3><p>Atuamos como intermediários entre o cliente e os operadores oficiais. O preço inclui o custo do bilhete mais as comissões de serviço da Scop Tickets LLC.</p><h3>3. Política de não reembolso</h3><p><strong>Os bilhetes são pessoais, nominativos e intransferíveis. Não são permitidas modificações, cancelamentos ou reembolsos em nenhuma circunstância.</strong></p><h3>4. Bilhete nominativo</h3><p>Será necessário um documento de identidade válido correspondente ao nome no bilhete.</p><h3>5. Alteração de nome (a partir de 10 de março de 2026)</h3><p>As alterações de nome devem ser efetuadas no prazo de 72 horas. Apenas uma alteração é permitida.</p><h3>6. Força maior</h3><p>Se o monumento fechar por causas fora do nosso controlo, a Scop Tickets oferecerá reagendamento gratuito ou reembolso completo.</p><h3>7. Limitação de responsabilidade</h3><p>A responsabilidade da Scop Tickets LLC limita-se ao valor dos bilhetes adquiridos.</p><h3>8. Lei aplicável</h3><p>Estes termos são regidos pelas leis do Estado do Wyoming, Estados Unidos.</p>`,
+  },
+  privacy:{
+    en:`<div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div><h3>Data we collect</h3><p>First name, last name, country, phone, email, visit data. Card data is processed exclusively by Stripe — we do not store it.</p><h3>Use of data</h3><p>To process your booking and send tickets. We use Google Analytics and Google Ads to improve the service.</p><h3>Google Ads</h3><p>You can opt out of personalised advertising at <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</p><h3>Your rights</h3><p>You can request access, rectification or deletion by writing to info@scoptickets.com.</p>`,
+    es:`<div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div><h3>Datos que recopilamos</h3><p>Nombre, apellido, país, teléfono, email, datos de la visita. Los datos de tarjeta son procesados por Stripe.</p><h3>Uso de datos</h3><p>Para procesar tu reserva y enviarte entradas. Usamos Google Analytics y Google Ads.</p><h3>Google Ads</h3><p>Podés optar por no recibir publicidad personalizada en <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</p><h3>Tus derechos</h3><p>Podés solicitar acceso, rectificación o eliminación escribiendo a info@scoptickets.com.</p>`,
+    fr:`<div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div><h3>Données collectées</h3><p>Prénom, nom, pays, téléphone, e-mail, données de la visite. Les données de carte sont traitées par Stripe.</p><h3>Utilisation</h3><p>Pour traiter la réservation et envoyer les billets. Nous utilisons Google Analytics et Google Ads.</p><h3>Google Ads</h3><p>Vous pouvez désactiver la publicité personnalisée sur <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</p><h3>Vos droits</h3><p>Contactez info@scoptickets.com pour accès, rectification ou suppression.</p>`,
+    de:`<div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div><h3>Erhobene Daten</h3><p>Vor- und Nachname, Land, Telefon, E-Mail, Besuchsdaten. Kartendaten werden von Stripe verarbeitet.</p><h3>Datenverwendung</h3><p>Zur Buchungsabwicklung und zum Versand von Tickets. Wir nutzen Google Analytics und Google Ads.</p><h3>Google Ads</h3><p>Personalisierte Werbung deaktivieren: <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</p><h3>Ihre Rechte</h3><p>Auskunft, Berichtigung oder Löschung: info@scoptickets.com.</p>`,
+    pt:`<div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div><h3>Dados recolhidos</h3><p>Nome, apelido, país, telefone, email, dados da visita. Os dados do cartão são processados pelo Stripe.</p><h3>Utilização</h3><p>Para processar a reserva e enviar bilhetes. Utilizamos Google Analytics e Google Ads.</p><h3>Google Ads</h3><p>Pode desativar publicidade personalizada em <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</p><h3>Os seus direitos</h3><p>info@scoptickets.com para acesso, retificação ou eliminação.</p>`,
+  },
+  cookies:{
+    en:`<h3>1. What are cookies?</h3><p>Small text files stored on your device when you visit a website.</p><h3>2. Types of cookies</h3><p><strong>Essential:</strong> <code>scop_cookie_consent</code>.</p><p><strong>Analytics:</strong> <code>_ga</code>, <code>_gid</code>, <code>_ga_*</code> — Google Analytics.</p><p><strong>Advertising:</strong> <code>_gcl_au</code>, <code>_gac_*</code> — Google Ads.</p><h3>3. Management</h3><p>Manage preferences through the cookie banner or your browser settings.</p><h3>4. Contact</h3><p><a href="mailto:info@scoptickets.com">info@scoptickets.com</a></p>`,
+    es:`<h3>1. ¿Qué son las cookies?</h3><p>Pequeños archivos de texto almacenados en tu dispositivo.</p><h3>2. Tipos</h3><p><strong>Esenciales:</strong> <code>scop_cookie_consent</code>.</p><p><strong>Analíticas:</strong> <code>_ga</code>, <code>_gid</code>.</p><p><strong>Publicitarias:</strong> <code>_gcl_au</code>, <code>_gac_*</code>.</p><h3>3. Gestión</h3><p>Gestioná tus preferencias a través del banner de cookies.</p><h3>4. Contacto</h3><p><a href="mailto:info@scoptickets.com">info@scoptickets.com</a></p>`,
+    fr:`<h3>1. Que sont les cookies?</h3><p>Petits fichiers texte stockés sur votre appareil.</p><h3>2. Types</h3><p><strong>Essentiels:</strong> <code>scop_cookie_consent</code>.</p><p><strong>Analytiques:</strong> <code>_ga</code>, <code>_gid</code>.</p><p><strong>Publicitaires:</strong> <code>_gcl_au</code>, <code>_gac_*</code>.</p><h3>3. Gestion</h3><p>Gérez via la bannière de cookies.</p><h3>4. Contact</h3><p><a href="mailto:info@scoptickets.com">info@scoptickets.com</a></p>`,
+    de:`<h3>1. Was sind Cookies?</h3><p>Kleine Textdateien auf Ihrem Gerät.</p><h3>2. Cookie-Typen</h3><p><strong>Notwendig:</strong> <code>scop_cookie_consent</code>.</p><p><strong>Analyse:</strong> <code>_ga</code>, <code>_gid</code>.</p><p><strong>Werbung:</strong> <code>_gcl_au</code>, <code>_gac_*</code>.</p><h3>3. Verwaltung</h3><p>Über das Cookie-Banner verwalten.</p><h3>4. Kontakt</h3><p><a href="mailto:info@scoptickets.com">info@scoptickets.com</a></p>`,
+    pt:`<h3>1. O que são cookies?</h3><p>Pequenos ficheiros de texto armazenados no seu dispositivo.</p><h3>2. Tipos</h3><p><strong>Essenciais:</strong> <code>scop_cookie_consent</code>.</p><p><strong>Analíticos:</strong> <code>_ga</code>, <code>_gid</code>.</p><p><strong>Publicitários:</strong> <code>_gcl_au</code>, <code>_gac_*</code>.</p><h3>3. Gestão</h3><p>Gira via banner de cookies.</p><h3>4. Contacto</h3><p><a href="mailto:info@scoptickets.com">info@scoptickets.com</a></p>`,
+  },
+  refund:{
+    en:`<div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div><h3>No-refund policy</h3><p><strong>All sales are final. Tickets are non-refundable, non-modifiable and non-transferable under any circumstances.</strong></p><h3>Exceptions</h3><p>The only exception applies when the monument closes due to force majeure. In this case, Scop Tickets will offer free rescheduling or a full refund.</p><h3>Contact for claims</h3><p>info@scoptickets.com · Include your order number.</p>`,
+    es:`<div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div><h3>Política de no reembolso</h3><p><strong>Todas las ventas son finales. Las entradas no son reembolsables, modificables ni transferibles bajo ninguna circunstancia.</strong></p><h3>Excepciones</h3><p>Si el monumento cierra por causas de fuerza mayor, Scop Tickets ofrecerá reprogramación o reembolso completo.</p><h3>Contacto</h3><p>info@scoptickets.com · Incluí tu número de orden.</p>`,
+    fr:`<div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div><h3>Politique de non-remboursement</h3><p><strong>Toutes les ventes sont définitives. Les billets ne sont ni remboursables, ni modifiables, ni transférables.</strong></p><h3>Exceptions</h3><p>Fermeture pour force majeure : reprogrammation gratuite ou remboursement complet.</p><h3>Contact</h3><p>info@scoptickets.com avec votre numéro de commande.</p>`,
+    de:`<div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div><h3>Keine-Erstattungs-Richtlinie</h3><p><strong>Alle Verkäufe sind endgültig. Tickets sind nicht erstattungsfähig, nicht änderbar und nicht übertragbar.</strong></p><h3>Ausnahmen</h3><p>Schließung durch höhere Gewalt: alternatives Datum oder vollständige Erstattung.</p><h3>Kontakt</h3><p>info@scoptickets.com · Bestellnummer angeben.</p>`,
+    pt:`<div class="legal-company"><strong>Scop Tickets LLC</strong> · info@scoptickets.com</div><h3>Política de não reembolso</h3><p><strong>Todas as vendas são definitivas. Os bilhetes não são reembolsáveis, modificáveis nem transferíveis.</strong></p><h3>Exceções</h3><p>Encerramento por força maior: reagendamento gratuito ou reembolso completo.</p><h3>Contacto</h3><p>info@scoptickets.com · Incluir número de encomenda.</p>`,
+  },
+};
+
+function showTab(id, btn){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function toggleLegalLang(){ document.getElementById('legal-lang-dropdown').classList.toggle('open'); }
+document.addEventListener('click',e=>{ if(!e.target.closest('#legal-lang-switcher')) document.getElementById('legal-lang-dropdown').classList.remove('open'); });
+
+function setLegalLang(lang){
+  legalLang=lang;
+  const l=LEGAL_LANGS[lang];
+  document.getElementById('legal-lang-flag').textContent=l.flag;
+  document.getElementById('legal-lang-label').textContent=l.label;
+  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.toggle('active',o.getAttribute('onclick').includes("'"+lang+"'")));
+  document.getElementById('legal-lang-dropdown').classList.remove('open');
+  applyLegalTranslations();
+}
+
+function applyLegalTranslations(){
+  const lang=legalLang;
+  const t=(key)=>LEGAL_T[key]&&(LEGAL_T[key][lang]||LEGAL_T[key]['it']);
+  const bl=document.querySelector('.back-link');
+  if(bl){ const svg=bl.querySelector('svg'); bl.innerHTML=''; if(svg)bl.appendChild(svg); bl.appendChild(document.createTextNode(' '+t('back'))); }
+  document.querySelector('.page-title').textContent=t('title');
+  const tabs=['terms','privacy','cookies','refund'];
+  document.querySelectorAll('.tab-btn').forEach((btn,i)=>{ btn.textContent=t('tab_'+tabs[i]); });
+  tabs.forEach(s=>{
+    const el=document.getElementById('tab-'+s);
+    if(!el) return;
+    if(lang==='it') return;
+    const trans=LEGAL_TRANS[s]&&LEGAL_TRANS[s][lang];
+    if(trans) el.innerHTML=trans;
+  });
+  document.getElementById('footer-text').innerHTML='© 2026 Scop Tickets LLC · '+t('footer')+' · <a href="/" style="color:var(--accent)">pantheonrometickets.org</a>';
+  const titles={it:'Legale — Pantheon Rome Tickets',en:'Legal — Pantheon Rome Tickets',es:'Legal — Pantheon Rome Tickets',fr:'Légal — Pantheon Rome Tickets',de:'Rechtliches — Pantheon Rome Tickets',pt:'Legal — Pantheon Rome Tickets'};
+  document.title=titles[lang]||titles['it'];
+}
+
+// Auto-detect language on load
+setLegalLang(legalLang);
+// Handle #terms, #privacy, #cookies, #refund anchors
+const hash = window.location.hash.replace('#','');
+if(['terms','privacy','cookies','refund'].includes(hash)){
+  document.querySelectorAll('.tab-btn').forEach((btn,i)=>{
+    if(['terms','privacy','cookies','refund'][i]===hash) btn.click();
+  });
+}
+</script>
+</body>
+</html>
