@@ -25,9 +25,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Pantheon Rome Tickets">
 <meta name="twitter:description" content="Buy Pantheon Rome tickets online. Skip the line, instant confirmation.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1552832230-c0198040d8a4?w=1200&q=80">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
-<link rel="shortcut icon" type="image/png" href="favicon-64.png">
-<link rel="apple-touch-icon" href="favicon-64.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@200;300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://js.stripe.com/v3/"></script>
@@ -636,7 +637,7 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
       <p class="hero-eyebrow">Tempio Romano Antico · Eretto nel 113-125 d.C.</p>
       <h1 class="hero-title">
         <strong>Pantheon di Roma</strong>
-        <span id="hero-tagline-sub">Salta la fila · Roma, Italia</span>
+        <span id="hero-tagline-sub" style="font-weight:600">Skip the line tickets</span>
       </h1>
       <div class="hero-trust">
         <div class="hero-trust-item">
@@ -908,52 +909,72 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
 <div style="background:#f9f8f6;padding:72px 0" id="gallery-section">
   <div style="max-width:1100px;margin:0 auto;padding:0 36px">
 
-    <!-- ── STORIA: image left + text right ── -->
+    <!-- ── STORIA: text left + image right ── -->
     <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-bottom:72px" id="storia-grid">
-      <div style="border-radius:var(--radius-xl);overflow:hidden;height:480px">
-        <img id="storia-img" src="storia.jpg" alt="Il Pantheon di Roma" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-      </div>
       <div>
         <div class="section-eyebrow" id="storia-eyebrow">Il Monumento</div>
         <h2 class="section-title" id="storia-title">Duemila anni di storia</h2>
         <div style="display:flex;flex-direction:column;gap:20px;margin-top:24px">
-          <div style="display:flex;gap:16px">
-            <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="storia-item" onclick="toggleStoria(this)">
+            <div class="storia-item-head">
+              <div class="storia-item-head-left" style="gap:12px;display:flex;align-items:center">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0" id="storia-h1">27 a.C.: Il primo Pantheon</p>
+              </div>
+              <svg class="storia-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
-            <div>
-              <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0 0 4px" id="storia-h1">27 a.C. — Il primo Pantheon</p>
+            <div class="storia-item-body">
               <p style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0" id="storia-p1">Marco Agrippa costrui il primo Pantheon come tempio dedicato a tutti gli dei. Venne poi ricostruito dall'imperatore Adriano tra il 113 e il 125 d.C. nella forma che vediamo oggi.</p>
             </div>
           </div>
-          <div style="display:flex;gap:16px">
-            <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="storia-item" onclick="toggleStoria(this)">
+            <div class="storia-item-head">
+              <div class="storia-item-head-left" style="gap:12px;display:flex;align-items:center">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0" id="storia-h2">609 d.C.: Da tempio a basilica</p>
+              </div>
+              <svg class="storia-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
-            <div>
-              <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0 0 4px" id="storia-h2">609 d.C. — Da tempio a basilica</p>
+            <div class="storia-item-body">
               <p style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0" id="storia-p2">L'imperatore Foca dono il Pantheon a Papa Bonifacio IV, che lo trasformo in una chiesa cristiana. Questo e il motivo per cui e uno dei monumenti antichi meglio conservati al mondo.</p>
             </div>
           </div>
-          <div style="display:flex;gap:16px">
-            <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <div class="storia-item" onclick="toggleStoria(this)">
+            <div class="storia-item-head">
+              <div class="storia-item-head-left" style="gap:12px;display:flex;align-items:center">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                </div>
+                <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0" id="storia-h3">La cupola piu grande del mondo antico</p>
+              </div>
+              <svg class="storia-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
-            <div>
-              <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0 0 4px" id="storia-h3">La cupola piu grande del mondo antico</p>
+            <div class="storia-item-body">
               <p style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0" id="storia-p3">Con 43,3 metri di diametro, la cupola del Pantheon rimase la piu grande del mondo per oltre 1300 anni. L'oculo centrale di 9 metri e l'unica fonte di luce naturale dell'edificio.</p>
             </div>
           </div>
-          <div style="display:flex;gap:16px">
-            <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <div class="storia-item" onclick="toggleStoria(this)">
+            <div class="storia-item-head">
+              <div class="storia-item-head-left" style="gap:12px;display:flex;align-items:center">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0" id="storia-h4">Le tombe illustri</p>
+              </div>
+              <svg class="storia-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
-            <div>
-              <p style="font-weight:600;font-size:14px;color:var(--gray-900);margin:0 0 4px" id="storia-h4">Le tombe illustri</p>
+            <div class="storia-item-body">
               <p style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin:0" id="storia-p4">Il Pantheon ospita le spoglie del pittore rinascimentale Raffaello e le tombe dei primi re d'Italia, tra cui Vittorio Emanuele II e Umberto I.</p>
             </div>
           </div>
         </div>
+      </div>
+      <div class="storia-img-wrap" style="border-radius:var(--radius-xl);overflow:hidden;height:480px">
+        <img id="storia-img" src="storia.jpg" alt="Il Pantheon di Roma" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
       </div>
     </div>
 
@@ -1178,7 +1199,7 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo-main">PANTHEON <em>ROME</em></div>
-        <div style="font-family:'Jost',sans-serif;font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px">Tickets · Rome</div>
+        <div style="font-family:'Jost',sans-serif;font-weight:400;font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px">By Scop Tickets</div>
         <p id="footer-brand-desc">Servizio di intermediazione indipendente per l'acquisto di biglietti per il Pantheon di Roma.</p>
         <address>Scop Tickets LLC · 30 North Gould Street<br>Sheridan, WY 82801, United States<br>info@scoptickets.com</address>
       </div>
@@ -1460,6 +1481,19 @@ function toggleCarouselPause(){
 }
 
 // ── LOAD PRICES ──
+// ── STORIA ACCORDION (mobile) ──
+function toggleStoria(el) {
+  if(window.innerWidth > 780) return; // desktop: no accordion
+  const body = el.querySelector('.storia-item-body');
+  const chevron = el.querySelector('.storia-chevron');
+  const isOpen = body.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.storia-item-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.storia-chevron').forEach(c => c.classList.remove('open'));
+  // Open clicked if it was closed
+  if(!isOpen){ body.classList.add('open'); chevron.classList.add('open'); }
+}
+
 loadPrices();
 
 // ── BOOKED YESTERDAY BADGE ──
@@ -2065,9 +2099,9 @@ const UI_STRINGS = {
   buyMoreBtn:    {it:'Acquista altri biglietti',en:'Buy more tickets',es:'Comprar mas entradas',fr:"Acheter d'autres billets",de:'Weitere Tickets kaufen',pt:'Comprar mais bilhetes'},
   storiaEyebrow: {it:'Il Monumento',en:'The Monument',es:'El Monumento',fr:'Le Monument',de:'Das Monument',pt:'O Monumento'},
   storiaTitle:   {it:'Duemila anni di storia',en:'Two thousand years of history',es:'Dos mil años de historia',fr:'Deux mille ans d\'histoire',de:'Zweitausend Jahre Geschichte',pt:'Dois mil anos de história'},
-  storiaH1:      {it:'27 a.C. — Il primo Pantheon',en:'27 BC — The first Pantheon',es:'27 a.C. — El primer Panteón',fr:'27 av. J.-C. — Le premier Panthéon',de:'27 v. Chr. — Das erste Pantheon',pt:'27 a.C. — O primeiro Pantheon'},
+  storiaH1:      {it:'27 a.C.: Il primo Pantheon',en:'27 BC : The first Pantheon',es:'27 a.C. : El primer Panteón',fr:'27 av. J.-C. : Le premier Panthéon',de:'27 v. Chr. : Das erste Pantheon',pt:'27 a.C. : O primeiro Pantheon'},
   storiaP1:      {it:"Marco Agrippa costrui il primo Pantheon come tempio dedicato a tutti gli dei. Venne poi ricostruito dall'imperatore Adriano tra il 113 e il 125 d.C. nella forma che vediamo oggi.",en:"Marcus Agrippa built the first Pantheon as a temple dedicated to all the gods. It was later rebuilt by Emperor Hadrian between 113 and 125 AD in the form we see today.",es:"Marco Agripa construyó el primer Panteón como templo dedicado a todos los dioses. Fue reconstruido por el emperador Adriano entre el 113 y el 125 d.C. con la forma que vemos hoy.",fr:"Marcus Agrippa construisit le premier Panthéon comme temple dédié à tous les dieux. Il fut ensuite reconstruit par l'empereur Hadrien entre 113 et 125 apr. J.-C. sous la forme que nous voyons aujourd'hui.",de:"Marcus Agrippa erbaute das erste Pantheon als Tempel für alle Götter. Es wurde später von Kaiser Hadrian zwischen 113 und 125 n. Chr. in der Form, die wir heute sehen, wiederaufgebaut.",pt:"Marco Agripa construiu o primeiro Pantheon como templo dedicado a todos os deuses. Foi depois reconstruído pelo imperador Adriano entre 113 e 125 d.C. na forma que vemos hoje."},
-  storiaH2:      {it:'609 d.C. — Da tempio a basilica',en:'609 AD — From temple to basilica',es:'609 d.C. — De templo a basílica',fr:'609 apr. J.-C. — De temple à basilique',de:'609 n. Chr. — Vom Tempel zur Basilika',pt:'609 d.C. — De templo a basílica'},
+  storiaH2:      {it:'609 d.C.: Da tempio a basilica',en:'609 AD : From temple to basilica',es:'609 d.C. : De templo a basílica',fr:'609 apr. J.-C. : De temple à basilique',de:'609 n. Chr. : Vom Tempel zur Basilika',pt:'609 d.C. : De templo a basílica'},
   storiaP2:      {it:"L'imperatore Foca dono il Pantheon a Papa Bonifacio IV, che lo trasformo in una chiesa cristiana. Questo e il motivo per cui e uno dei monumenti antichi meglio conservati al mondo.",en:'Emperor Phocas donated the Pantheon to Pope Boniface IV, who transformed it into a Christian church. This is why it is one of the best-preserved ancient monuments in the world.',es:'El emperador Focas donó el Panteón al Papa Bonifacio IV, quien lo transformó en una iglesia cristiana. Por eso es uno de los monumentos antiguos mejor conservados del mundo.',fr:"L'empereur Phocas fit don du Panthéon au pape Boniface IV, qui le transforma en église chrétienne. C'est pourquoi il est l'un des monuments antiques les mieux conservés au monde.",de:"Kaiser Phokas schenkte das Pantheon Papst Bonifatius IV., der es in eine christliche Kirche umwandelte. Deshalb ist es eines der am besten erhaltenen antiken Monumente der Welt.",pt:"O imperador Focas doou o Pantheon ao Papa Bonifácio IV, que o transformou numa igreja cristã. É por isso que é um dos monumentos antigos mais bem conservados do mundo."},
   storiaH3:      {it:'La cupola piu grande del mondo antico',en:'The largest dome of the ancient world',es:'La cúpula más grande del mundo antiguo',fr:'Le plus grand dôme du monde antique',de:'Die größte Kuppel der antiken Welt',pt:'A maior cúpula do mundo antigo'},
   storiaP3:      {it:"Con 43,3 metri di diametro, la cupola del Pantheon rimase la piu grande del mondo per oltre 1300 anni. L'oculo centrale di 9 metri e l'unica fonte di luce naturale dell'edificio.",en:'With a diameter of 43.3 metres, the Pantheon dome remained the largest in the world for over 1,300 years. The central oculus of 9 metres is the only source of natural light in the building.',es:'Con 43,3 metros de diámetro, la cúpula del Panteón fue la más grande del mundo durante más de 1300 años. El óculo central de 9 metros es la única fuente de luz natural del edificio.',fr:"Avec un diamètre de 43,3 mètres, la coupole du Panthéon est restée la plus grande du monde pendant plus de 1 300 ans. L'oculus central de 9 mètres est la seule source de lumière naturelle du bâtiment.",de:"Mit einem Durchmesser von 43,3 Metern blieb die Kuppel des Pantheons über 1.300 Jahre lang die größte der Welt. Das zentrale Oculus von 9 Metern ist die einzige natürliche Lichtquelle des Gebäudes.",pt:'Com 43,3 metros de diâmetro, a cúpula do Pantheon foi a maior do mundo durante mais de 1300 anos. O óculo central de 9 metros é a única fonte de luz natural do edifício.'},
