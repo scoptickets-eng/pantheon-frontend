@@ -463,15 +463,24 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
 #cm-accept-all{background:var(--gray-100);color:var(--gray-700)}#cm-accept-all:hover{background:var(--gray-200)}
 @media(max-width:780px){#wcu-grid{grid-template-columns:1fr!important}}
 @media(max-width:780px){
+  .checkout-panel-body input,
+  .checkout-panel-body select,
+  .checkout-panel-body textarea{font-size:16px!important;padding:18px 16px!important;min-height:60px;border-radius:10px!important;line-height:1.4!important}
+}
+/* ── Storia accordion (all screens) ── */
+.storia-item{cursor:pointer;border-bottom:1px solid var(--gray-100);padding:16px 0}
+.storia-item:first-child{padding-top:0}
+.storia-item-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.storia-item-head-left{display:flex;align-items:center;gap:12px}
+.storia-item-body{overflow:hidden;max-height:0;transition:max-height .35s ease,padding .25s ease;padding-left:52px}
+.storia-item-body.open{max-height:300px;padding-top:8px;padding-bottom:4px}
+.storia-chevron{transition:transform .3s;flex-shrink:0;color:var(--gray-300)}
+.storia-chevron.open{transform:rotate(180deg);color:var(--accent)}
+.storia-item:hover .storia-chevron{color:var(--accent)}
+
+@media(max-width:780px){
   #storia-grid{grid-template-columns:1fr!important;gap:0!important}
   .storia-img-wrap{display:none!important}
-  .storia-item{cursor:pointer;border-bottom:1px solid var(--gray-100);padding:14px 0}
-  .storia-item:first-child{padding-top:0}
-  .storia-item-head{display:flex;align-items:center;gap:0;justify-content:space-between}
-  .storia-item-body{overflow:hidden;max-height:0;transition:max-height .35s ease;padding-left:48px}
-  .storia-item-body.open{max-height:300px;padding-top:8px;padding-bottom:8px}
-  .storia-chevron{transition:transform .3s;flex-shrink:0;color:var(--gray-400)}
-  .storia-chevron.open{transform:rotate(180deg)}
 }
 
 /* ══ WCU ICON STRIP ══ */
@@ -1492,20 +1501,23 @@ function toggleCarouselPause(){
 }
 
 // ── LOAD PRICES ──
-// ── STORIA ACCORDION (mobile) ──
+// ── STORIA ACCORDION ──
 function toggleStoria(el) {
-  if(window.innerWidth > 780) return; // desktop: no accordion
   const body = el.querySelector('.storia-item-body');
   const chevron = el.querySelector('.storia-chevron');
   const isOpen = body.classList.contains('open');
-  // Close all
   document.querySelectorAll('.storia-item-body').forEach(b => b.classList.remove('open'));
   document.querySelectorAll('.storia-chevron').forEach(c => c.classList.remove('open'));
-  // Open clicked if it was closed
   if(!isOpen){ body.classList.add('open'); chevron.classList.add('open'); }
 }
 
 loadPrices();
+
+// Open first storia item by default
+(function(){
+  const first = document.querySelector('.storia-item');
+  if(first) toggleStoria(first);
+})();
 
 // ── BOOKED YESTERDAY BADGE ──
 async function loadBookedYesterday(){
@@ -2119,7 +2131,7 @@ const UI_STRINGS = {
   storiaH4:      {it:'Le tombe illustri',en:'The illustrious tombs',es:'Las tumbas ilustres',fr:'Les tombes illustres',de:'Die berühmten Gräber',pt:'Os túmulos ilustres'},
   storiaP4:      {it:"Il Pantheon ospita le spoglie del pittore rinascimentale Raffaello e le tombe dei primi re d'Italia, tra cui Vittorio Emanuele II e Umberto I.",en:"The Pantheon houses the remains of the Renaissance painter Raphael and the tombs of the first kings of Italy, including Victor Emmanuel II and Umberto I.",es:"El Panteón alberga los restos del pintor renacentista Rafael y las tumbas de los primeros reyes de Italia, entre ellos Víctor Manuel II y Humberto I.",fr:"Le Panthéon abrite les restes du peintre de la Renaissance Raphaël et les tombes des premiers rois d'Italie, dont Victor-Emmanuel II et Humbert Ier.",de:"Das Pantheon beherbergt die sterblichen Überreste des Renaissancemalers Raffael und die Grabstätten der ersten Könige Italiens, darunter Viktor Emanuel II. und Umberto I.",pt:"O Pantheon abriga os restos mortais do pintor renascentista Rafael e os túmulos dos primeiros reis de Itália, incluindo Víctor Manuel II e Umberto I."},
   trustIndie:    {it:'Intermediario Indipendente',en:'Independent Reseller',es:'Intermediario Independiente',fr:'Revendeur Indépendant',de:'Unabhängiger Vermittler',pt:'Intermediário Independente'},
-  heroTaglineSub:{it:'Skip the line tickets',en:'Skip the line tickets',es:'Skip the line tickets',fr:'Skip the line tickets',de:'Skip the line tickets',pt:'Skip the line tickets'},
+  heroTaglineSub:{it:'Biglietti salta fila',en:'Skip the line tickets',es:'Entradas sin cola',fr:'Billets sans attente',de:'Tickets ohne Warteschlange',pt:'Bilhetes sem fila'},
   wcuEyebrow:    {it:'I nostri servizi',en:'Our services',es:'Nuestros servicios',fr:'Nos services',de:'Unsere Leistungen',pt:'Os nossos serviços'},
   wcuTitle:      {it:'Più che un biglietto',en:'More than a ticket',es:'Más que una entrada',fr:"Plus qu'un billet",de:'Mehr als ein Ticket',pt:'Mais do que um bilhete'},
   wcuSub:        {it:'Quando prenoti con noi, aggiungi un team che ti accompagna in ogni dettaglio del viaggio',en:'When you book with us, you add a team that accompanies you in every detail of your trip',es:'Cuando reservás con nosotros, sumás un equipo que te acompaña en cada detalle del viaje',fr:"Quand vous réservez avec nous, vous ajoutez une équipe qui vous accompagne dans chaque détail du voyage",de:'Wenn Sie bei uns buchen, haben Sie ein Team, das Sie in jedem Detail Ihrer Reise begleitet',pt:'Quando reserva connosco, conta com uma equipa que o acompanha em cada detalhe da viagem'},
