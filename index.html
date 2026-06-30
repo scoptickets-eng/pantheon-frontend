@@ -688,14 +688,6 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.55);padding:60px 36px 
           <span id="trust-indie" data-key="trustIndie">Intermediario Indipendente</span>
         </div>
       </div>
-
-      <!-- BOOKED BADGE -->
-      <div id="booked-badge" style="display:none;margin-top:20px;align-items:center;gap:10px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:40px;padding:8px 16px;width:fit-content">
-        <span style="display:flex;gap:3px">
-          <span style="width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse-dot 1.8s ease-in-out infinite"></span>
-        </span>
-        <span id="booked-text" style="font-size:13px;font-weight:500;color:#fff"></span>
-      </div>
     </div>
 
     <!-- CHECKOUT PANEL -->
@@ -1522,52 +1514,6 @@ loadPrices();
   if(first) toggleStoria(first);
 })();
 
-// ── BOOKED YESTERDAY BADGE ──
-async function loadBookedYesterday(){
-  try{
-    // Yesterday in Rome timezone (sv-SE gives YYYY-MM-DD)
-    const now = new Date();
-    const romeNow = new Date(now.toLocaleString('en-US',{timeZone:'Europe/Rome'}));
-    const yesterday = new Date(romeNow);
-    yesterday.setDate(yesterday.getDate()-1);
-    const yStr = yesterday.toLocaleDateString('sv-SE',{timeZone:'Europe/Rome'});
-    const todayStr = romeNow.toLocaleDateString('sv-SE',{timeZone:'Europe/Rome'});
-
-    const {data, error} = await sb
-      .from('orders')
-      .select('qty_adults,qty_children,qty_infants,qty_seniors', {count:'exact'})
-      .eq('status','paid')
-      .gte('visit_date', yStr)
-      .lt('visit_date', todayStr);
-
-    if(error || !data) return;
-
-    // Sum total tickets across all orders yesterday
-    const total = data.reduce((sum, o) => {
-      return sum + (Number(o.qty_adults)||0) + (Number(o.qty_children)||0)
-                 + (Number(o.qty_infants)||0) + (Number(o.qty_seniors)||0);
-    }, 0);
-
-    if(total < 1) return; // Don't show if 0
-
-    const badge = document.getElementById('booked-badge');
-    const txt = document.getElementById('booked-text');
-    if(!badge || !txt) return;
-
-    const lang = document.documentElement.lang || 'en';
-    const messages = {
-      it: `Prenotato ${total} volt${total===1?'a':'e'} ieri`,
-      en: `Booked ${total} time${total===1?'':'s'} yesterday`,
-      es: `Reservado ${total} ${total===1?'vez':'veces'} ayer`,
-      fr: `Réservé ${total} fois hier`,
-      de: `Gestern ${total} Mal gebucht`,
-      pt: `Reservado ${total} ${total===1?'vez':'vezes'} ontem`,
-    };
-    txt.textContent = messages[lang] || messages.en;
-    badge.style.display = 'flex';
-  }catch(e){ console.warn('booked badge error:',e); }
-}
-loadBookedYesterday();
 async function loadPrices(){
   try{
     const {data} = await sb.from('config').select('key,value');
@@ -2133,7 +2079,7 @@ const UI_STRINGS = {
   storiaP3:      {it:"Con 43,3 metri di diametro, la cupola del Pantheon rimase la piu grande del mondo per oltre 1300 anni. L'oculo centrale di 9 metri e l'unica fonte di luce naturale dell'edificio.",en:'With a diameter of 43.3 metres, the Pantheon dome remained the largest in the world for over 1,300 years. The central oculus of 9 metres is the only source of natural light in the building.',es:'Con 43,3 metros de diámetro, la cúpula del Panteón fue la más grande del mundo durante más de 1300 años. El óculo central de 9 metros es la única fuente de luz natural del edificio.',fr:"Avec un diamètre de 43,3 mètres, la coupole du Panthéon est restée la plus grande du monde pendant plus de 1 300 ans. L'oculus central de 9 mètres est la seule source de lumière naturelle du bâtiment.",de:"Mit einem Durchmesser von 43,3 Metern blieb die Kuppel des Pantheons über 1.300 Jahre lang die größte der Welt. Das zentrale Oculus von 9 Metern ist die einzige natürliche Lichtquelle des Gebäudes.",pt:'Com 43,3 metros de diâmetro, a cúpula do Pantheon foi a maior do mundo durante mais de 1300 anos. O óculo central de 9 metros é a única fonte de luz natural do edifício.'},
   storiaH4:      {it:'Le tombe illustri',en:'The illustrious tombs',es:'Las tumbas ilustres',fr:'Les tombes illustres',de:'Die berühmten Gräber',pt:'Os túmulos ilustres'},
   storiaP4:      {it:"Il Pantheon ospita le spoglie del pittore rinascimentale Raffaello e le tombe dei primi re d'Italia, tra cui Vittorio Emanuele II e Umberto I.",en:"The Pantheon houses the remains of the Renaissance painter Raphael and the tombs of the first kings of Italy, including Victor Emmanuel II and Umberto I.",es:"El Panteón alberga los restos del pintor renacentista Rafael y las tumbas de los primeros reyes de Italia, entre ellos Víctor Manuel II y Humberto I.",fr:"Le Panthéon abrite les restes du peintre de la Renaissance Raphaël et les tombes des premiers rois d'Italie, dont Victor-Emmanuel II et Humbert Ier.",de:"Das Pantheon beherbergt die sterblichen Überreste des Renaissancemalers Raffael und die Grabstätten der ersten Könige Italiens, darunter Viktor Emanuel II. und Umberto I.",pt:"O Pantheon abriga os restos mortais do pintor renascentista Rafael e os túmulos dos primeiros reis de Itália, incluindo Víctor Manuel II e Umberto I."},
-  trustIndie:    {it:'Intermediario Indipendente',en:'Independent Reseller',es:'Intermediario Independiente',fr:'Revendeur Indépendant',de:'Unabhängiger Vermittler',pt:'Intermediário Independente'},
+  trustIndie:    {it:'Servizio di Intermediazione Indipendente',en:'Independent Intermediary Service',es:'Servicio de Intermediación Independiente',fr:'Service d\'Intermédiation Indépendant',de:'Unabhängiger Vermittlungsservice',pt:'Serviço de Intermediação Independente'},
   heroTaglineSub:{it:'Biglietti salta fila',en:'Skip the line tickets',es:'Entradas sin cola',fr:'Billets sans attente',de:'Tickets ohne Warteschlange',pt:'Bilhetes sem fila'},
   wcuEyebrow:    {it:'I nostri servizi',en:'Our services',es:'Nuestros servicios',fr:'Nos services',de:'Unsere Leistungen',pt:'Os nossos serviços'},
   wcuTitle:      {it:'Più che un biglietto',en:'More than a ticket',es:'Más que una entrada',fr:"Plus qu'un billet",de:'Mehr als ein Ticket',pt:'Mais do que um bilhete'},
@@ -2324,9 +2270,7 @@ function applyTranslations(){
   // Re-load slots if date already selected
   const dateInput = document.getElementById('s1-date');
   if(dateInput && dateInput.value) onDateChange(dateInput.value);
-  // Refresh booked badge for new language
-  loadBookedYesterday();
-}
+  }
 
 function setLang(lang){
   currentLang = lang;
